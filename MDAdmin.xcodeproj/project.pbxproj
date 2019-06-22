@@ -8,20 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		D300296822BA89BE00AD8786 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D300296722BA89BE00AD8786 /* AppDelegate.swift */; };
-		D300296A22BA89BE00AD8786 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D300296922BA89BE00AD8786 /* ViewController.swift */; };
 		D300296D22BA89BE00AD8786 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D300296B22BA89BE00AD8786 /* Main.storyboard */; };
 		D300296F22BA89C000AD8786 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D300296E22BA89C000AD8786 /* Assets.xcassets */; };
 		D300297222BA89C000AD8786 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D300297022BA89C000AD8786 /* LaunchScreen.storyboard */; };
+		D300298422BE53B800AD8786 /* ClientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D300298322BE53B800AD8786 /* ClientsViewController.swift */; };
+		D300298622BE53C900AD8786 /* CalandarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D300298522BE53C900AD8786 /* CalandarViewController.swift */; };
+		D300298822BE53D900AD8786 /* AddClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D300298722BE53D900AD8786 /* AddClientViewController.swift */; };
+		D300298A22BE53E500AD8786 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D300298922BE53E500AD8786 /* SettingsViewController.swift */; };
+		D300298D22BE63DD00AD8786 /* ProceduresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D300298C22BE63DD00AD8786 /* ProceduresViewController.swift */; };
+		D300298F22BE820600AD8786 /* AddProcedureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D300298E22BE820600AD8786 /* AddProcedureViewController.swift */; };
+		D300299122BE83A000AD8786 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D300299022BE83A000AD8786 /* AddViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D300296422BA89BE00AD8786 /* MDAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MDAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D300296722BA89BE00AD8786 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D300296922BA89BE00AD8786 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D300296C22BA89BE00AD8786 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D300296E22BA89C000AD8786 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D300297122BA89C000AD8786 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D300297322BA89C000AD8786 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D300298322BE53B800AD8786 /* ClientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsViewController.swift; sourceTree = "<group>"; };
+		D300298522BE53C900AD8786 /* CalandarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalandarViewController.swift; sourceTree = "<group>"; };
+		D300298722BE53D900AD8786 /* AddClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClientViewController.swift; sourceTree = "<group>"; };
+		D300298922BE53E500AD8786 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		D300298C22BE63DD00AD8786 /* ProceduresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProceduresViewController.swift; sourceTree = "<group>"; };
+		D300298E22BE820600AD8786 /* AddProcedureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProcedureViewController.swift; sourceTree = "<group>"; };
+		D300299022BE83A000AD8786 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +66,28 @@
 		D300296622BA89BE00AD8786 /* MDAdmin */ = {
 			isa = PBXGroup;
 			children = (
+				D300298B22BE53F000AD8786 /* Controller */,
 				D300296722BA89BE00AD8786 /* AppDelegate.swift */,
-				D300296922BA89BE00AD8786 /* ViewController.swift */,
 				D300296B22BA89BE00AD8786 /* Main.storyboard */,
 				D300296E22BA89C000AD8786 /* Assets.xcassets */,
 				D300297022BA89C000AD8786 /* LaunchScreen.storyboard */,
 				D300297322BA89C000AD8786 /* Info.plist */,
 			);
 			path = MDAdmin;
+			sourceTree = "<group>";
+		};
+		D300298B22BE53F000AD8786 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D300298322BE53B800AD8786 /* ClientsViewController.swift */,
+				D300298522BE53C900AD8786 /* CalandarViewController.swift */,
+				D300298722BE53D900AD8786 /* AddClientViewController.swift */,
+				D300298922BE53E500AD8786 /* SettingsViewController.swift */,
+				D300298C22BE63DD00AD8786 /* ProceduresViewController.swift */,
+				D300298E22BE820600AD8786 /* AddProcedureViewController.swift */,
+				D300299022BE83A000AD8786 /* AddViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +161,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D300296A22BA89BE00AD8786 /* ViewController.swift in Sources */,
+				D300298822BE53D900AD8786 /* AddClientViewController.swift in Sources */,
+				D300298622BE53C900AD8786 /* CalandarViewController.swift in Sources */,
+				D300299122BE83A000AD8786 /* AddViewController.swift in Sources */,
+				D300298F22BE820600AD8786 /* AddProcedureViewController.swift in Sources */,
+				D300298D22BE63DD00AD8786 /* ProceduresViewController.swift in Sources */,
+				D300298422BE53B800AD8786 /* ClientsViewController.swift in Sources */,
 				D300296822BA89BE00AD8786 /* AppDelegate.swift in Sources */,
+				D300298A22BE53E500AD8786 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,7 +324,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ddanilyuk.MDAdmin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -310,7 +342,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ddanilyuk.MDAdmin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
