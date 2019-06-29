@@ -43,6 +43,13 @@ class LoginSecondViewController: UIViewController, GIDSignInDelegate, GIDSignInU
             Auth.auth().signIn(with: credential) { (result, error) in
                 if error == nil {
                     Settings.shared.isLoggedIn = true
+                    let uID = Auth.auth().currentUser?.uid
+                    
+                    var ref: DatabaseReference!
+                    
+                    ref = Database.database().reference()
+                    //ref.child(uID ?? "").setValue(["fullName": String(user.profile.name)])
+                    
                     
                     let userId = user.userID
                     print("User id is \(String(describing: userId))")

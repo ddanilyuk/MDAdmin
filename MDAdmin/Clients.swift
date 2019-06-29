@@ -16,8 +16,22 @@ class Clients {
     init(name: String, surname: String, patronymic: String) {
         self.name = name
         self.surname = surname
-        self.patronymic = patronymic
-        
-        let initials = name + " " + surname + " " + patronymic
+        self.patronymic = patronymic   
+    }
+    
+    func makeInitials() -> String {
+        return surname + " " + name + " " + patronymic
+    }
+    
+    func getName() -> String {
+        return name
+    }
+    
+    func getSurname() -> String {
+        return surname
+    }
+    
+    func getPatronymic() -> String {
+        return patronymic
     }
 }

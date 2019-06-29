@@ -126,12 +126,12 @@
 			children = (
 				D300298322BE53B800AD8786 /* ClientsViewController.swift */,
 				D300298522BE53C900AD8786 /* CalandarViewController.swift */,
-				D300298722BE53D900AD8786 /* AddClientViewController.swift */,
 				D300298922BE53E500AD8786 /* SettingsViewController.swift */,
 				D300298C22BE63DD00AD8786 /* ProceduresViewController.swift */,
-				D300298E22BE820600AD8786 /* AddProcedureViewController.swift */,
-				D300299022BE83A000AD8786 /* AddViewController.swift */,
 				D3BA1DC222C21B470089690C /* SignedInViewController.swift */,
+				D300299022BE83A000AD8786 /* AddViewController.swift */,
+				D300298722BE53D900AD8786 /* AddClientViewController.swift */,
+				D300298E22BE820600AD8786 /* AddProcedureViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -157,8 +157,8 @@
 				D300296022BA89BE00AD8786 /* Sources */,
 				D300296122BA89BE00AD8786 /* Frameworks */,
 				D300296222BA89BE00AD8786 /* Resources */,
-				C37C6C23ACAD1F6052DB830A /* [CP] Embed Pods Frameworks */,
-				99A935799323C9483FA76ECD /* [CP] Copy Pods Resources */,
+				80433BBA901BAB90471ADF1C /* [CP] Embed Pods Frameworks */,
+				303D1E97BE3779FBDFA6EEBA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -218,7 +218,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		99A935799323C9483FA76ECD /* [CP] Copy Pods Resources */ = {
+		303D1E97BE3779FBDFA6EEBA /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -233,6 +233,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MDAdmin/Pods-MDAdmin-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		80433BBA901BAB90471ADF1C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MDAdmin/Pods-MDAdmin-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MDAdmin/Pods-MDAdmin-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MDAdmin/Pods-MDAdmin-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BF42E85C0892C2D0146A33C5 /* [CP] Check Pods Manifest.lock */ = {
@@ -255,23 +272,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C37C6C23ACAD1F6052DB830A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MDAdmin/Pods-MDAdmin-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MDAdmin/Pods-MDAdmin-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MDAdmin/Pods-MDAdmin-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

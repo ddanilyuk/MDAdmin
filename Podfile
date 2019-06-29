@@ -8,6 +8,8 @@ target 'MDAdmin' do
   # Pods for MDAdmin
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
+pod 'Firebase/Analytics'
+pod 'Firebase/Database'
 pod 'Firebase'
 pod 'FirebaseUI/Google'
 pod 'CalendarKit'
