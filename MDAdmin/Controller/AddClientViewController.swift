@@ -22,6 +22,8 @@ class AddClientViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (_) in
             print("User click Approve button")
             self.imagePicker.sourceType = .camera
+            self.imagePicker.delegate = self
+            self.present(self.imagePicker, animated: true, completion: nil)
             
 
         }))
@@ -29,11 +31,11 @@ class AddClientViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Library", style: .default, handler: { (_) in
             print("User click Edit button")
             self.imagePicker.sourceType = .photoLibrary
+            self.imagePicker.delegate = self
+            self.present(self.imagePicker, animated: true, completion: nil)
             
 
         }))
-        
-        
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { (_) in
             print("User click Dismiss button")
         }))

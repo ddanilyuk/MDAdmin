@@ -20,8 +20,13 @@
 		D300298F22BE820600AD8786 /* AddProcedureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D300298E22BE820600AD8786 /* AddProcedureViewController.swift */; };
 		D300299122BE83A000AD8786 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D300299022BE83A000AD8786 /* AddViewController.swift */; };
 		D300299322C16A5300AD8786 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D300299222C16A5300AD8786 /* GoogleService-Info.plist */; };
-		D376C4B822C22EC600BF2DEE /* TryToSignedInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376C4B722C22EC600BF2DEE /* TryToSignedInViewController.swift */; };
+		D3A3CDB122C7BA1A00378FA4 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A3CDB022C7BA1A00378FA4 /* Settings.swift */; };
+		D3A3CDB322C7C26A00378FA4 /* Clients.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A3CDB222C7C26A00378FA4 /* Clients.swift */; };
 		D3BA1DC322C21B470089690C /* SignedInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA1DC222C21B470089690C /* SignedInViewController.swift */; };
+		D3C4988E22C6954C004EA9CC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3C4988D22C6954C004EA9CC /* Login.storyboard */; };
+		D3C4989022C695E2004EA9CC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C4988F22C695E2004EA9CC /* LoginViewController.swift */; };
+		D3C4989422C6968E004EA9CC /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C4989322C6968E004EA9CC /* ViewManager.swift */; };
+		D3C4989622C7B18F004EA9CC /* LoginSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C4989522C7B18F004EA9CC /* LoginSecondViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,8 +46,13 @@
 		D300298E22BE820600AD8786 /* AddProcedureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProcedureViewController.swift; sourceTree = "<group>"; };
 		D300299022BE83A000AD8786 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		D300299222C16A5300AD8786 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		D376C4B722C22EC600BF2DEE /* TryToSignedInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryToSignedInViewController.swift; sourceTree = "<group>"; };
+		D3A3CDB022C7BA1A00378FA4 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		D3A3CDB222C7C26A00378FA4 /* Clients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clients.swift; sourceTree = "<group>"; };
 		D3BA1DC222C21B470089690C /* SignedInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignedInViewController.swift; sourceTree = "<group>"; };
+		D3C4988D22C6954C004EA9CC /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		D3C4988F22C695E2004EA9CC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D3C4989322C6968E004EA9CC /* ViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
+		D3C4989522C7B18F004EA9CC /* LoginSecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSecondViewController.swift; sourceTree = "<group>"; };
 		EFB70C1A3FE7485364DF23D2 /* Pods-MDAdmin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDAdmin.release.xcconfig"; path = "Target Support Files/Pods-MDAdmin/Pods-MDAdmin.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,11 +106,15 @@
 		D300296622BA89BE00AD8786 /* MDAdmin */ = {
 			isa = PBXGroup;
 			children = (
-				D300298B22BE53F000AD8786 /* Controller */,
 				D300296722BA89BE00AD8786 /* AppDelegate.swift */,
+				D300298B22BE53F000AD8786 /* Controller */,
+				D3C4989122C695F1004EA9CC /* Login */,
 				D300296B22BA89BE00AD8786 /* Main.storyboard */,
+				D3A3CDB022C7BA1A00378FA4 /* Settings.swift */,
+				D3A3CDB222C7C26A00378FA4 /* Clients.swift */,
 				D300296E22BA89C000AD8786 /* Assets.xcassets */,
 				D300297022BA89C000AD8786 /* LaunchScreen.storyboard */,
+				D3C4989322C6968E004EA9CC /* ViewManager.swift */,
 				D300297322BA89C000AD8786 /* Info.plist */,
 				D300299222C16A5300AD8786 /* GoogleService-Info.plist */,
 			);
@@ -118,9 +132,18 @@
 				D300298E22BE820600AD8786 /* AddProcedureViewController.swift */,
 				D300299022BE83A000AD8786 /* AddViewController.swift */,
 				D3BA1DC222C21B470089690C /* SignedInViewController.swift */,
-				D376C4B722C22EC600BF2DEE /* TryToSignedInViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		D3C4989122C695F1004EA9CC /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D3C4988D22C6954C004EA9CC /* Login.storyboard */,
+				D3C4989522C7B18F004EA9CC /* LoginSecondViewController.swift */,
+				D3C4988F22C695E2004EA9CC /* LoginViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,6 +210,7 @@
 				D300297222BA89C000AD8786 /* LaunchScreen.storyboard in Resources */,
 				D300299322C16A5300AD8786 /* GoogleService-Info.plist in Resources */,
 				D300296F22BA89C000AD8786 /* Assets.xcassets in Resources */,
+				D3C4988E22C6954C004EA9CC /* Login.storyboard in Resources */,
 				D300296D22BA89BE00AD8786 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,14 +283,18 @@
 			files = (
 				D300298822BE53D900AD8786 /* AddClientViewController.swift in Sources */,
 				D300298622BE53C900AD8786 /* CalandarViewController.swift in Sources */,
-				D376C4B822C22EC600BF2DEE /* TryToSignedInViewController.swift in Sources */,
 				D300299122BE83A000AD8786 /* AddViewController.swift in Sources */,
+				D3A3CDB122C7BA1A00378FA4 /* Settings.swift in Sources */,
 				D300298F22BE820600AD8786 /* AddProcedureViewController.swift in Sources */,
 				D300298D22BE63DD00AD8786 /* ProceduresViewController.swift in Sources */,
+				D3C4989422C6968E004EA9CC /* ViewManager.swift in Sources */,
 				D300298422BE53B800AD8786 /* ClientsViewController.swift in Sources */,
+				D3A3CDB322C7C26A00378FA4 /* Clients.swift in Sources */,
 				D300296822BA89BE00AD8786 /* AppDelegate.swift in Sources */,
 				D3BA1DC322C21B470089690C /* SignedInViewController.swift in Sources */,
+				D3C4989622C7B18F004EA9CC /* LoginSecondViewController.swift in Sources */,
 				D300298A22BE53E500AD8786 /* SettingsViewController.swift in Sources */,
+				D3C4989022C695E2004EA9CC /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

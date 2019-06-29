@@ -13,7 +13,7 @@ import GoogleSignIn
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     let userDefault = UserDefaults()
@@ -24,10 +24,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         FirebaseApp.configure()
         
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-        GIDSignIn.sharedInstance().delegate = self
+        //GIDSignIn.sharedInstance().delegate = self
+        //GIDSignIn.sharedInstance().uiDelegate = self
+        
+        
+        ViewManager.shared.setupInitialController()
 
         return true
     }
+    
+    
     
     /*
     @available(iOS 9.0, *)
@@ -43,47 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     }
     
     
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-        if let error = error {
-            print(error.localizedDescription)
-            print("some errors")
-            return
-        } else {
-            guard let authentication = user.authentication else { return }
-            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
-            Auth.auth().signIn(with: credential) { (result, error) in
-                if error == nil {
-                    self.userDefault.set(true, forKey: "userSignedIn")
-                    self.userDefault.synchronize()
-                    
-                    /*
-                    let some = TryToSignedInViewController()
-                    let some2 = SignedInViewController()
-                    let some3 = SettingsViewController()
-
-                    //self.window?.rootViewController?.performSegue(withIdentifier: "sequeToSignIn", sender: nil)
-                    
-                    //some.performSegue(withIdentifier: "sequeToSignIn", sender: nil)
-                    some.navigationController?.popViewController(animated: true)
-                    some2.navigationController?.popViewController(animated: true)
-                    some3.navigationController?.popViewController(animated: true)
-                    */
-                    
-                } else {
-                    print(error?.localizedDescription ?? "")
-                }
-            }
-            
-            
-        // ...
-        }
-        
-    }
-    
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        // Perform any operations when the user disconnects from app here.
-        // ...
-    }
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -106,6 +71,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    
 
 
 }

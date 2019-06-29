@@ -1,4 +1,8 @@
 PODS:
+  - CalendarKit (0.7.2):
+    - DateToolsSwift
+    - Neon
+  - DateToolsSwift (4.0.0)
   - Firebase (6.3.0):
     - Firebase/Core (= 6.3.0)
   - Firebase/Auth (6.3.0):
@@ -80,8 +84,10 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - Neon (0.4.0)
 
 DEPENDENCIES:
+  - CalendarKit
   - Firebase
   - Firebase/Auth
   - Firebase/Core
@@ -89,6 +95,8 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - CalendarKit
+    - DateToolsSwift
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -102,8 +110,11 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMSessionFetcher
     - nanopb
+    - Neon
 
 SPEC CHECKSUMS:
+  CalendarKit: edd2d45f4c5b01339fd7e8c27c204c8dd2d43d5f
+  DateToolsSwift: 875d97ff9e3a5d54abdd67a269b3f51c757b71ab
   Firebase: 8432d732974498afd5987e9001a05f90f1a3d625
   FirebaseAnalytics: 470ddab7253b21ad5a40bebd4a9903d7ae19386a
   FirebaseAuth: 7fa2cc010b93770831a4e7a60651b52c3b8d111a
@@ -117,7 +128,8 @@ SPEC CHECKSUMS:
   GoogleUtilities: 996e0db07153674fd1b54b220fda3a3dc3547cba
   GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  Neon: 7fb5a9327e7e57911843f608e08f4893a74deaf9
 
-PODFILE CHECKSUM: 24c4f5672e8bcb5408b3a11906a9b75817094e13
+PODFILE CHECKSUM: 4d17ec10a80519a232bd3bb6e16ac9295aeb3913
 
 COCOAPODS: 1.7.2

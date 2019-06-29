@@ -10,6 +10,7 @@ pod 'Firebase/Core'
 pod 'Firebase/Auth'
 pod 'Firebase'
 pod 'FirebaseUI/Google'
+pod 'CalendarKit'
 
 
 end
