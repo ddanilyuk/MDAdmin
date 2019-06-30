@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //GIDSignIn.sharedInstance().delegate = self
         //GIDSignIn.sharedInstance().uiDelegate = self
         
-        
+        Database.database().isPersistenceEnabled = true
         ViewManager.shared.setupInitialController()
 
         return true

@@ -13,98 +13,65 @@ class ClientsViewController: UIViewController{
     
     @IBOutlet weak var clientTableView: UITableView!
     
-    private var clientList: [String : [String]] = [:
-//        "A" :   ["Алещенко Анатолий Андреевич"],
-//        "Б" :   ["Боровик Ростислав Сергеевич"],
-//        "Д" :   ["Данилюк Денис Андреевич", "Данилюк Оксана Юрьевна",
-//                  "Данилюк Денис Андреевич", "Данилюк Оксана Юрьевна",
-//                  "Данилюк Денис Андреевич", "Данилюк Оксана Юрьевна"],
-//        "Г" :   ["Головаш Анастасія Васильівна"],
-        //"К" :   ["Кухарук Юрій Григорович"]
-    ]
-    
-    
-    
-    //var clients: [String: [Clients]]
+    private var clientList: [String : [String]] = [:]
     
     private var sectionHeader: [String] { return Array(clientList.keys).sorted(by: {$0 < $1}) }
+    var initilsToSeque: String = " "
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*
-        let ref = Database.database().reference()
-        ref.child("123123").setValue(["fullName": "Денис"])
-        ref.child("hello")
-        */
+
         clientTableView.delegate = self
         clientTableView.dataSource = self
-        
-        
-        var ref: DatabaseReference!
-        ref = Database.database().reference()
-        
-        let uid = Auth.auth().currentUser?.uid
-        
-        
-        
-        ref.child("\(uid ?? " ")/clinets/").observeSingleEvent(of: .value) { (snapshot) in
-            guard let data = snapshot.value as? [String: [String: String]] else {
-                return
-            }
-            var header: [String] { return Array(data.keys).sorted(by: {$0 < $1}) }
-            var userList: [String] = []
-            for client in header{
-                userList.append(client)
-            }
-            print(userList)
-            print(data)
-            
-            
-            for user in userList {
-                let firstLetter = String(user[user.startIndex])
-                print("first letter of \(user) is \(firstLetter)")
-    
-                self.clientList.updateValue([user], forKey: firstLetter)
-            }
-            self.clientTableView.reloadData()
-            
-        }
-        //ref.child("\(uid ?? " ")/clinets/").o
+        updateTable()
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        updateTable()
+    }
+    
+    func updateTable() {
         var ref: DatabaseReference!
         ref = Database.database().reference()
         
         let uid = Auth.auth().currentUser?.uid
         
-        
-        
-        ref.child("\(uid ?? " ")/clinets/").observeSingleEvent(of: .value) { (snapshot) in
+        ref.child("\(uid ?? " ")/clinets/").observe(.value) { (snapshot) in
             guard let data = snapshot.value as? [String: [String: String]] else {
                 return
             }
             var header: [String] { return Array(data.keys).sorted(by: {$0 < $1}) }
             var userList: [String] = []
-            for client in header{
+            for client in header {
                 userList.append(client)
             }
             print(userList)
-            print(data)
             
             
             for user in userList {
                 let firstLetter = String(user[user.startIndex])
-                print("first letter of \(user) is \(firstLetter)")
                 
-                self.clientList.updateValue([user], forKey: firstLetter)
+                var valuesForFirstLetter:[String] = self.clientList["\(firstLetter.uppercased())"] ?? [""]
+                print("valuesForFirstLetter", valuesForFirstLetter)
+
+                if valuesForFirstLetter == [""], !valuesForFirstLetter.contains(user) {
+                    valuesForFirstLetter = [String(user)]
+                } else if !valuesForFirstLetter.contains(user){
+                    valuesForFirstLetter.append(String(user))
+                }
+                
+                self.clientList.updateValue(valuesForFirstLetter, forKey: firstLetter.uppercased())
+                valuesForFirstLetter = []
             }
             self.clientTableView.reloadData()
             
-        
+        }
     }
-}
+    
+    
 }
 extension ClientsViewController: UITableViewDataSource, UITableViewDelegate {
     
@@ -128,4 +95,24 @@ extension ClientsViewController: UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        initilsToSeque = clientList[sectionHeader[indexPath.section]]?[indexPath.row] ?? " "
+        guard (storyboard?.instantiateViewController(withIdentifier: "OneClientViewController") as? OneClientViewController) != nil else { return }
+        //present(newVC, animated: true, completion: nil)
+        //navigationController?.pushViewController(newVC, animated: true)
+        
+        performSegue(withIdentifier: "showClient", sender: self)
+        
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "showClient" {
+            if let destination = segue.destination as? OneClientViewController {       
+                destination.initials = initilsToSeque
+            }
+        }
+    }
 }
+
