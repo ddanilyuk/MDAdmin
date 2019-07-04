@@ -20,9 +20,12 @@
 		D300298F22BE820600AD8786 /* AddProcedureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D300298E22BE820600AD8786 /* AddProcedureViewController.swift */; };
 		D300299122BE83A000AD8786 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D300299022BE83A000AD8786 /* AddViewController.swift */; };
 		D300299322C16A5300AD8786 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D300299222C16A5300AD8786 /* GoogleService-Info.plist */; };
+		D32AD8DE22CE66EE00925D1F /* Extencions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32AD8DD22CE66EE00925D1F /* Extencions.swift */; };
+		D32AD8E022CE6FE500925D1F /* BigPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32AD8DF22CE6FE500925D1F /* BigPictureViewController.swift */; };
+		D32AD8E422CE83D500925D1F /* Procedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32AD8E322CE83D500925D1F /* Procedure.swift */; };
 		D3775CC522C8EB520076CD64 /* OneClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3775CC422C8EB520076CD64 /* OneClientViewController.swift */; };
 		D3A3CDB122C7BA1A00378FA4 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A3CDB022C7BA1A00378FA4 /* Settings.swift */; };
-		D3A3CDB322C7C26A00378FA4 /* Clients.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A3CDB222C7C26A00378FA4 /* Clients.swift */; };
+		D3A3CDB322C7C26A00378FA4 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A3CDB222C7C26A00378FA4 /* Client.swift */; };
 		D3BA1DC322C21B470089690C /* SignedInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA1DC222C21B470089690C /* SignedInViewController.swift */; };
 		D3C4988E22C6954C004EA9CC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3C4988D22C6954C004EA9CC /* Login.storyboard */; };
 		D3C4989022C695E2004EA9CC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C4988F22C695E2004EA9CC /* LoginViewController.swift */; };
@@ -47,9 +50,12 @@
 		D300298E22BE820600AD8786 /* AddProcedureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProcedureViewController.swift; sourceTree = "<group>"; };
 		D300299022BE83A000AD8786 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		D300299222C16A5300AD8786 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D32AD8DD22CE66EE00925D1F /* Extencions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extencions.swift; sourceTree = "<group>"; };
+		D32AD8DF22CE6FE500925D1F /* BigPictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigPictureViewController.swift; sourceTree = "<group>"; };
+		D32AD8E322CE83D500925D1F /* Procedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Procedure.swift; sourceTree = "<group>"; };
 		D3775CC422C8EB520076CD64 /* OneClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneClientViewController.swift; sourceTree = "<group>"; };
 		D3A3CDB022C7BA1A00378FA4 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		D3A3CDB222C7C26A00378FA4 /* Clients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clients.swift; sourceTree = "<group>"; };
+		D3A3CDB222C7C26A00378FA4 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		D3BA1DC222C21B470089690C /* SignedInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignedInViewController.swift; sourceTree = "<group>"; };
 		D3C4988D22C6954C004EA9CC /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		D3C4988F22C695E2004EA9CC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -109,11 +115,12 @@
 			isa = PBXGroup;
 			children = (
 				D300296722BA89BE00AD8786 /* AppDelegate.swift */,
+				D32AD8DC22CE66C500925D1F /* Helpers */,
+				D32AD8E522CE8FE400925D1F /* Model */,
 				D300298B22BE53F000AD8786 /* Controller */,
 				D3C4989122C695F1004EA9CC /* Login */,
 				D300296B22BA89BE00AD8786 /* Main.storyboard */,
 				D3A3CDB022C7BA1A00378FA4 /* Settings.swift */,
-				D3A3CDB222C7C26A00378FA4 /* Clients.swift */,
 				D300296E22BA89C000AD8786 /* Assets.xcassets */,
 				D300297022BA89C000AD8786 /* LaunchScreen.storyboard */,
 				D3C4989322C6968E004EA9CC /* ViewManager.swift */,
@@ -128,6 +135,7 @@
 			children = (
 				D300298322BE53B800AD8786 /* ClientsViewController.swift */,
 				D3775CC422C8EB520076CD64 /* OneClientViewController.swift */,
+				D32AD8DF22CE6FE500925D1F /* BigPictureViewController.swift */,
 				D300298522BE53C900AD8786 /* CalandarViewController.swift */,
 				D300298922BE53E500AD8786 /* SettingsViewController.swift */,
 				D300298C22BE63DD00AD8786 /* ProceduresViewController.swift */,
@@ -137,6 +145,23 @@
 				D300298E22BE820600AD8786 /* AddProcedureViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		D32AD8DC22CE66C500925D1F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D32AD8DD22CE66EE00925D1F /* Extencions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D32AD8E522CE8FE400925D1F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D3A3CDB222C7C26A00378FA4 /* Client.swift */,
+				D32AD8E322CE83D500925D1F /* Procedure.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		D3C4989122C695F1004EA9CC /* Login */ = {
@@ -285,16 +310,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				D300298822BE53D900AD8786 /* AddClientViewController.swift in Sources */,
+				D32AD8E022CE6FE500925D1F /* BigPictureViewController.swift in Sources */,
 				D3775CC522C8EB520076CD64 /* OneClientViewController.swift in Sources */,
 				D300298622BE53C900AD8786 /* CalandarViewController.swift in Sources */,
 				D300299122BE83A000AD8786 /* AddViewController.swift in Sources */,
 				D3A3CDB122C7BA1A00378FA4 /* Settings.swift in Sources */,
 				D300298F22BE820600AD8786 /* AddProcedureViewController.swift in Sources */,
+				D32AD8E422CE83D500925D1F /* Procedure.swift in Sources */,
 				D300298D22BE63DD00AD8786 /* ProceduresViewController.swift in Sources */,
 				D3C4989422C6968E004EA9CC /* ViewManager.swift in Sources */,
 				D300298422BE53B800AD8786 /* ClientsViewController.swift in Sources */,
-				D3A3CDB322C7C26A00378FA4 /* Clients.swift in Sources */,
+				D3A3CDB322C7C26A00378FA4 /* Client.swift in Sources */,
 				D300296822BA89BE00AD8786 /* AppDelegate.swift in Sources */,
+				D32AD8DE22CE66EE00925D1F /* Extencions.swift in Sources */,
 				D3BA1DC322C21B470089690C /* SignedInViewController.swift in Sources */,
 				D3C4989622C7B18F004EA9CC /* LoginSecondViewController.swift in Sources */,
 				D300298A22BE53E500AD8786 /* SettingsViewController.swift in Sources */,

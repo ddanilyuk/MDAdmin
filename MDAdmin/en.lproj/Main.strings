@@ -1,0 +1,93 @@
+
+/* Class = "UITabBarItem"; title = "Добавить"; ObjectID = "Aju-GP-tcv"; */
+"Aju-GP-tcv.title" = "Добавить";
+
+/* Class = "UITextField"; placeholder = "Фамилия"; ObjectID = "C13-cp-O5k"; */
+"C13-cp-O5k.placeholder" = "Фамилия";
+
+/* Class = "UIButton"; normalTitle = "DELETE"; ObjectID = "CP7-IC-cji"; */
+"CP7-IC-cji.normalTitle" = "DELETE";
+
+/* Class = "UIButton"; normalTitle = "Sign in with Google"; ObjectID = "E2O-Yh-p13"; */
+"E2O-Yh-p13.normalTitle" = "Sign in with Google";
+
+/* Class = "UITabBarItem"; title = "Календарь"; ObjectID = "FRB-x9-KUS"; */
+"FRB-x9-KUS.title" = "Календарь";
+
+/* Class = "UITableViewSection"; headerTitle = "Другие"; ObjectID = "Fhg-8T-p1n"; */
+"Fhg-8T-p1n.headerTitle" = "Другие";
+
+/* Class = "UINavigationItem"; title = "Аккаунт"; ObjectID = "HfZ-xq-UF8"; */
+"HfZ-xq-UF8.title" = "Аккаунт";
+
+/* Class = "UITableViewSection"; headerTitle = "Основные"; ObjectID = "HrK-th-t8v"; */
+"HrK-th-t8v.headerTitle" = "Основные";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "IXv-Rd-jQV"; */
+"IXv-Rd-jQV.text" = "Name";
+
+/* Class = "UITabBarItem"; title = "Настройки"; ObjectID = "Ly3-2Q-ODN"; */
+"Ly3-2Q-ODN.title" = "Настройки";
+
+/* Class = "UITabBarItem"; title = "Процедуры"; ObjectID = "NHB-9b-5aj"; */
+"NHB-9b-5aj.title" = "Процедуры";
+
+/* Class = "UIButton"; normalTitle = "Выбрать фотографию"; ObjectID = "Pd1-Tl-iAT"; */
+"Pd1-Tl-iAT.normalTitle" = "Выбрать фотографию";
+
+/* Class = "UIButton"; normalTitle = "Add new client"; ObjectID = "Qy2-ST-QeR"; */
+"Qy2-ST-QeR.normalTitle" = "Add new client";
+
+/* Class = "UILabel"; text = "Surname"; ObjectID = "Rbm-K1-t8g"; */
+"Rbm-K1-t8g.text" = "Surname";
+
+/* Class = "UILabel"; text = "Patrynomic"; ObjectID = "Svz-DM-Cf8"; */
+"Svz-DM-Cf8.text" = "Patrynomic";
+
+/* Class = "UITextField"; placeholder = "Имя"; ObjectID = "UGZ-Yg-MXX"; */
+"UGZ-Yg-MXX.placeholder" = "Имя";
+
+/* Class = "UINavigationItem"; title = "Процедуры"; ObjectID = "UWc-SL-qrA"; */
+"UWc-SL-qrA.title" = "Процедуры";
+
+/* Class = "UINavigationItem"; title = "Настройки"; ObjectID = "Wec-J0-M07"; */
+"Wec-J0-M07.title" = "Настройки";
+
+/* Class = "UINavigationItem"; title = "Новый клиент"; ObjectID = "clR-Cb-NKF"; */
+"clR-Cb-NKF.title" = "Новый клиент";
+
+/* Class = "UILabel"; text = "email:"; ObjectID = "dIW-BE-Xxa"; */
+"dIW-BE-Xxa.text" = "email:";
+
+/* Class = "UINavigationItem"; title = "Клиенты"; ObjectID = "etZ-n8-NRd"; */
+"etZ-n8-NRd.title" = "Клиенты";
+
+/* Class = "UINavigationItem"; title = "Имя процедуры"; ObjectID = "ezb-bz-LBG"; */
+"ezb-bz-LBG.title" = "Имя процедуры";
+
+/* Class = "UINavigationItem"; title = "Имя клиента"; ObjectID = "jDj-hv-7fy"; */
+"jDj-hv-7fy.title" = "Имя клиента";
+
+/* Class = "UIButton"; normalTitle = "Выход"; ObjectID = "k6M-Lc-ULz"; */
+"k6M-Lc-ULz.normalTitle" = "Выход";
+
+/* Class = "UILabel"; text = "Аккаунт"; ObjectID = "oKX-G4-1H7"; */
+"oKX-G4-1H7.text" = "Аккаунт";
+
+/* Class = "UITabBarItem"; title = "Клиенты"; ObjectID = "pCJ-wJ-c3v"; */
+"pCJ-wJ-c3v.title" = "Клиенты";
+
+/* Class = "UITextField"; placeholder = "Отчество"; ObjectID = "phx-i9-1kn"; */
+"phx-i9-1kn.placeholder" = "Отчество";
+
+/* Class = "UILabel"; text = "Привет"; ObjectID = "rmO-dJ-3lF"; */
+"rmO-dJ-3lF.text" = "Привет";
+
+/* Class = "UIButton"; normalTitle = "Создать"; ObjectID = "x0O-Dn-lAj"; */
+"x0O-Dn-lAj.normalTitle" = "Создать";
+
+/* Class = "UIButton"; normalTitle = "Add new procedure"; ObjectID = "xWG-ob-NvF"; */
+"xWG-ob-NvF.normalTitle" = "Add new procedure";
+
+/* Class = "UINavigationItem"; title = "Новая процедура"; ObjectID = "xbx-aU-fla"; */
+"xbx-aU-fla.title" = "Новая процедура";

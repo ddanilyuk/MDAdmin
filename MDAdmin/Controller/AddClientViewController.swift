@@ -9,9 +9,12 @@
 import UIKit
 import Firebase
 
+
 class AddClientViewController: UIViewController {
-    let imagePicker = UIImagePickerController()
     
+    let imagePicker = UIImagePickerController()
+
+
     @IBOutlet weak var clientPhoto: UIImageView!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var surnameField: UITextField!
@@ -32,23 +35,35 @@ class AddClientViewController: UIViewController {
         let surnameEntered = surnameField.text!
         let patronymicEntered = patronymicField.text!
         
+        let uid = Auth.auth().currentUser?.uid
+
+        
+        // Making new client With class Clint (class can be deleted)
         if !nameEntered.isEmpty && !surnameEntered.isEmpty && !patronymicEntered.isEmpty {
+            
+            let client = Client(name: nameEntered, surname: surnameEntered, patronymic: patronymicEntered)
+            
+            let clientInitials = client.makeInitials()
+            let clinetInitialsWithoutSpacing = client.makeInitialsWithotSpace()
+
             
             var ref: DatabaseReference!
             ref = Database.database().reference()
             
-            let client = Clients(name: nameEntered, surname: surnameEntered, patronymic: patronymicEntered)
-            let clientInitials = client.makeInitials()
-            print(clientInitials)
+            //making new client imageUrl with name: "\(uid)_\(clinetInitialsWithoutSpacing)"
+            pickUnicalClientImageUrl(clientInitials: clientInitials, initialsWithoutSpacing: clinetInitialsWithoutSpacing, photoFromClient: clientPhoto.image ?? UIImage())
             
-            let uid = Auth.auth().currentUser?.uid
+            //let storageRef = Storage.storage().reference().child("\(uid ?? "errorPicture")_\(clinetInitialsWithoutSpacing)")
             
+
+            
+            //client configuration which will be downloaded to server
             let clientConfiguration: [String: String] = [
                                                 "surname": String(client.getSurname()),
                                                 "name": String(client.getName()),
-                                                "patronymic": String(client.getPatronymic())
+                                                "patronymic": String(client.getPatronymic()),
+                                                "imageURL": "none"
             ]
-            
             ref.child("\(uid ?? " ")/clinets/\(clientInitials)").setValue(clientConfiguration)
 
         } else {
@@ -65,6 +80,8 @@ class AddClientViewController: UIViewController {
             print("User click Approve button")
             self.imagePicker.sourceType = .camera
             self.imagePicker.delegate = self
+            self.imagePicker.allowsEditing = true
+
             self.present(self.imagePicker, animated: true, completion: nil)
         }))
         
@@ -72,6 +89,8 @@ class AddClientViewController: UIViewController {
             print("User click Edit button")
             self.imagePicker.sourceType = .photoLibrary
             self.imagePicker.delegate = self
+            self.imagePicker.allowsEditing = true
+
             self.present(self.imagePicker, animated: true, completion: nil)
         }))
         
@@ -89,15 +108,61 @@ class AddClientViewController: UIViewController {
         super.viewDidLoad()
 
         clientPhoto.layer.cornerRadius = 64
-        
     }
     
+    func pickUnicalClientImageUrl(clientInitials: String, initialsWithoutSpacing: String, photoFromClient: UIImage){
+        let uid = Auth.auth().currentUser?.uid
+        let storageRef = Storage.storage().reference().child("\(uid ?? "errorPicture")_\(initialsWithoutSpacing).jpg")
+        
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        
+        var result: String?
+        if let uploadData = photoFromClient.jpegData(compressionQuality: 0.5) {
+        
+            storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+                guard let metadata = metadata else { return }
+                print(metadata)
+                if error != nil {
+                    print(error?.localizedDescription ?? "SOME ERROR")
+                    return
+                }
+                storageRef.downloadURL(completion: { (url, error) in
+                    guard let downloadURL = url else { return }
+                    result = downloadURL.absoluteString
+                    ref.child("\(uid ?? " ")/clinets/\(clientInitials)/imageURL").setValue(String(result ?? ""))
+                    // maybe need to know when the image downloaded
+                })
+            })
+            
+           
+        }
+        
+    
+    }
 }
 
 extension AddClientViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        print("Here will be info->", info)
-        clientPhoto.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        
+        
+        
+        
+        
+        var selectedImageFromPicker: UIImage?
+        
+        if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            selectedImageFromPicker = editedImage
+        } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            selectedImageFromPicker = originalImage
+        }
+        
+        if let selectedImage = selectedImageFromPicker {
+            clientPhoto.image = selectedImage
+        }
+        //clientPhoto.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+
+        
         picker.dismiss(animated: true, completion: nil)
     }
     

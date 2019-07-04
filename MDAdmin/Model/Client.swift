@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Clients {
+class Client {
     private let name: String
     private let surname: String
     private let patronymic: String
@@ -21,6 +21,10 @@ class Clients {
     
     func makeInitials() -> String {
         return surname + " " + name + " " + patronymic
+    }
+    
+    func makeInitialsWithotSpace() -> String {
+        return surname + "_" + name + "_" + patronymic
     }
     
     func getName() -> String {
