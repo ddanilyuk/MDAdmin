@@ -133,13 +133,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CP7-IC-cji">
-                                <rect key="frame" x="160" y="391" width="55" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="DELETE">
-                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m40-e8-J3E">
                                 <rect key="frame" x="16" y="108" width="150" height="150"/>
                                 <connections>
@@ -147,24 +140,40 @@
                                     <segue destination="qm0-F8-2kM" kind="show" identifier="showBigPicture" id="33i-xg-puq"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GkI-At-kG4">
+                                <rect key="frame" x="0.0" y="358" width="375" height="341"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CP7-IC-cji">
+                                <rect key="frame" x="160" y="699" width="55" height="30"/>
+                                <state key="normal" title="DELETE">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="CP7-IC-cji" firstAttribute="top" secondItem="GkI-At-kG4" secondAttribute="bottom" id="0HD-ZA-769"/>
                             <constraint firstItem="RGp-JE-otD" firstAttribute="leading" secondItem="M8H-cD-v33" secondAttribute="leadingMargin" id="8xd-X0-1zH"/>
                             <constraint firstItem="Rbm-K1-t8g" firstAttribute="leading" secondItem="RGp-JE-otD" secondAttribute="trailing" constant="16" id="DS4-be-It4"/>
                             <constraint firstItem="Rbm-K1-t8g" firstAttribute="top" secondItem="IXv-Rd-jQV" secondAttribute="bottom" constant="44" id="Eub-jR-mdt"/>
+                            <constraint firstItem="Iay-pJ-dgh" firstAttribute="trailing" secondItem="GkI-At-kG4" secondAttribute="trailing" id="F3v-Sc-g9e"/>
+                            <constraint firstItem="GkI-At-kG4" firstAttribute="top" secondItem="RGp-JE-otD" secondAttribute="bottom" constant="100" id="H1f-6s-fLg"/>
                             <constraint firstItem="RGp-JE-otD" firstAttribute="bottom" secondItem="Svz-DM-Cf8" secondAttribute="bottom" id="H8Q-8E-ZMS"/>
                             <constraint firstItem="IXv-Rd-jQV" firstAttribute="trailing" secondItem="M8H-cD-v33" secondAttribute="trailingMargin" id="HKR-cX-tU9"/>
                             <constraint firstItem="RGp-JE-otD" firstAttribute="top" secondItem="Iay-pJ-dgh" secondAttribute="top" constant="20" id="HN7-UZ-XFD"/>
                             <constraint firstItem="RGp-JE-otD" firstAttribute="leading" secondItem="m40-e8-J3E" secondAttribute="leading" id="QT9-Dz-xig"/>
                             <constraint firstItem="RGp-JE-otD" firstAttribute="top" secondItem="m40-e8-J3E" secondAttribute="top" id="V4p-jE-qpB"/>
+                            <constraint firstItem="CP7-IC-cji" firstAttribute="bottom" secondItem="Iay-pJ-dgh" secondAttribute="bottom" id="Vle-xo-ISl"/>
                             <constraint firstItem="IXv-Rd-jQV" firstAttribute="trailing" secondItem="Svz-DM-Cf8" secondAttribute="trailing" id="Wal-QC-ots"/>
                             <constraint firstItem="m40-e8-J3E" firstAttribute="height" secondItem="RGp-JE-otD" secondAttribute="height" id="XGz-6x-jXZ"/>
+                            <constraint firstItem="CP7-IC-cji" firstAttribute="centerX" secondItem="GkI-At-kG4" secondAttribute="centerX" id="Zsr-mH-Xxi"/>
                             <constraint firstItem="IXv-Rd-jQV" firstAttribute="leading" secondItem="Rbm-K1-t8g" secondAttribute="leading" id="hNx-TI-I2K"/>
                             <constraint firstItem="m40-e8-J3E" firstAttribute="width" secondItem="RGp-JE-otD" secondAttribute="width" id="lIu-js-fNS"/>
                             <constraint firstItem="RGp-JE-otD" firstAttribute="top" secondItem="IXv-Rd-jQV" secondAttribute="top" id="lV9-2b-U2n"/>
                             <constraint firstItem="RGp-JE-otD" firstAttribute="centerY" secondItem="Rbm-K1-t8g" secondAttribute="centerY" id="mfZ-9K-YwI"/>
                             <constraint firstItem="IXv-Rd-jQV" firstAttribute="leading" secondItem="Svz-DM-Cf8" secondAttribute="leading" id="ug4-IG-EAg"/>
+                            <constraint firstItem="GkI-At-kG4" firstAttribute="leading" secondItem="Iay-pJ-dgh" secondAttribute="leading" id="zXI-HP-NVX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Iay-pJ-dgh"/>
                     </view>
@@ -177,6 +186,8 @@
                         <outlet property="clientPatrynomicLabel" destination="Svz-DM-Cf8" id="5RU-j2-MIj"/>
                         <outlet property="clientSurnameLabel" destination="Rbm-K1-t8g" id="fh2-jO-39e"/>
                         <outlet property="navBarNameClient" destination="jDj-hv-7fy" id="nYt-xg-T6J"/>
+                        <outlet property="proceduresTableView" destination="GkI-At-kG4" id="hMa-5N-xQq"/>
+                        <segue destination="h8C-MG-LFg" kind="show" identifier="showProceduresDetailFromClient" id="ujh-1E-lwc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F10-hn-nbS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -211,7 +222,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Процедуры" id="UWc-SL-qrA"/>
                     <connections>
-                        <segue destination="h8C-MG-LFg" kind="show" id="igS-Ay-Eq9"/>
+                        <outlet property="proceduresTableView" destination="NzH-p4-2fm" id="Kgo-uC-VTL"/>
+                        <segue destination="h8C-MG-LFg" kind="show" identifier="showProceduresDetailFromProcedures" id="igS-Ay-Eq9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SBS-o3-65a" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -289,14 +301,34 @@
         <!--Имя процедуры-->
         <scene sceneID="pwp-77-4Kh">
             <objects>
-                <viewController id="h8C-MG-LFg" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OneProcedureViewController" id="h8C-MG-LFg" customClass="OneProcedureViewController" customModule="MDAdmin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jqs-ru-LF8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Клиент" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lYm-Oy-ufn">
+                                <rect key="frame" x="0.0" y="113" width="375" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="WpX-Zh-DaO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="lYm-Oy-ufn" firstAttribute="leading" secondItem="tKX-CL-Z5w" secondAttribute="leading" id="dWE-yR-2FL"/>
+                            <constraint firstItem="tKX-CL-Z5w" firstAttribute="trailing" secondItem="lYm-Oy-ufn" secondAttribute="trailing" id="hXf-hY-CVD"/>
+                            <constraint firstItem="lYm-Oy-ufn" firstAttribute="top" secondItem="tKX-CL-Z5w" secondAttribute="top" constant="25" id="yIG-W8-kE9"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="tKX-CL-Z5w"/>
                     </view>
                     <navigationItem key="navigationItem" title="Имя процедуры" largeTitleDisplayMode="never" id="ezb-bz-LBG"/>
+                    <connections>
+                        <outlet property="clientName" destination="lYm-Oy-ufn" id="MTu-q6-Hhd"/>
+                        <outlet property="titleNavItem" destination="ezb-bz-LBG" id="EcH-cC-2gj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OpN-tG-m1w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -835,4 +867,7 @@
         <image name="procedures" width="32" height="32"/>
         <image name="settings" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="igS-Ay-Eq9"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -22,9 +22,11 @@ class ClientsViewController: UIViewController{
     private var sectionSearchHeader: [String] { return Array(searchLocalClientList.keys).sorted(by: {$0 < $1}) }
 
     
-    var dataToSeque: [String : [String:String]] = [:]
+    var dataToSeque: [String : [String: Any]] = [:]
     var refreshControl = UIRefreshControl()
+    
     let search = UISearchController(searchResultsController: nil)
+    let reuseID = "reuseID"
     
     
     
@@ -60,7 +62,7 @@ class ClientsViewController: UIViewController{
         ref = Database.database().reference()
         
         ref.child("\(uid ?? " ")/clinets/").observe(.value) { (snapshot) in
-            self.dataToSeque = snapshot.value as? [String: [String: String]] ?? [:]
+            self.dataToSeque = snapshot.value as? [String: [String: Any]] ?? [:]
             
             var keysInitialsFromServer: [String] { return Array(self.dataToSeque.keys).sorted(by: {$0 < $1}) }
             var userList: [String] = []
@@ -138,7 +140,7 @@ extension ClientsViewController: UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        let cell = UITableViewCell(style: .default, reuseIdentifier: reuseID)
         
         if isSearching {
             cell.textLabel?.text = searchLocalClientList[sectionSearchHeader[indexPath.section]]?[indexPath.row]

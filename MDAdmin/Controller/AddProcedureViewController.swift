@@ -19,13 +19,13 @@ class AddProcedureViewController: UIViewController {
     @IBOutlet weak var afterImageView: UIImageView!
     @IBOutlet weak var procedurePicker: UIPickerView!
     
-    let procedure1 = Procedure(name: "procedure1", cost: 100)
-    let procedure2 = Procedure(name: "procedure2", cost: 200)
-    let procedure3 = Procedure(name: "procedure3", cost: 300)
-    let procedure4 = Procedure(name: "procedure4", cost: 400)
-    let procedure5 = Procedure(name: "procedure5", cost: 500)
+    let procedure1 = ListOfProcedures(name: "procedure1", cost: 100)
+    let procedure2 = ListOfProcedures(name: "procedure2", cost: 200)
+    let procedure3 = ListOfProcedures(name: "procedure3", cost: 300)
+    let procedure4 = ListOfProcedures(name: "procedure4", cost: 400)
+    let procedure5 = ListOfProcedures(name: "procedure5", cost: 500)
 
-    var procedures = [Procedure]()
+    var procedures = [ListOfProcedures]()
     var clientInitialsFromFindClient = ""
     let imagePicker = UIImagePickerController()
 
@@ -52,7 +52,7 @@ class AddProcedureViewController: UIViewController {
 
         
         let secondDateFormatter = DateFormatter()
-        secondDateFormatter.dateFormat = "MM-dd-yyyy_HH_mm"
+        secondDateFormatter.dateFormat = "yyyy-MM-dd_HH:mm"
         dateNow = secondDateFormatter.string(from: Date())
         if let procedureCost = procedures[procedurePicker.selectedRow(inComponent: 0)].cost {
             costLabel.text = String(procedureCost)
@@ -85,8 +85,8 @@ class AddProcedureViewController: UIViewController {
         guard let imageBefore =  beforeImageView.image , let imageAfter = afterImageView.image else { return }
         let procedureName = procedures[procedurePicker.selectedRow(inComponent: 0)].name ?? "noProcedure"
         
-        pickUnicalClientImageUrl(procedureName: procedureName, clientInitials: clientInitialsFromFindClient, image: imageBefore, imageBeforeOrAfter: "imageBefore")
-        pickUnicalClientImageUrl(procedureName: procedureName, clientInitials: clientInitialsFromFindClient, image: imageAfter, imageBeforeOrAfter: "imageAfter")
+        pickUnicalProcedureImageUrl(procedureName: procedureName, clientInitials: clientInitialsFromFindClient, image: imageBefore, imageBeforeOrAfter: "imageBefore")
+        pickUnicalProcedureImageUrl(procedureName: procedureName, clientInitials: clientInitialsFromFindClient, image: imageAfter, imageBeforeOrAfter: "imageAfter")
         
     
         
@@ -98,11 +98,22 @@ class AddProcedureViewController: UIViewController {
             "imageAfter": "none"
         ]
         
+        let procedureConfigurationToProcedure: [String: String] = [
+            "procedureName": String(procedureName),
+            "client": String(clientInitialsFromFindClient),
+            "cost": String(procedures[procedurePicker.selectedRow(inComponent: 0)].cost ?? 0),
+            "date": String(dateNow),
+            "imageBefore": "none",
+            "imageAfter": "none"
+        ]
+        
         ref.child("\(uid ?? " ")/clinets/\(clientInitialsLabel.text ?? "error")/procedures/\(procedureName)_\(self.dateNow)/").setValue(procedureConfiguration)
+        
+        ref.child("\(uid ?? " ")/procedures/\(dateNow)-\(procedureName)-\(clientInitialsLabel.text ?? "error")").setValue(procedureConfigurationToProcedure)
     }
     
     
-    func pickUnicalClientImageUrl(procedureName: String, clientInitials: String, image: UIImage, imageBeforeOrAfter: String){
+    func pickUnicalProcedureImageUrl(procedureName: String, clientInitials: String, image: UIImage, imageBeforeOrAfter: String){
         let uid = Auth.auth().currentUser?.uid
         
         
@@ -126,6 +137,7 @@ class AddProcedureViewController: UIViewController {
                     guard let downloadURL = url else { return }
                     result = downloadURL.absoluteString
                     ref.child("\(uid ?? " ")/clinets/\(clientInitials)/procedures/\(procedureName)_\(self.dateNow)/\(imageBeforeOrAfter)").setValue(String(result ?? ""))
+                    ref.child("\(uid ?? " ")/procedures/\(self.dateNow)-\(procedureName)-\(self.clientInitialsLabel.text ?? "error")/\(imageBeforeOrAfter)").setValue(String(result ?? ""))
                     // maybe need to know when the image downloaded
                 })
             })
