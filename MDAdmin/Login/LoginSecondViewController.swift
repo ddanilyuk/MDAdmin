@@ -44,9 +44,9 @@ class LoginSecondViewController: UIViewController, GIDSignInDelegate, GIDSignInU
                 if error == nil {
                     Settings.shared.isLoggedIn = true
                     
-                    let ref: DatabaseReference!
+                    //let ref: DatabaseReference!
                     
-                    ref = Database.database().reference()
+                    //ref = Database.database().reference()
                     //ref.child(uID ?? "").setValue(["fullName": String(user.profile.name)])
                     
                     

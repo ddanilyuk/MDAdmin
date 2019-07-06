@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MDAdmin/Controller/AddClientViewController.swift"
-            timestampString = "584111134.02398"
+            filePath = "MDAdmin/Controller/AddProcedureViewController.swift"
+            timestampString = "584131209.165242"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
-            landmarkName = "pickUnicalClientImageUrl(clientInitials:initialsWithoutSpacing:photoFromClient:)"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

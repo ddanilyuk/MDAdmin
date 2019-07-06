@@ -1,15 +1,16 @@
 //
-//  ClientsViewController.swift
+//  FindClientViewController.swift
 //  MDAdmin
 //
-//  Created by Denis on 6/22/19.
+//  Created by Denis on 7/6/19.
 //  Copyright © 2019 Denis Danilyuk. All rights reserved.
 //
+
 
 import UIKit
 import Firebase
 
-class ClientsViewController: UIViewController{
+class FindClientViewController: UIViewController{
     
     @IBOutlet weak var clientTableView: UITableView!
     
@@ -17,10 +18,10 @@ class ClientsViewController: UIViewController{
     private var searchLocalClientList: [String : [String]] = [:]
     
     var isSearching = false
-
+    
     private var sectionHeader: [String] { return Array(mainLocalClientList.keys).sorted(by: {$0 < $1}) }
     private var sectionSearchHeader: [String] { return Array(searchLocalClientList.keys).sorted(by: {$0 < $1}) }
-
+    
     
     var dataToSeque: [String : [String:String]] = [:]
     var refreshControl = UIRefreshControl()
@@ -30,11 +31,11 @@ class ClientsViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         clientTableView.delegate = self
         clientTableView.dataSource = self
         updateTable()
-
+        
         
         
         
@@ -43,8 +44,8 @@ class ClientsViewController: UIViewController{
         search.searchBar.placeholder = "Поиск клиентов"
         self.navigationItem.searchController = search
         definesPresentationContext = true
-        //navigationItem.hidesSearchBarWhenScrolling = false
-
+        navigationItem.hidesSearchBarWhenScrolling = false
+        
         
         
         refreshControl.addTarget(self, action: #selector(updateRefreshControll), for: .valueChanged)
@@ -55,7 +56,7 @@ class ClientsViewController: UIViewController{
     
     func updateTable() {
         let uid = Auth.auth().currentUser?.uid
-
+        
         var ref: DatabaseReference!
         ref = Database.database().reference()
         
@@ -69,7 +70,7 @@ class ClientsViewController: UIViewController{
                 //Mark: - making list of user initils for key in server
                 userList.append(client)
             }
-
+            
             for user in userList {
                 
                 let firstLetter = String(user[user.startIndex])
@@ -97,19 +98,19 @@ class ClientsViewController: UIViewController{
         mainLocalClientList = [:]
         updateTable()
         refreshControl.endRefreshing()
-
+        
     }
 }
 
 //Mark: - extensions for tables
-extension ClientsViewController: UITableViewDataSource, UITableViewDelegate {
+extension FindClientViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if isSearching {
             return searchLocalClientList.keys.count
         } else {
             return mainLocalClientList.keys.count
-
+            
         }
     }
     
@@ -123,17 +124,17 @@ extension ClientsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var key = sectionHeader[section]
-
+        
         if isSearching {
             key = sectionSearchHeader[section]
         }
-
+        
         if isSearching {
             return searchLocalClientList[key]?.count ?? 0
         } else {
             return mainLocalClientList[key]?.count ?? 0
         }
-
+        
     }
     
     
@@ -150,22 +151,21 @@ extension ClientsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //Mark: - pushing information about selected client to OneClientViewController
-        guard (storyboard?.instantiateViewController(withIdentifier: "OneClientViewController") as? OneClientViewController) != nil else { return }
-        performSegue(withIdentifier: "showClient", sender: self)
+        guard (storyboard?.instantiateViewController(withIdentifier: "AddProcedureViewController") as? AddProcedureViewController) != nil else { return }
+        performSegue(withIdentifier: "showAddProcedure", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
-        if segue.identifier == "showClient" {
+        
+        if segue.identifier == "showAddProcedure" {
             if let indexPath = clientTableView.indexPathForSelectedRow {
-                if let destination = segue.destination as? OneClientViewController {
+                if let destination = segue.destination as? AddProcedureViewController {
                     if isSearching {
-                        destination.initials = searchLocalClientList[sectionSearchHeader[indexPath.section]]?[indexPath.row] ?? " "
+                        destination.clientInitialsFromFindClient = searchLocalClientList[sectionSearchHeader[indexPath.section]]?[indexPath.row] ?? ""
                     } else {
-                         destination.initials = mainLocalClientList[sectionHeader[indexPath.section]]?[indexPath.row] ?? " "
+                        destination.clientInitialsFromFindClient = mainLocalClientList[sectionHeader[indexPath.section]]?[indexPath.row] ?? ""
                     }
-                    destination.fullData = dataToSeque
                 }
             }
         }
@@ -176,8 +176,8 @@ extension ClientsViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 //Mark: - extencions for search
-extension ClientsViewController: UISearchResultsUpdating{
-
+extension FindClientViewController: UISearchResultsUpdating{
+    
     func updateSearchResults(for searchController: UISearchController) {
         
         guard let searchText = searchController.searchBar.text else {
@@ -191,9 +191,9 @@ extension ClientsViewController: UISearchResultsUpdating{
         } else {
             isSearching = true
             searchLocalClientList = [:]
-
+            
             for firstLetter in mainLocalClientList {
-
+                
                 for value in mainLocalClientList["\(firstLetter.key.uppercased())"] ?? [""] {
                     if value.lowercased().contains(searchText.lowercased()) {
                         var valuesForFirstLetter:[String] = self.searchLocalClientList["\(firstLetter.key.uppercased())"] ?? [""]
@@ -211,6 +211,5 @@ extension ClientsViewController: UISearchResultsUpdating{
             clientTableView.reloadData()
         }
         
-        }
+    }
 }
-

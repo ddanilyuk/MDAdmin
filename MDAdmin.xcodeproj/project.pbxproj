@@ -27,6 +27,7 @@
 		D3A3CDB122C7BA1A00378FA4 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A3CDB022C7BA1A00378FA4 /* Settings.swift */; };
 		D3A3CDB322C7C26A00378FA4 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A3CDB222C7C26A00378FA4 /* Client.swift */; };
 		D3BA1DC322C21B470089690C /* SignedInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA1DC222C21B470089690C /* SignedInViewController.swift */; };
+		D3BC380C22D10F6A0067E80A /* FindClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC380B22D10F6A0067E80A /* FindClientViewController.swift */; };
 		D3C4988E22C6954C004EA9CC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3C4988D22C6954C004EA9CC /* Login.storyboard */; };
 		D3C4989022C695E2004EA9CC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C4988F22C695E2004EA9CC /* LoginViewController.swift */; };
 		D3C4989422C6968E004EA9CC /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C4989322C6968E004EA9CC /* ViewManager.swift */; };
@@ -57,6 +58,7 @@
 		D3A3CDB022C7BA1A00378FA4 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		D3A3CDB222C7C26A00378FA4 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		D3BA1DC222C21B470089690C /* SignedInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignedInViewController.swift; sourceTree = "<group>"; };
+		D3BC380B22D10F6A0067E80A /* FindClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindClientViewController.swift; sourceTree = "<group>"; };
 		D3C4988D22C6954C004EA9CC /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		D3C4988F22C695E2004EA9CC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D3C4989322C6968E004EA9CC /* ViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				D3BA1DC222C21B470089690C /* SignedInViewController.swift */,
 				D300299022BE83A000AD8786 /* AddViewController.swift */,
 				D300298722BE53D900AD8786 /* AddClientViewController.swift */,
+				D3BC380B22D10F6A0067E80A /* FindClientViewController.swift */,
 				D300298E22BE820600AD8786 /* AddProcedureViewController.swift */,
 			);
 			path = Controller;
@@ -168,8 +171,8 @@
 			isa = PBXGroup;
 			children = (
 				D3C4988D22C6954C004EA9CC /* Login.storyboard */,
-				D3C4989522C7B18F004EA9CC /* LoginSecondViewController.swift */,
 				D3C4988F22C695E2004EA9CC /* LoginViewController.swift */,
+				D3C4989522C7B18F004EA9CC /* LoginSecondViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				D3BA1DC322C21B470089690C /* SignedInViewController.swift in Sources */,
 				D3C4989622C7B18F004EA9CC /* LoginSecondViewController.swift in Sources */,
 				D300298A22BE53E500AD8786 /* SettingsViewController.swift in Sources */,
+				D3BC380C22D10F6A0067E80A /* FindClientViewController.swift in Sources */,
 				D3C4989022C695E2004EA9CC /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
