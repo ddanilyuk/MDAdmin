@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class AddProcedureViewController: UIViewController {
     
@@ -27,13 +28,15 @@ class AddProcedureViewController: UIViewController {
     var procedures = [Procedure]()
     var clientInitialsFromFindClient = ""
     let imagePicker = UIImagePickerController()
-    var imageBefore: UIImage?
-    var imageAfter: UIImage?
+
+    var dateNow = ""
 
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         procedures.append(procedure1)
         procedures.append(procedure2)
         procedures.append(procedure3)
@@ -46,11 +49,21 @@ class AddProcedureViewController: UIViewController {
         clientInitialsLabel.text = clientInitialsFromFindClient
         beforeImageView.layer.cornerRadius = 64
         afterImageView.layer.cornerRadius = 64
+//        let dayDateFormater = DateFormatter()
+//        dayDateFormater.dateFormat = "yyyy-MM-dd"
+//        dateNow = dayDateFormater.string(from: Date())
         
+        let secondDateFormatter = DateFormatter()
+        secondDateFormatter.dateFormat = "MM-dd-yyyy_HH_mm"
+        dateNow = secondDateFormatter.string(from: Date())
+        if let procedureCost = procedures[procedurePicker.selectedRow(inComponent: 0)].cost {
+            costLabel.text = String(procedureCost)
+        }
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
     }
     
     @IBAction func didPressMakeImageBefore(_ sender: UIButton) {
@@ -65,6 +78,64 @@ class AddProcedureViewController: UIViewController {
     @IBAction func didPressEditCost(_ sender: UIButton) {
         
     }
+    
+    @IBAction func didPressAddProcedure(_ sender: UIButton) {
+        let uid = Auth.auth().currentUser?.uid
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        
+        guard let imageBefore =  beforeImageView.image , let imageAfter = afterImageView.image else { return }
+        let procedureName = procedures[procedurePicker.selectedRow(inComponent: 0)].name ?? "noProcedure"
+        
+        pickUnicalClientImageUrl(procedureName: procedureName, clientInitials: clientInitialsFromFindClient, image: imageBefore, imageBeforeOrAfter: "imageBefore")
+        pickUnicalClientImageUrl(procedureName: procedureName, clientInitials: clientInitialsFromFindClient, image: imageAfter, imageBeforeOrAfter: "imageAfter")
+        
+    
+        
+        let procedureConfiguration: [String: String] = [
+            "procedureName": String(procedureName),
+            "cost": String(procedures[procedurePicker.selectedRow(inComponent: 0)].cost ?? 0),
+            "date": String(dateNow),
+            "imageBefore": "none",
+            "imageAfter": "none"
+        ]
+        
+        ref.child("\(uid ?? " ")/clinets/\(clientInitialsLabel.text ?? "error")/procedures/\(procedureName)_\(self.dateNow)/").setValue(procedureConfiguration)
+    }
+    
+    
+    func pickUnicalClientImageUrl(procedureName: String, clientInitials: String, image: UIImage, imageBeforeOrAfter: String){
+        let uid = Auth.auth().currentUser?.uid
+        
+        
+        
+        let storageRef = Storage.storage().reference().child("\(uid ?? "errorPicture")_\(self.dateNow)_\(imageBeforeOrAfter)_\(clientInitials).jpg")
+        
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        
+        var result: String?
+        if let uploadData = image.jpegData(compressionQuality: 0.5) {
+            
+            storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+                guard let metadata = metadata else { return }
+                print(metadata)
+                if error != nil {
+                    print(error?.localizedDescription ?? "SOME ERROR")
+                    return
+                }
+                storageRef.downloadURL(completion: { (url, error) in
+                    guard let downloadURL = url else { return }
+                    result = downloadURL.absoluteString
+                    ref.child("\(uid ?? " ")/clinets/\(clientInitials)/procedures/\(procedureName)_\(self.dateNow)/\(imageBeforeOrAfter)").setValue(String(result ?? ""))
+                    // maybe need to know when the image downloaded
+                })
+            })
+            
+        }
+
+    }
+    
     
     func showCameraOrLibrary() {
         let alert = UIAlertController(title: "Выберите", message: "Камера или Галерея", preferredStyle: .actionSheet)
@@ -132,13 +203,11 @@ extension AddProcedureViewController: UIImagePickerControllerDelegate, UINavigat
         }
         
         if let selectedImage = selectedImageFromPicker {
-            if imageBefore == nil {
-                imageBefore = selectedImage
-                beforeImageView.image = imageBefore
+            if  beforeImageView.image == nil {
+                beforeImageView.image = selectedImage
 
             } else {
-                imageAfter = selectedImage
-                afterImageView.image = imageAfter
+                afterImageView.image = selectedImage
             }
         }
         

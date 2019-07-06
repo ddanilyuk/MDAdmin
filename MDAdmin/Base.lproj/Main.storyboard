@@ -447,6 +447,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZqA-Di-76G">
                                 <rect key="frame" x="153" y="699" width="69" height="30"/>
                                 <state key="normal" title="Добавить"/>
+                                <connections>
+                                    <action selector="didPressAddProcedure:" destination="X8b-wF-wqi" eventType="touchUpInside" id="uUG-Mz-g4W"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5ei-kY-MXc">
                                 <rect key="frame" x="16" y="385" width="128" height="128"/>
