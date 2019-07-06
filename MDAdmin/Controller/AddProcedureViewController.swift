@@ -49,9 +49,7 @@ class AddProcedureViewController: UIViewController {
         clientInitialsLabel.text = clientInitialsFromFindClient
         beforeImageView.layer.cornerRadius = 64
         afterImageView.layer.cornerRadius = 64
-//        let dayDateFormater = DateFormatter()
-//        dayDateFormater.dateFormat = "yyyy-MM-dd"
-//        dateNow = dayDateFormater.string(from: Date())
+
         
         let secondDateFormatter = DateFormatter()
         secondDateFormatter.dateFormat = "MM-dd-yyyy_HH_mm"
