@@ -181,7 +181,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F10-hn-nbS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1250.4000000000001" y="1740.8866995073893"/>
+            <point key="canvasLocation" x="-1250" y="1748"/>
         </scene>
         <!--Процедуры-->
         <scene sceneID="EYN-cB-4g6">
@@ -300,7 +300,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OpN-tG-m1w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-18" y="1741"/>
+            <point key="canvasLocation" x="-18" y="1748"/>
         </scene>
         <!--Новый клиент-->
         <scene sceneID="Tf8-K3-wE9">
@@ -384,7 +384,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kmT-W7-rdh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2002" y="1741"/>
+            <point key="canvasLocation" x="2039" y="1749"/>
         </scene>
         <!--Новая процедура-->
         <scene sceneID="aIH-1w-GJH">
@@ -394,66 +394,144 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yeF-Oz-JBR">
-                                <rect key="frame" x="200" y="123" width="175" height="108"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yeF-Oz-JBR">
+                                <rect key="frame" x="200" y="124" width="175" height="108"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="175" id="DEf-4r-agk"/>
+                                    <constraint firstAttribute="height" constant="108" id="NSL-ji-B6w"/>
+                                </constraints>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Выберите процедуру:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UxB-ns-UkP">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выберите процедуру:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UxB-ns-UkP">
                                 <rect key="frame" x="16" y="167" width="176" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kGN-q6-XEF">
-                                <rect key="frame" x="0.0" y="320" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="kGN-q6-XEF">
+                                <rect key="frame" x="0.0" y="300" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="BS0-IR-XuJ"/>
+                                </constraints>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="X8b-wF-wqi" id="sSs-rW-moZ"/>
                                 </connections>
                             </searchBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Цена:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NH3-QX-tI4">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Цена:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NH3-QX-tI4">
                                 <rect key="frame" x="16" y="256" width="46" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="Vet-mn-OPp"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4F4-xp-gIT">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4F4-xp-gIT">
                                 <rect key="frame" x="70" y="256" width="63" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Изменить:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lrn-tB-HJC">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Изменить:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lrn-tB-HJC">
                                 <rect key="frame" x="157" y="256" width="84" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="7cp-QA-mA1"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQA-V1-oTC">
-                                <rect key="frame" x="337" y="251" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQA-V1-oTC">
+                                <rect key="frame" x="337" y="252" width="30" height="29"/>
                                 <state key="normal" title="OK"/>
+                                <connections>
+                                    <action selector="didPressEditCost:" destination="X8b-wF-wqi" eventType="touchUpInside" id="5L5-NZ-10L"/>
+                                </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zkv-GE-aSp">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zkv-GE-aSp">
                                 <rect key="frame" x="249" y="251" width="85" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Клиент" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0q-nq-ewu">
+                                <rect key="frame" x="0.0" y="352" width="375" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="nZ7-Y3-hJA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZqA-Di-76G">
+                                <rect key="frame" x="153" y="699" width="69" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Добавить"/>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5ei-kY-MXc">
+                                <rect key="frame" x="16" y="385" width="128" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ybw-SF-tU1">
+                                <rect key="frame" x="231" y="385" width="128" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aXM-xw-cNx">
+                                <rect key="frame" x="20" y="521" width="121" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Сделать фото до"/>
+                                <connections>
+                                    <action selector="didPressMakeImageBefore:" destination="X8b-wF-wqi" eventType="touchUpInside" id="xES-6B-bjr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wWH-kh-rzg">
+                                <rect key="frame" x="219" y="521" width="145" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Сделать фото после"/>
+                                <connections>
+                                    <action selector="didPressMakeImageAfter:" destination="X8b-wF-wqi" eventType="touchUpInside" id="o3d-6l-yUW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wXB-NP-enK" firstAttribute="trailing" secondItem="aQA-V1-oTC" secondAttribute="trailing" constant="8" id="480-Vi-BYE"/>
+                            <constraint firstItem="aQA-V1-oTC" firstAttribute="centerY" secondItem="lrn-tB-HJC" secondAttribute="centerY" id="5lC-OY-n7Q"/>
+                            <constraint firstItem="NH3-QX-tI4" firstAttribute="leading" secondItem="UxB-ns-UkP" secondAttribute="leading" id="81W-bq-hPn"/>
+                            <constraint firstItem="kGN-q6-XEF" firstAttribute="trailing" secondItem="yeF-Oz-JBR" secondAttribute="trailing" id="C0u-8N-cgm"/>
+                            <constraint firstItem="D0q-nq-ewu" firstAttribute="top" secondItem="kGN-q6-XEF" secondAttribute="bottom" constant="8" id="CbG-dz-JbA"/>
+                            <constraint firstItem="4F4-xp-gIT" firstAttribute="leading" secondItem="NH3-QX-tI4" secondAttribute="trailing" constant="8" symbolic="YES" id="DUl-qK-MgG"/>
+                            <constraint firstItem="zkv-GE-aSp" firstAttribute="leading" secondItem="lrn-tB-HJC" secondAttribute="trailing" constant="8" symbolic="YES" id="E2y-Ov-qe4"/>
+                            <constraint firstItem="kGN-q6-XEF" firstAttribute="top" secondItem="lrn-tB-HJC" secondAttribute="bottom" constant="23" id="Hfy-EL-say"/>
+                            <constraint firstItem="lrn-tB-HJC" firstAttribute="leading" secondItem="4F4-xp-gIT" secondAttribute="trailing" constant="24" id="IgX-R0-HWQ"/>
+                            <constraint firstItem="kGN-q6-XEF" firstAttribute="top" secondItem="w1m-9R-DRm" secondAttribute="top" constant="300" id="LIa-pQ-dYs"/>
+                            <constraint firstItem="NH3-QX-tI4" firstAttribute="top" secondItem="UxB-ns-UkP" secondAttribute="bottom" constant="68" id="OEc-WS-rov"/>
+                            <constraint firstItem="wXB-NP-enK" firstAttribute="trailing" secondItem="D0q-nq-ewu" secondAttribute="trailing" id="PEx-yb-SEe"/>
+                            <constraint firstItem="aQA-V1-oTC" firstAttribute="top" secondItem="zkv-GE-aSp" secondAttribute="top" id="QHU-hS-g9M"/>
+                            <constraint firstItem="aQA-V1-oTC" firstAttribute="leading" secondItem="zkv-GE-aSp" secondAttribute="trailing" constant="3" id="T9G-29-qAw"/>
+                            <constraint firstItem="lrn-tB-HJC" firstAttribute="leading" secondItem="w1m-9R-DRm" secondAttribute="leading" constant="157" id="TVT-rt-bVg"/>
+                            <constraint firstItem="aQA-V1-oTC" firstAttribute="top" secondItem="yeF-Oz-JBR" secondAttribute="bottom" constant="20" id="Vhc-ob-1Im"/>
+                            <constraint firstItem="D0q-nq-ewu" firstAttribute="leading" secondItem="wXB-NP-enK" secondAttribute="leading" id="c4D-ei-E8i"/>
+                            <constraint firstItem="kGN-q6-XEF" firstAttribute="top" secondItem="aQA-V1-oTC" secondAttribute="bottom" constant="19" id="jki-ls-O9Z"/>
+                            <constraint firstItem="kGN-q6-XEF" firstAttribute="leading" secondItem="D0q-nq-ewu" secondAttribute="leading" id="mM5-dO-4OL"/>
+                            <constraint firstItem="kGN-q6-XEF" firstAttribute="trailing" secondItem="D0q-nq-ewu" secondAttribute="trailing" id="nEb-CU-J2F"/>
+                            <constraint firstItem="NH3-QX-tI4" firstAttribute="leading" secondItem="w1m-9R-DRm" secondAttribute="leadingMargin" id="vda-DC-voY"/>
+                            <constraint firstItem="aQA-V1-oTC" firstAttribute="centerY" secondItem="4F4-xp-gIT" secondAttribute="centerY" id="y7A-lh-bZz"/>
+                            <constraint firstItem="lrn-tB-HJC" firstAttribute="centerY" secondItem="zkv-GE-aSp" secondAttribute="centerY" id="z59-5x-bga"/>
+                            <constraint firstItem="aQA-V1-oTC" firstAttribute="centerY" secondItem="NH3-QX-tI4" secondAttribute="centerY" id="zoU-BN-8VY"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="wXB-NP-enK"/>
                     </view>
                     <navigationItem key="navigationItem" title="Новая процедура" id="xbx-aU-fla"/>
                     <connections>
+                        <outlet property="afterImageView" destination="ybw-SF-tU1" id="zhd-Z2-Jd3"/>
+                        <outlet property="beforeImageView" destination="5ei-kY-MXc" id="29O-jg-rDR"/>
+                        <outlet property="clientInitialsLabel" destination="D0q-nq-ewu" id="dIX-FZ-7rh"/>
+                        <outlet property="costLabel" destination="4F4-xp-gIT" id="Izw-7A-hGw"/>
+                        <outlet property="editCostTextField" destination="zkv-GE-aSp" id="1sf-E6-B0J"/>
                         <outlet property="procedurePicker" destination="yeF-Oz-JBR" id="kFe-Xa-Ao2"/>
-                        <outlet property="searchDisplayController" destination="kRQ-Zz-S8M" id="Oi3-nh-QX2"/>
+                        <outlet property="searchClientBar" destination="kGN-q6-XEF" id="gnK-7H-dhO"/>
+                        <outlet property="searchDisplayController" destination="v3s-qh-KFZ" id="rfA-xc-Jk0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xvv-ez-Ben" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -466,8 +544,16 @@
                         <outlet property="searchResultsDelegate" destination="X8b-wF-wqi" id="5DX-Np-qTX"/>
                     </connections>
                 </searchDisplayController>
+                <searchDisplayController id="v3s-qh-KFZ">
+                    <connections>
+                        <outlet property="delegate" destination="X8b-wF-wqi" id="a7P-6v-tzE"/>
+                        <outlet property="searchContentsController" destination="X8b-wF-wqi" id="5Ey-Rs-A2q"/>
+                        <outlet property="searchResultsDataSource" destination="X8b-wF-wqi" id="D4L-fd-XBb"/>
+                        <outlet property="searchResultsDelegate" destination="X8b-wF-wqi" id="e1a-5k-tHx"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="3717.5999999999999" y="1740.8866995073893"/>
+            <point key="canvasLocation" x="3648.8000000000002" y="1748.2758620689656"/>
         </scene>
         <!--Настройки-->
         <scene sceneID="Yn2-Ki-59h">

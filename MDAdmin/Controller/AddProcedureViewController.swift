@@ -9,6 +9,17 @@
 import UIKit
 
 class AddProcedureViewController: UIViewController {
+    
+    
+    @IBOutlet weak var editCostTextField: UITextField!
+    @IBOutlet weak var costLabel: UILabel!
+    @IBOutlet weak var searchClientBar: UISearchBar!
+    @IBOutlet weak var clientInitialsLabel: UILabel!
+    @IBOutlet weak var beforeImageView: UIImageView!
+    @IBOutlet weak var afterImageView: UIImageView!
+    
+    
+    
     let procedure1 = Procedure(name: "procedure1", cost: 100)
     let procedure2 = Procedure(name: "procedure2", cost: 200)
     let procedure3 = Procedure(name: "procedure3", cost: 300)
@@ -31,7 +42,35 @@ class AddProcedureViewController: UIViewController {
         procedurePicker.dataSource = self
         
     }
+    
+    @IBAction func didPressMakeImageBefore(_ sender: UIButton) {
+    }
+    
+    @IBAction func didPressMakeImageAfter(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func didPressEditCost(_ sender: UIButton) {
+        
+    }
+    
 }
+
+
+
+
+extension AddProcedureViewController: UISearchResultsUpdating{
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
+    
+    
+}
+
+
+
+
+
 
 extension AddProcedureViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -44,6 +83,11 @@ extension AddProcedureViewController: UIPickerViewDelegate, UIPickerViewDataSour
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return procedures[row].name
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        guard let procedureCost = procedures[row].cost else { return }
+        costLabel.text = String(procedureCost)
     }
     
 }

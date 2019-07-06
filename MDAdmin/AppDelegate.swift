@@ -25,23 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-        //GIDSignIn.sharedInstance().delegate = self
-        //GIDSignIn.sharedInstance().uiDelegate = self
-        
         Database.database().isPersistenceEnabled = true
         ViewManager.shared.setupInitialController()
 
         return true
     }
-    
-    
-    
-    /*
-    @available(iOS 9.0, *)
-     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-     return GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication, annotation: annotation)
-     }
-    */
     
     
     
