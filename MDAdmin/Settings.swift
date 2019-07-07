@@ -21,6 +21,4 @@ class Settings {
             userDefaults.set(newValue, forKey: "isLoggedIn")
         }
     }
-
-    
 }

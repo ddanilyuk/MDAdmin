@@ -58,7 +58,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" canCancelContentTouches="NO" maximumZoomScale="4" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ie4-3T-1fE">
+                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" canCancelContentTouches="NO" maximumZoomScale="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ie4-3T-1fE">
                                 <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OW4-kR-X2s">
@@ -67,16 +67,13 @@
                                 </subviews>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="OW4-kR-X2s" secondAttribute="bottom" id="G9M-ox-Lho"/>
-                                    <constraint firstItem="OW4-kR-X2s" firstAttribute="centerY" secondItem="Ie4-3T-1fE" secondAttribute="centerY" id="HAI-lC-CGu"/>
-                                    <constraint firstAttribute="trailing" secondItem="OW4-kR-X2s" secondAttribute="trailing" id="Qx6-DE-hhD"/>
-                                    <constraint firstItem="OW4-kR-X2s" firstAttribute="leading" secondItem="Ie4-3T-1fE" secondAttribute="leading" id="ViD-Nu-fG6"/>
-                                    <constraint firstItem="OW4-kR-X2s" firstAttribute="centerX" secondItem="Ie4-3T-1fE" secondAttribute="centerX" id="cBJ-Zn-d4Q"/>
-                                    <constraint firstItem="OW4-kR-X2s" firstAttribute="top" secondItem="Ie4-3T-1fE" secondAttribute="top" id="hy9-xY-VLf"/>
+                                    <constraint firstItem="OW4-kR-X2s" firstAttribute="top" secondItem="Ie4-3T-1fE" secondAttribute="top" id="3cP-Yp-S5Y"/>
+                                    <constraint firstAttribute="trailing" secondItem="OW4-kR-X2s" secondAttribute="trailing" id="45l-oA-rY4"/>
+                                    <constraint firstItem="OW4-kR-X2s" firstAttribute="height" secondItem="Ie4-3T-1fE" secondAttribute="height" id="96D-Hu-aRI"/>
+                                    <constraint firstAttribute="bottom" secondItem="OW4-kR-X2s" secondAttribute="bottom" id="9b5-o6-I96"/>
+                                    <constraint firstItem="OW4-kR-X2s" firstAttribute="leading" secondItem="Ie4-3T-1fE" secondAttribute="leading" id="BcE-g9-LVH"/>
+                                    <constraint firstItem="OW4-kR-X2s" firstAttribute="width" secondItem="Ie4-3T-1fE" secondAttribute="width" id="VZC-Q0-RVB"/>
                                 </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="2Je-V6-QTL" appends="YES" id="kLR-DU-Fk4"/>
-                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -90,12 +87,12 @@
                     </view>
                     <connections>
                         <outlet property="bigImageView" destination="OW4-kR-X2s" id="ojo-Lv-LFn"/>
+                        <outlet property="scrollView" destination="Ie4-3T-1fE" id="wqH-AB-Iao"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MAY-YA-W5n" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pinchGestureRecognizer scale="1.1000000000000001" id="2Je-V6-QTL"/>
             </objects>
-            <point key="canvasLocation" x="-1250" y="2440"/>
+            <point key="canvasLocation" x="-614" y="2492"/>
         </scene>
         <!--Имя клиента-->
         <scene sceneID="l3E-KF-2oy">
@@ -315,24 +312,90 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dyl-TB-YF7">
+                                <rect key="frame" x="231" y="454" width="128" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mFu-DN-YOB">
+                                <rect key="frame" x="29" y="454" width="128" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4sl-xu-Qd3">
+                                <rect key="frame" x="0.0" y="163" width="375" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="8Ud-hF-8GJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Цена" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35X-sD-IF2">
+                                <rect key="frame" x="0.0" y="213" width="375" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="IXh-df-Ksf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="до" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPS-4B-dhl">
+                                <rect key="frame" x="83" y="590" width="20" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="после" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aaa-Iy-7aK">
+                                <rect key="frame" x="271" y="590" width="48" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dTa-eC-ndR">
+                                <rect key="frame" x="29" y="454" width="128" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="didPressShowBigPictureBefore:" destination="h8C-MG-LFg" eventType="touchUpInside" id="WF5-OJ-rUT"/>
+                                    <segue destination="qm0-F8-2kM" kind="show" identifier="showBigPictureBefore" id="Uv8-8q-G3i"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uen-Lu-oV4">
+                                <rect key="frame" x="231" y="454" width="128" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="didPressShowBigPictureAfter:" destination="h8C-MG-LFg" eventType="touchUpInside" id="Ooo-nM-WTd"/>
+                                    <segue destination="qm0-F8-2kM" kind="show" identifier="showBigPictureAfter" id="TQg-nz-Dp3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="tKX-CL-Z5w" firstAttribute="trailing" secondItem="4sl-xu-Qd3" secondAttribute="trailing" id="8vd-sW-f8v"/>
+                            <constraint firstItem="35X-sD-IF2" firstAttribute="leading" secondItem="tKX-CL-Z5w" secondAttribute="leading" id="AXx-7O-JFE"/>
+                            <constraint firstItem="4sl-xu-Qd3" firstAttribute="leading" secondItem="tKX-CL-Z5w" secondAttribute="leading" id="BYM-Wd-xYP"/>
+                            <constraint firstItem="35X-sD-IF2" firstAttribute="top" secondItem="4sl-xu-Qd3" secondAttribute="bottom" constant="25" id="FZM-DE-IJz"/>
                             <constraint firstItem="lYm-Oy-ufn" firstAttribute="leading" secondItem="tKX-CL-Z5w" secondAttribute="leading" id="dWE-yR-2FL"/>
+                            <constraint firstItem="4sl-xu-Qd3" firstAttribute="top" secondItem="lYm-Oy-ufn" secondAttribute="bottom" constant="25" id="dwa-LE-Loj"/>
                             <constraint firstItem="tKX-CL-Z5w" firstAttribute="trailing" secondItem="lYm-Oy-ufn" secondAttribute="trailing" id="hXf-hY-CVD"/>
+                            <constraint firstItem="tKX-CL-Z5w" firstAttribute="trailing" secondItem="35X-sD-IF2" secondAttribute="trailing" id="jH0-9Z-2OR"/>
                             <constraint firstItem="lYm-Oy-ufn" firstAttribute="top" secondItem="tKX-CL-Z5w" secondAttribute="top" constant="25" id="yIG-W8-kE9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tKX-CL-Z5w"/>
                     </view>
                     <navigationItem key="navigationItem" title="Имя процедуры" largeTitleDisplayMode="never" id="ezb-bz-LBG"/>
                     <connections>
+                        <outlet property="afterImageView" destination="dyl-TB-YF7" id="n8y-pN-WI8"/>
+                        <outlet property="beforeImageView" destination="mFu-DN-YOB" id="Pr1-vM-F2p"/>
                         <outlet property="clientName" destination="lYm-Oy-ufn" id="MTu-q6-Hhd"/>
+                        <outlet property="costLabel" destination="35X-sD-IF2" id="gBq-zr-zMI"/>
+                        <outlet property="dateLabel" destination="4sl-xu-Qd3" id="DUP-Rx-oqJ"/>
                         <outlet property="titleNavItem" destination="ezb-bz-LBG" id="EcH-cC-2gj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OpN-tG-m1w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-18" y="1748"/>
+            <point key="canvasLocation" x="-18.399999999999999" y="1747.536945812808"/>
         </scene>
         <!--Новый клиент-->
         <scene sceneID="Tf8-K3-wE9">
@@ -869,5 +932,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="igS-Ay-Eq9"/>
+        <segue reference="Uv8-8q-G3i"/>
     </inferredMetricsTieBreakers>
 </document>

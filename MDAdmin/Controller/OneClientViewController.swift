@@ -91,7 +91,7 @@ class OneClientViewController: UIViewController {
         
         for proc in proceduresArray {
             guard let values = proc.value as? [String: String] else { return }
-            let procedure = Procedure(initials: values["client"] ?? "", nameProcedure: values["procedureName"] ?? "", dateProcedure: values["date"] ?? "")
+            let procedure = Procedure(initials: values["client"] ?? "", nameProcedure: values["procedureName"] ?? "", dateProcedure: values["date"] ?? "", costProcedure: values["cost"] ?? "", imageBeforeURL: values["imageBefore"] ?? "", imageAfterURL: values["imageAfter"] ?? "")
 
             self.listProcedures.append(procedure)
         }

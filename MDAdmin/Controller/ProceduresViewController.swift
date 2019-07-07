@@ -51,7 +51,7 @@ class ProceduresViewController: UIViewController {
 
             for proc in infoFromServer {
                 guard let values = proc.value as? [String: String] else { return }
-                let procedure = Procedure(initials: values["client"] ?? "", nameProcedure: values["procedureName"] ?? "", dateProcedure: values["date"] ?? "")
+                let procedure = Procedure(initials: values["client"] ?? "", nameProcedure: values["procedureName"] ?? "", dateProcedure: values["date"] ?? "", costProcedure: values["cost"] ?? "", imageBeforeURL: values["imageBefore"] ?? "", imageAfterURL: values["imageAfter"] ?? "")
                 //print(procedure)
                 /*
                  //Mark: - иногда появлеться несколько одинаковых процедур (нужно пофиксить)
