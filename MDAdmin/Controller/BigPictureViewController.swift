@@ -17,10 +17,10 @@ class BigPictureViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         bigImageView.image = myImage
-        // Do any additional setup after loading the view.
         scrollView.delegate = self
     }
     
+    //Mark: - enable zooming
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return bigImageView
     }

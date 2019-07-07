@@ -28,16 +28,12 @@ class FindClientViewController: UIViewController{
     let search = UISearchController(searchResultsController: nil)
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         clientTableView.delegate = self
         clientTableView.dataSource = self
         updateTable()
-        
-        
-        
         
         search.searchResultsUpdater = self
         search.obscuresBackgroundDuringPresentation = false
@@ -46,11 +42,8 @@ class FindClientViewController: UIViewController{
         definesPresentationContext = true
         navigationItem.hidesSearchBarWhenScrolling = false
         
-        
-        
         refreshControl.addTarget(self, action: #selector(updateRefreshControll), for: .valueChanged)
         clientTableView.refreshControl = refreshControl
-        
     }
     
     
@@ -170,7 +163,6 @@ extension FindClientViewController: UITableViewDataSource, UITableViewDelegate {
             }
         }
         
-        
     }
     
 }
@@ -180,9 +172,7 @@ extension FindClientViewController: UISearchResultsUpdating{
     
     func updateSearchResults(for searchController: UISearchController) {
         
-        guard let searchText = searchController.searchBar.text else {
-            return
-        }
+        guard let searchText = searchController.searchBar.text else { return }
         
         if searchText == "" {
             isSearching = false
@@ -207,9 +197,8 @@ extension FindClientViewController: UISearchResultsUpdating{
                     }
                 }
             }
-            //print(searchLocalClientList)
             clientTableView.reloadData()
         }
-        
     }
+    
 }

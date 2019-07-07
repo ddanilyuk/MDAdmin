@@ -14,9 +14,9 @@ class OneProcedureViewController: UIViewController {
     @IBOutlet weak var costLabel: UILabel!
     @IBOutlet weak var beforeImageView: UIImageView!
     @IBOutlet weak var afterImageView: UIImageView!
-    
-    
     @IBOutlet weak var titleNavItem: UINavigationItem!
+    
+    
     var procedure: Procedure = Procedure(initials: "", nameProcedure: "", dateProcedure: "", costProcedure: "", imageBeforeURL: "", imageAfterURL: "")
     
     override func viewDidLoad() {
@@ -42,18 +42,19 @@ class OneProcedureViewController: UIViewController {
     }
     
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+
         if segue.identifier == "showBigPictureBefore" {
             if let destination = segue.destination as? BigPictureViewController {
                 destination.myImage = beforeImageView.image ?? UIImage()
             }
         }
+        
         if segue.identifier == "showBigPictureAfter" {
             if let destination = segue.destination as? BigPictureViewController {
                 destination.myImage = afterImageView.image ?? UIImage()
             }
         }
     }
+    
 }

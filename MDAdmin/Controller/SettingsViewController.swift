@@ -18,10 +18,5 @@ class SettingsViewController: UIViewController, GIDSignInUIDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
     }
-    
-    
-    
 }

@@ -32,12 +32,9 @@ class OneClientViewController: UIViewController {
         
     }
     
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //let uid = Auth.auth().currentUser?.uid
         clientImage.layer.cornerRadius = 75
 
         navBarNameClient.title = initials
@@ -47,6 +44,7 @@ class OneClientViewController: UIViewController {
         clientSurnameLabel.text = surnameClient
         clientPatrynomicLabel.text = patronymicClient
         
+        //Mark: - another way to download image
         //guard let url = URL(string: imageURLClient) else { return }
         //downloadImage(from: url)
         
@@ -54,9 +52,7 @@ class OneClientViewController: UIViewController {
         
         proceduresTableView.delegate = self
         proceduresTableView.dataSource = self
-        
     }
-    
     
     
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
@@ -76,23 +72,20 @@ class OneClientViewController: UIViewController {
         }
     }
     
+    
     func decodeFullData(initials: String) {
         var arrayArguments: [String: Any] = fullData[String(self.initials)] ?? [:]
-        print("arrayArguments -> ", arrayArguments)
+        //print("arrayArguments -> ", arrayArguments)
         nameClient = arrayArguments["name"] as? String ?? ""
         surnameClient = arrayArguments["surname"] as? String ?? ""
         patronymicClient = arrayArguments["patronymic"] as? String ?? ""
         imageURLClient = arrayArguments["imageURL"] as? String ?? ""
         
         proceduresArray = arrayArguments["procedures"] as? [String: Any] ?? [:]
-        print(proceduresArray)
-        
-    
         
         for proc in proceduresArray {
             guard let values = proc.value as? [String: String] else { return }
             let procedure = Procedure(initials: values["client"] ?? "", nameProcedure: values["procedureName"] ?? "", dateProcedure: values["date"] ?? "", costProcedure: values["cost"] ?? "", imageBeforeURL: values["imageBefore"] ?? "", imageAfterURL: values["imageAfter"] ?? "")
-
             self.listProcedures.append(procedure)
         }
         
@@ -101,8 +94,8 @@ class OneClientViewController: UIViewController {
     }
 
 
-
 }
+
 
 extension OneClientViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

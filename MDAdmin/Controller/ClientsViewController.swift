@@ -171,9 +171,8 @@ extension ClientsViewController: UITableViewDataSource, UITableViewDelegate {
                 }
             }
         }
-        
-        
     }
+    
     
 }
 
@@ -209,10 +208,8 @@ extension ClientsViewController: UISearchResultsUpdating{
                     }
                 }
             }
-            //print(searchLocalClientList)
             clientTableView.reloadData()
         }
-        
-        }
+    }
+    
 }
-

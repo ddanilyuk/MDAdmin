@@ -34,21 +34,6 @@ class AddClientViewController: UIViewController {
     }
     
 
-    func registerForKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(kbWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(kbWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-   
-    @objc func kbWillShow(_ notification: Notification) {
-        let userInfo = notification.userInfo
-        let kbFrameSize = (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        scrollView.contentOffset = CGPoint(x: 0, y: kbFrameSize.height)
-    }
-    
-    @objc func kbWillHide() {
-        scrollView.contentOffset = CGPoint.zero
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showReadyNewClient" {
             if let destination = segue.destination as? ReadyViewController {
@@ -57,6 +42,7 @@ class AddClientViewController: UIViewController {
         }
     }
     
+    //Mark: - alert when text filed is empty
     func showAlert() {
         let alert = UIAlertController(title: "Ошибка", message: "Заполните все поля", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
@@ -107,9 +93,8 @@ class AddClientViewController: UIViewController {
     
     
     func showSimpleActionSheet() {
-        let alert = UIAlertController(title: "Title", message: "Please Select an Option", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (_) in
-            print("User click Approve button")
+        let alert = UIAlertController(title: "Выберите", message: "Камера или Галерея", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Камера", style: .default, handler: { (_) in
             self.imagePicker.sourceType = .camera
             self.imagePicker.delegate = self
             self.imagePicker.allowsEditing = true
@@ -117,8 +102,7 @@ class AddClientViewController: UIViewController {
             self.present(self.imagePicker, animated: true, completion: nil)
         }))
         
-        alert.addAction(UIAlertAction(title: "Library", style: .default, handler: { (_) in
-            print("User click Edit button")
+        alert.addAction(UIAlertAction(title: "Галерея", style: .default, handler: { (_) in
             self.imagePicker.sourceType = .photoLibrary
             self.imagePicker.delegate = self
             self.imagePicker.allowsEditing = true
@@ -126,12 +110,10 @@ class AddClientViewController: UIViewController {
             self.present(self.imagePicker, animated: true, completion: nil)
         }))
         
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { (_) in
-            print("User click Dismiss button")
+        alert.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: { (_) in
         }))
         
         self.present(alert, animated: true, completion: {
-            print("completion block")
         })
     }
     
@@ -166,6 +148,7 @@ class AddClientViewController: UIViewController {
     }
 }
 
+
 //Mark: - imagePicker
 extension AddClientViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -177,15 +160,32 @@ extension AddClientViewController: UIImagePickerControllerDelegate, UINavigation
         } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             selectedImageFromPicker = originalImage
         }
-        
         if let selectedImage = selectedImageFromPicker {
             clientPhoto.image = selectedImage
         }
-        
         picker.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
+    }
+}
+
+
+//Mark: - keyboard slide scroll view
+extension AddClientViewController {
+    func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(kbWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(kbWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func kbWillShow(_ notification: Notification) {
+        let userInfo = notification.userInfo
+        let kbFrameSize = (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        scrollView.contentOffset = CGPoint(x: 0, y: kbFrameSize.height)
+    }
+    
+    @objc func kbWillHide() {
+        scrollView.contentOffset = CGPoint.zero
     }
 }

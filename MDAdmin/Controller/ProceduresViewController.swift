@@ -29,7 +29,6 @@ class ProceduresViewController: UIViewController {
         
         refreshControl.addTarget(self, action: #selector(updateRefreshControll), for: .valueChanged)
         proceduresTableView.refreshControl = refreshControl
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -42,37 +41,19 @@ class ProceduresViewController: UIViewController {
         var ref: DatabaseReference!
         ref = Database.database().reference()
         
-        //ref.child("\(uid ?? " ")/clinets/\(clientInitialsLabel.text ?? "error")/procedures/\(procedureName)_\(self.dateNow)/").setValue()
-        
         ref.child("\(uid ?? " ")/procedures/").observe(.value) { (snapshot) in
-            //print(snapshot)
             guard let infoFromServer = snapshot.value as? [String: Any] else { return }
             
-
             for proc in infoFromServer {
                 guard let values = proc.value as? [String: String] else { return }
                 let procedure = Procedure(initials: values["client"] ?? "", nameProcedure: values["procedureName"] ?? "", dateProcedure: values["date"] ?? "", costProcedure: values["cost"] ?? "", imageBeforeURL: values["imageBefore"] ?? "", imageAfterURL: values["imageAfter"] ?? "")
-                //print(procedure)
-                /*
-                 //Mark: - иногда появлеться несколько одинаковых процедур (нужно пофиксить)
-                for procedureFromLastList in self.listProcedures{
-                    print(procedureFromLastList.dateProcedure)
-                    print(procedure.dateProcedure)
-                    if !procedureFromLastList.dateProcedure.contains(procedure.dateProcedure){
-                        
-                    }
-                }
-                */
+                //Mark: - иногда появлеться несколько одинаковых процедур (нужно пофиксить)
                 self.listProcedures.append(procedure)
             }
             
             self.listProcedures = self.listProcedures.sorted(by: {$0.dateProcedure > $1.dateProcedure})
             self.proceduresTableView.reloadData()
-
         }
-
-        
-        
     }
     
     @objc func updateRefreshControll() {
@@ -104,6 +85,7 @@ extension ProceduresViewController:  UITableViewDataSource, UITableViewDelegate 
         performSegue(withIdentifier: "showProceduresDetailFromProcedures", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showProceduresDetailFromProcedures" {
             if let indexPath = proceduresTableView.indexPathForSelectedRow {

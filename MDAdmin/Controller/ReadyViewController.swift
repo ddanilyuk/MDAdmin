@@ -22,40 +22,34 @@ class ReadyViewController: UIViewController {
         readyLabel.text = "Не готово"
         imageLoadLabel.text = "Картинки не загружены, подождите"
         exitButton.isEnabled = false
-        print(dataFromNewClient)
         
-        
+        //Mark: - when segue from add client
         var ref: DatabaseReference!
         ref = Database.database().reference()
-        
-        var ref2: DatabaseReference!
-        ref2 = Database.database().reference()
         
         if dataFromNewClient != "" {
             ref.child(dataFromNewClient).observe(.childChanged) { snapshot in
                 self.readyLabel.text = "Готово"
                 self.imageLoadLabel.text = "Картинки загружены, клиент добавлен"
                 self.exitButton.isEnabled = true
-                //print(snapshot)
             }
         }
         
+        //Mark: - when segue from add procedure
+        var ref2: DatabaseReference!
+        ref2 = Database.database().reference()
+
         if dataFromNewProcedure != "" {
             ref2.child(dataFromNewProcedure).observe(.childChanged) { snapshot in
                 self.readyLabel.text = "Готово"
                 self.imageLoadLabel.text = "Картинки загружены, процедура добавлена"
                 self.exitButton.isEnabled = true
-                //print(snapshot)
             }
         }
         
-        
-        
-        // Do any additional setup after loading the view.
-    }
+}
     
     @IBAction func didPressExit(_ sender: UIButton) {
-        //navigationController?.popViewController(animated: true)
         navigationController?.popToRootViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }

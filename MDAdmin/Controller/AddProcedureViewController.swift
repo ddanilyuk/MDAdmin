@@ -19,6 +19,7 @@ class AddProcedureViewController: UIViewController {
     @IBOutlet weak var afterImageView: UIImageView!
     @IBOutlet weak var procedurePicker: UIPickerView!
     
+    //TODO: - NEED TO USE PROCEDURE FROM SETTINGS
     let procedure1 = ListOfProcedures(name: "procedure1", cost: 100)
     let procedure2 = ListOfProcedures(name: "procedure2", cost: 200)
     let procedure3 = ListOfProcedures(name: "procedure3", cost: 300)
@@ -55,40 +56,29 @@ class AddProcedureViewController: UIViewController {
         clientInitialsLabel.text = clientInitialsFromFindClient
         beforeImageView.layer.cornerRadius = 64
         afterImageView.layer.cornerRadius = 64
-
         
-        let secondDateFormatter = DateFormatter()
-        secondDateFormatter.dateFormat = "yyyy-MM-dd_HH:mm"
-        dateNow = secondDateFormatter.string(from: Date())
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd_HH:mm"
+        dateNow = dateFormatter.string(from: Date())
         if let procedureCost = procedures[procedurePicker.selectedRow(inComponent: 0)].cost {
             costLabel.text = String(procedureCost)
         }
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
     
     @IBAction func didPressMakeImageBefore(_ sender: UIButton) {
         isTapImageBefore = true
         showCameraOrLibrary()
-//        DispatchQueue.main.async() {
-//            self.beforeImageView.image = self.imageBefore
-//        }
     }
     
     @IBAction func didPressMakeImageAfter(_ sender: UIButton) {
         isTapImageAfter = true
         showCameraOrLibrary()
-        
-//        DispatchQueue.main.async() {
-//            self.afterImageView.image = self.imageAfter
-//        }
     }
     
     @IBAction func didPressEditCost(_ sender: UIButton) {
-        
+        //TODO: - NEED TO DO
     }
     
     @IBAction func didPressAddProcedure(_ sender: UIButton) {
@@ -119,11 +109,12 @@ class AddProcedureViewController: UIViewController {
             "imageAfter": "none"
         ]
         
+        //Mark: - add new procedure to selected client
         ref.child("\(uid ?? " ")/clinets/\(clientInitialsLabel.text ?? "error")/procedures/\(procedureName)_\(self.dateNow)/").setValue(procedureConfiguration)
         
+        //Mark: - add new procedure to branch where all is procedures
         info = "\(uid ?? " ")/procedures/\(dateNow)-\(procedureName)-\(clientInitialsLabel.text ?? "error")"
-        
-        ref.child("\(uid ?? " ")/procedures/\(dateNow)-\(procedureName)-\(clientInitialsLabel.text ?? "error")").setValue(procedureConfigurationToProcedure)
+        ref.child(info).setValue(procedureConfigurationToProcedure)
     }
     
     
@@ -151,27 +142,24 @@ class AddProcedureViewController: UIViewController {
                     result = downloadURL.absoluteString
                     ref.child("\(uid ?? " ")/clinets/\(clientInitials)/procedures/\(procedureName)_\(self.dateNow)/\(imageBeforeOrAfter)").setValue(String(result ?? ""))
                     ref.child("\(uid ?? " ")/procedures/\(self.dateNow)-\(procedureName)-\(self.clientInitialsLabel.text ?? "error")/\(imageBeforeOrAfter)").setValue(String(result ?? ""))
-                    // maybe need to know when the image downloaded
+                    //TODO: - maybe need to know when the image downloaded
                 })
             })
-            
         }
-
     }
     
     
     func showCameraOrLibrary() {
         let alert = UIAlertController(title: "Выберите", message: "Камера или Галерея", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Камера", style: .default, handler: { (_) in
-            print("User click camera button")
             self.imagePicker.sourceType = .camera
             self.imagePicker.delegate = self
             self.imagePicker.allowsEditing = true
+            
             self.present(self.imagePicker, animated: true, completion: nil)
         }))
         
         alert.addAction(UIAlertAction(title: "Галерея", style: .default, handler: { (_) in
-            print("User click library button")
             self.imagePicker.sourceType = .photoLibrary
             self.imagePicker.delegate = self
             self.imagePicker.allowsEditing = true
@@ -180,11 +168,9 @@ class AddProcedureViewController: UIViewController {
         }))
         
         alert.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: { (_) in
-            print("User click Dismiss button")
         }))
         
         self.present(alert, animated: true, completion: {
-            print("completion block")
         })
     }
     

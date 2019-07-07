@@ -26,12 +26,8 @@ class SignedInViewController: UIViewController {
         guard let email = Auth.auth().currentUser?.email else { return }
         emailOU.text = email
     }
-
-    
-    
     
     @IBAction func didPressExit(_ sender: UIButton) {
-
         do {
             Settings.shared.isLoggedIn = false
             try Auth.auth().signOut()
@@ -42,9 +38,6 @@ class SignedInViewController: UIViewController {
         } catch let error as NSError {
             print(error.localizedDescription)
         }
-        
     }
-    
-    
 
 }
