@@ -30,6 +30,7 @@ class AddProcedureViewController: UIViewController {
     let imagePicker = UIImagePickerController()
     var imageBefore = UIImage()
     var imageAfter = UIImage()
+    var info: String = ""
 
 
     var dateNow = ""
@@ -101,8 +102,6 @@ class AddProcedureViewController: UIViewController {
         pickUnicalProcedureImageUrl(procedureName: procedureName, clientInitials: clientInitialsFromFindClient, image: imageBefore, imageBeforeOrAfter: "imageBefore")
         pickUnicalProcedureImageUrl(procedureName: procedureName, clientInitials: clientInitialsFromFindClient, image: imageAfter, imageBeforeOrAfter: "imageAfter")
         
-    
-        
         let procedureConfiguration: [String: String] = [
             "procedureName": String(procedureName),
             "cost": String(procedures[procedurePicker.selectedRow(inComponent: 0)].cost ?? 0),
@@ -122,13 +121,14 @@ class AddProcedureViewController: UIViewController {
         
         ref.child("\(uid ?? " ")/clinets/\(clientInitialsLabel.text ?? "error")/procedures/\(procedureName)_\(self.dateNow)/").setValue(procedureConfiguration)
         
+        info = "\(uid ?? " ")/procedures/\(dateNow)-\(procedureName)-\(clientInitialsLabel.text ?? "error")"
+        
         ref.child("\(uid ?? " ")/procedures/\(dateNow)-\(procedureName)-\(clientInitialsLabel.text ?? "error")").setValue(procedureConfigurationToProcedure)
     }
     
     
     func pickUnicalProcedureImageUrl(procedureName: String, clientInitials: String, image: UIImage, imageBeforeOrAfter: String){
         let uid = Auth.auth().currentUser?.uid
-        
         
         
         let storageRef = Storage.storage().reference().child("\(uid ?? "errorPicture")_\(self.dateNow)_\(imageBeforeOrAfter)_\(clientInitials).jpg")
@@ -186,6 +186,15 @@ class AddProcedureViewController: UIViewController {
         self.present(alert, animated: true, completion: {
             print("completion block")
         })
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showReadyNewProcedure" {
+            if let destination = segue.destination as? ReadyViewController {
+                destination.dataFromNewProcedure = info
+            }
+        }
     }
     
 }

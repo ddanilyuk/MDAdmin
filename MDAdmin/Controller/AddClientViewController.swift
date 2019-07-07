@@ -58,8 +58,8 @@ class AddClientViewController: UIViewController {
     }
     
     func showAlert() {
-        let alert = UIAlertController(title: "Error", message: "Enter all, please", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        let alert = UIAlertController(title: "Ошибка", message: "Заполните все поля", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     
@@ -76,7 +76,7 @@ class AddClientViewController: UIViewController {
 
         
         //Mark: - Making new client With class Clint (class can be deleted)
-        if !nameEntered.isEmpty && !surnameEntered.isEmpty && !patronymicEntered.isEmpty {
+        if !nameEntered.isEmpty && !surnameEntered.isEmpty && !patronymicEntered.isEmpty && clientPhoto.image != nil{
             
             let client = Client(name: nameEntered, surname: surnameEntered, patronymic: patronymicEntered)
             

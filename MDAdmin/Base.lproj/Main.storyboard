@@ -529,9 +529,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Готово" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1O-FV-aSh">
-                                <rect key="frame" x="16" y="314" width="343" height="53"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Готово" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1O-FV-aSh">
+                                <rect key="frame" x="0.0" y="338" width="375" height="53"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="44"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -540,12 +539,32 @@
                                 <rect key="frame" x="165" y="564" width="45" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Назад"/>
+                                <connections>
+                                    <action selector="didPressExit:" destination="gzu-HP-dsE" eventType="touchUpInside" id="Dxk-a6-mfT"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Картинки загружены" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jqn-cz-X73">
+                                <rect key="frame" x="0.0" y="421" width="375" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Jqn-cz-X73" firstAttribute="centerX" secondItem="ZB5-nC-FAU" secondAttribute="centerX" id="BXa-fi-aKD"/>
+                            <constraint firstItem="lX4-9V-30d" firstAttribute="trailing" secondItem="Jqn-cz-X73" secondAttribute="trailing" id="MXb-VJ-MMt"/>
+                            <constraint firstItem="S1O-FV-aSh" firstAttribute="leading" secondItem="lX4-9V-30d" secondAttribute="leading" id="MgF-ml-Tbc"/>
+                            <constraint firstItem="Jqn-cz-X73" firstAttribute="top" secondItem="S1O-FV-aSh" secondAttribute="bottom" constant="30" id="N7U-Lo-ebp"/>
+                            <constraint firstItem="S1O-FV-aSh" firstAttribute="top" secondItem="lX4-9V-30d" secondAttribute="top" constant="250" id="bov-EU-i8j"/>
+                            <constraint firstItem="Jqn-cz-X73" firstAttribute="leading" secondItem="lX4-9V-30d" secondAttribute="leading" id="lhx-5d-qDQ"/>
+                            <constraint firstItem="lX4-9V-30d" firstAttribute="trailing" secondItem="S1O-FV-aSh" secondAttribute="trailing" id="zcS-4r-bgf"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="lX4-9V-30d"/>
                     </view>
                     <connections>
+                        <outlet property="exitButton" destination="rzn-WQ-9fE" id="IIA-zg-W0p"/>
+                        <outlet property="imageLoadLabel" destination="Jqn-cz-X73" id="N1k-tg-2ML"/>
                         <outlet property="readyLabel" destination="S1O-FV-aSh" id="6BM-pH-Vhg"/>
                     </connections>
                 </viewController>
