@@ -24,6 +24,22 @@ class AddClientViewController: UIViewController {
         showSimpleActionSheet()        
     }
     
+    // //
+    func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(kbWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(kbWillHide), name: UIResponder.keyboardDidHideNotification, object: nil)
+    }
+    // //
+    @objc func kbWillShow(_ notification: Notification) {
+        let userInfo = notification.userInfo
+        let kbFrameSize = (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        //scrollView.contentOffset = CGPoint(x: 0, y: kbFrameSize.height)
+    }
+    
+    @objc func kbWillHide() {
+        //scrollView.contentOffset = CGPoint.zero
+    }
+    
     func showAlert() {
         let alert = UIAlertController(title: "Error", message: "Enter all, please", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
