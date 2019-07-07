@@ -123,6 +123,7 @@ extension OneClientViewController: UITableViewDelegate, UITableViewDataSource {
         performSegue(withIdentifier: "showProceduresDetailFromClient", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showProceduresDetailFromClient" {
             if let indexPath = proceduresTableView.indexPathForSelectedRow {

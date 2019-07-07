@@ -28,8 +28,13 @@ class AddProcedureViewController: UIViewController {
     var procedures = [ListOfProcedures]()
     var clientInitialsFromFindClient = ""
     let imagePicker = UIImagePickerController()
+    var imageBefore = UIImage()
+    var imageAfter = UIImage()
+
 
     var dateNow = ""
+    var isTapImageBefore: Bool =  false
+    var isTapImageAfter: Bool = false
 
 
     
@@ -65,12 +70,20 @@ class AddProcedureViewController: UIViewController {
     }
     
     @IBAction func didPressMakeImageBefore(_ sender: UIButton) {
+        isTapImageBefore = true
         showCameraOrLibrary()
+//        DispatchQueue.main.async() {
+//            self.beforeImageView.image = self.imageBefore
+//        }
     }
     
     @IBAction func didPressMakeImageAfter(_ sender: UIButton) {
+        isTapImageAfter = true
         showCameraOrLibrary()
         
+//        DispatchQueue.main.async() {
+//            self.afterImageView.image = self.imageAfter
+//        }
     }
     
     @IBAction func didPressEditCost(_ sender: UIButton) {
@@ -213,15 +226,14 @@ extension AddProcedureViewController: UIImagePickerControllerDelegate, UINavigat
         }
         
         if let selectedImage = selectedImageFromPicker {
-            if  beforeImageView.image == nil {
+            if  isTapImageBefore {
                 beforeImageView.image = selectedImage
-
+                isTapImageBefore = false
             } else {
                 afterImageView.image = selectedImage
+                isTapImageAfter = false
             }
         }
-        
-        
         picker.dismiss(animated: true, completion: nil)
     }
     

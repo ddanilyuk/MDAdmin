@@ -13,31 +13,48 @@ import Firebase
 class AddClientViewController: UIViewController {
     
     let imagePicker = UIImagePickerController()
-
+    var info: String = ""
 
     @IBOutlet weak var clientPhoto: UIImageView!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var surnameField: UITextField!
     @IBOutlet weak var patronymicField: UITextField!
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        clientPhoto.layer.cornerRadius = 64
+        registerForKeyboardNotifications()
+        self.hideKeyboard()
+    }
     
     @IBAction func didPressSetPhoto(_ sender: UIButton) {
         showSimpleActionSheet()        
     }
     
-    // //
+
     func registerForKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(kbWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(kbWillHide), name: UIResponder.keyboardDidHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(kbWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    // //
+   
     @objc func kbWillShow(_ notification: Notification) {
         let userInfo = notification.userInfo
         let kbFrameSize = (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        //scrollView.contentOffset = CGPoint(x: 0, y: kbFrameSize.height)
+        scrollView.contentOffset = CGPoint(x: 0, y: kbFrameSize.height)
     }
     
     @objc func kbWillHide() {
-        //scrollView.contentOffset = CGPoint.zero
+        scrollView.contentOffset = CGPoint.zero
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showReadyNewClient" {
+            if let destination = segue.destination as? ReadyViewController {
+                destination.dataFromNewClient = info
+            }
+        }
     }
     
     func showAlert() {
@@ -47,6 +64,10 @@ class AddClientViewController: UIViewController {
     }
     
     @IBAction func didPressAddClient(_ sender: UIButton) {
+        nameField.resignFirstResponder()
+        surnameField.resignFirstResponder()
+        patronymicField.resignFirstResponder()
+        
         let nameEntered = nameField.text!
         let surnameEntered = surnameField.text!
         let patronymicEntered = patronymicField.text!
@@ -54,34 +75,29 @@ class AddClientViewController: UIViewController {
         let uid = Auth.auth().currentUser?.uid
 
         
-        // Making new client With class Clint (class can be deleted)
+        //Mark: - Making new client With class Clint (class can be deleted)
         if !nameEntered.isEmpty && !surnameEntered.isEmpty && !patronymicEntered.isEmpty {
             
             let client = Client(name: nameEntered, surname: surnameEntered, patronymic: patronymicEntered)
             
             let clientInitials = client.makeInitials()
             let clinetInitialsWithoutSpacing = client.makeInitialsWithotSpace()
-
             
             var ref: DatabaseReference!
             ref = Database.database().reference()
             
-            //making new client imageUrl with name: "\(uid)_\(clinetInitialsWithoutSpacing)"
+            //Mark: - making new client imageUrl with name: "\(uid)_\(clinetInitialsWithoutSpacing)"
             pickUnicalClientImageUrl(clientInitials: clientInitials, initialsWithoutSpacing: clinetInitialsWithoutSpacing, photoFromClient: clientPhoto.image ?? UIImage())
-            
-            //let storageRef = Storage.storage().reference().child("\(uid ?? "errorPicture")_\(clinetInitialsWithoutSpacing)")
-            
 
-            
-            //client configuration which will be downloaded to server
+            //Mark: - client configuration which will be downloaded to server
             let clientConfiguration: [String: String] = [
                                                 "surname": String(client.getSurname()),
                                                 "name": String(client.getName()),
                                                 "patronymic": String(client.getPatronymic()),
-                                                "imageURL": "none"
+                                                "imageURL": ""
             ]
             ref.child("\(uid ?? " ")/clinets/\(clientInitials)").setValue(clientConfiguration)
-
+            info = "\(uid ?? " ")/clinets/\(clientInitials)"
         } else {
             showAlert()
         }
@@ -120,11 +136,7 @@ class AddClientViewController: UIViewController {
     }
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        clientPhoto.layer.cornerRadius = 64
-    }
+   
     
     func pickUnicalClientImageUrl(clientInitials: String, initialsWithoutSpacing: String, photoFromClient: UIImage){
         let uid = Auth.auth().currentUser?.uid
@@ -150,20 +162,13 @@ class AddClientViewController: UIViewController {
                     // maybe need to know when the image downloaded
                 })
             })
-            
-           
         }
-        
-    
     }
 }
 
+//Mark: - imagePicker
 extension AddClientViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        
-        
-        
         
         var selectedImageFromPicker: UIImage?
         
@@ -176,8 +181,6 @@ extension AddClientViewController: UIImagePickerControllerDelegate, UINavigation
         if let selectedImage = selectedImageFromPicker {
             clientPhoto.image = selectedImage
         }
-        //clientPhoto.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
-
         
         picker.dismiss(animated: true, completion: nil)
     }

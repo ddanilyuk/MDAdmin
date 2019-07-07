@@ -25,6 +25,7 @@
 		D32AD8E422CE83D500925D1F /* ListOfProcedures.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32AD8E322CE83D500925D1F /* ListOfProcedures.swift */; };
 		D35FC6C822D15A0E007F6E2E /* Procedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35FC6C722D15A0E007F6E2E /* Procedure.swift */; };
 		D35FC6CA22D15CEC007F6E2E /* OneProcedureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35FC6C922D15CEC007F6E2E /* OneProcedureViewController.swift */; };
+		D35FC6CC22D22CD4007F6E2E /* ReadyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35FC6CB22D22CD4007F6E2E /* ReadyViewController.swift */; };
 		D3775CC522C8EB520076CD64 /* OneClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3775CC422C8EB520076CD64 /* OneClientViewController.swift */; };
 		D3A3CDB122C7BA1A00378FA4 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A3CDB022C7BA1A00378FA4 /* Settings.swift */; };
 		D3A3CDB322C7C26A00378FA4 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A3CDB222C7C26A00378FA4 /* Client.swift */; };
@@ -58,6 +59,7 @@
 		D32AD8E322CE83D500925D1F /* ListOfProcedures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfProcedures.swift; sourceTree = "<group>"; };
 		D35FC6C722D15A0E007F6E2E /* Procedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Procedure.swift; sourceTree = "<group>"; };
 		D35FC6C922D15CEC007F6E2E /* OneProcedureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneProcedureViewController.swift; sourceTree = "<group>"; };
+		D35FC6CB22D22CD4007F6E2E /* ReadyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyViewController.swift; sourceTree = "<group>"; };
 		D3775CC422C8EB520076CD64 /* OneClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneClientViewController.swift; sourceTree = "<group>"; };
 		D3A3CDB022C7BA1A00378FA4 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		D3A3CDB222C7C26A00378FA4 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
@@ -126,10 +128,8 @@
 				D300298B22BE53F000AD8786 /* Controller */,
 				D3C4989122C695F1004EA9CC /* Login */,
 				D300296B22BA89BE00AD8786 /* Main.storyboard */,
-				D3A3CDB022C7BA1A00378FA4 /* Settings.swift */,
 				D300296E22BA89C000AD8786 /* Assets.xcassets */,
 				D300297022BA89C000AD8786 /* LaunchScreen.storyboard */,
-				D3C4989322C6968E004EA9CC /* ViewManager.swift */,
 				D300297322BA89C000AD8786 /* Info.plist */,
 				D300299222C16A5300AD8786 /* GoogleService-Info.plist */,
 			);
@@ -151,6 +151,7 @@
 				D300298722BE53D900AD8786 /* AddClientViewController.swift */,
 				D3BC380B22D10F6A0067E80A /* FindClientViewController.swift */,
 				D300298E22BE820600AD8786 /* AddProcedureViewController.swift */,
+				D35FC6CB22D22CD4007F6E2E /* ReadyViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -159,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				D32AD8DD22CE66EE00925D1F /* Extencions.swift */,
+				D3C4989322C6968E004EA9CC /* ViewManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -166,6 +168,7 @@
 		D32AD8E522CE8FE400925D1F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D3A3CDB022C7BA1A00378FA4 /* Settings.swift */,
 				D3A3CDB222C7C26A00378FA4 /* Client.swift */,
 				D32AD8E322CE83D500925D1F /* ListOfProcedures.swift */,
 				D35FC6C722D15A0E007F6E2E /* Procedure.swift */,
@@ -332,6 +335,7 @@
 				D300298422BE53B800AD8786 /* ClientsViewController.swift in Sources */,
 				D35FC6C822D15A0E007F6E2E /* Procedure.swift in Sources */,
 				D3A3CDB322C7C26A00378FA4 /* Client.swift in Sources */,
+				D35FC6CC22D22CD4007F6E2E /* ReadyViewController.swift in Sources */,
 				D300296822BA89BE00AD8786 /* AppDelegate.swift in Sources */,
 				D32AD8DE22CE66EE00925D1F /* Extencions.swift in Sources */,
 				D3BA1DC322C21B470089690C /* SignedInViewController.swift in Sources */,
