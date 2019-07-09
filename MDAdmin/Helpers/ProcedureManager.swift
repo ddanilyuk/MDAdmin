@@ -27,14 +27,14 @@ class ProcedureManager {
             
             dataFromDatabase.forEach { (key, value) in
                 //print("key", key)
-                print("value", value)
+                //print("value", value)
 
-                let procedure = Procedure(initials: value["initials"] ?? "",
-                                          nameProcedure: value["nameProcedure"] ?? "",
-                                          dateProcedure: value["dateProcedure"] ?? "",
-                                          costProcedure: value["costProcedure"] ?? "",
-                                          imageBeforeURL: value["imageBeforeURL"] ?? "",
-                                          imageAfterURL: value["imageAfterURL"] ?? "")
+                let procedure = Procedure(initials: value["initials"] ?? " ",
+                                          nameProcedure: value["nameProcedure"] ?? " ",
+                                          dateProcedure: value["dateProcedure"] ?? " ",
+                                          costProcedure: value["costProcedure"] ?? " ",
+                                          imageBeforeURL: value["imageBeforeURL"] ?? " ",
+                                          imageAfterURL: value["imageAfterURL"] ?? " ")
                 tempProcedures.append(procedure)
                 
             }

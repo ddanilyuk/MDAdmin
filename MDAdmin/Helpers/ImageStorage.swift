@@ -39,4 +39,67 @@ class ImageStorage {
         }).resume()
         return nil
     }
+    
+    
+    static func getBeforeProcedureImage(procedure: Procedure, imageView: UIImageView) -> UIImage? {
+        let documentDirectory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create:true)
+        
+        let unicImageName = "imageBefore\(procedure.dateProcedure)"
+        if let url = documentDirectory?.appendingPathComponent(unicImageName) {
+            if let data = try? Data(contentsOf: url) {
+                return UIImage(data: data)
+            }
+        }
+        guard let urlToSever = URL(string: procedure.imageBeforeURL) else { return nil }
+        URLSession.shared.dataTask(with: urlToSever, completionHandler: { (data, response, error) in
+            
+            //download hit an error so lets return out
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            DispatchQueue.main.async(execute: {
+                if let downloadedImage = UIImage(data: data!) {
+                    if let url = documentDirectory?.appendingPathComponent(unicImageName) {
+                        UIImage.saveImage(image: downloadedImage, path: url)
+                    }
+                    imageView.image = downloadedImage
+                }
+            })
+            
+        }).resume()
+        return nil
+    }
+    
+    static func getAfterProcedureImage(procedure: Procedure, imageView: UIImageView) -> UIImage? {
+        let documentDirectory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create:true)
+        let unicImageName = "imageAfter\(procedure.dateProcedure)"
+        if let url = documentDirectory?.appendingPathComponent(unicImageName) {
+            if let data = try? Data(contentsOf: url) {
+                return UIImage(data: data)
+            }
+        }
+        guard let urlToSever = URL(string: procedure.imageAfterURL) else { return nil }
+        URLSession.shared.dataTask(with: urlToSever, completionHandler: { (data, response, error) in
+            
+            //download hit an error so lets return out
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            DispatchQueue.main.async(execute: {
+                if let downloadedImage = UIImage(data: data!) {
+                    if let url = documentDirectory?.appendingPathComponent(unicImageName) {
+                        UIImage.saveImage(image: downloadedImage, path: url)
+                    }
+                    imageView.image = downloadedImage
+                }
+            })
+            
+        }).resume()
+        return nil
+    }
+    
 }

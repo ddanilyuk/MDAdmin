@@ -22,13 +22,6 @@ class OneClientViewController: UIViewController {
     @IBOutlet weak var navBarNameClient: UINavigationItem!
     @IBOutlet weak var proceduresTableView: UITableView!
     
-    var initials: String = ""
-    var fullData: [String: [String: Any]] = [:]
-    var proceduresArray: [String: Any] = [:]
-    var nameClient: String = ""
-    var surnameClient: String = ""
-    var patronymicClient: String = ""
-    var imageURLClient: String = ""
     
     
     var newProceduresArray: [Procedure] = []
@@ -48,6 +41,8 @@ class OneClientViewController: UIViewController {
         super.viewDidLoad()
         clientImage.layer.cornerRadius = 75
 
+        print(client)
+        print(client.imageURL)
         navBarNameClient.title = client.makeInitials()
         //decodeFullData(initials: initials)
         

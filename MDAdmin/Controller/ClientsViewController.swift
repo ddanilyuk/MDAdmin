@@ -45,9 +45,11 @@ class ClientsViewController: UIViewController{
 
         refreshControl.addTarget(self, action: #selector(updateRefreshControll), for: .valueChanged)
         clientTableView.refreshControl = refreshControl
-        
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        getClientsUpadateTable()
+    }
     
     @objc func updateRefreshControll(){
         //Mark: - update full tableView from server with deleting local information
@@ -60,19 +62,23 @@ class ClientsViewController: UIViewController{
     
     func getClientsUpadateTable() {
         ClientManager.shared.getClients { [weak self] clients in
-            guard let this = self else { return }
-            this.clients = clients
-            for client in this.clients {
+            //guard let this = self else { return }
+            //this.clients = clients
+            self?.newMainLocalClientList = [:]
+            //clients = []
+            print(clients)
+            for client in clients {
                 
                 let firstLetter = client.getFirstLetter()
+                //let firstLetter = "А"
                 
                 //Mark: - recieving old values for first letter from second name
                 var valuesForFirstLetter:[Client] = self?.newMainLocalClientList["\(firstLetter.uppercased())"] ?? []
-                var valuesForFirstLetterInitials = ""
+                var valuesForFirstLetterInitials: [String] = []
                 
                 //Mark: - recieving initials to check if not contains
                 valuesForFirstLetter.forEach({ (client) in
-                    valuesForFirstLetterInitials = client.makeInitials()
+                    valuesForFirstLetterInitials.append(client.makeInitials())
                 })
                 
                 if valuesForFirstLetter.isEmpty, !valuesForFirstLetterInitials.contains(client.makeInitials()) {
@@ -82,7 +88,7 @@ class ClientsViewController: UIViewController{
                 }
                 
                 //Mark: - updating main tableView
-                self?.newMainLocalClientList.updateValue(valuesForFirstLetter, forKey: firstLetter.uppercased())
+                self?.newMainLocalClientList.updateValue(valuesForFirstLetter.sorted(by: {$0.makeInitials() < $1.makeInitials() }), forKey: firstLetter.uppercased())
                 valuesForFirstLetter = []
             }
             self?.clientTableView.reloadData()

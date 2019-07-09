@@ -21,15 +21,17 @@ class ClientManager {
         let uid = Auth.auth().currentUser?.uid
         let ref = Database.database().reference()
         
-        ref.child("\(uid ?? "")/clinets").observe(.value){ [weak self] (snapshot) in
+        ref.child("\(uid ?? "")/clients").observe(.value){ [weak self] (snapshot) in
             guard let dataFromDatabase = snapshot.value as? [String : [String: Any]] else {return}
             //print("DATA : \(dataFromDatabase)")
+            //tempClients = []
 
             dataFromDatabase.forEach { (key, value) in
                 //print("key", key)
-
-                print("value", value)
                 
+                if value["name"] as? String == "" { return }
+                
+                //print("value", value)
                 let proceduresArray = value["procedures"] as? [String: [String: String]] ?? [:]
                 var procedures: [Procedure] = []
                 proceduresArray.forEach({ (key, value) in
@@ -43,13 +45,13 @@ class ClientManager {
                 })
                 
                 
-                let client = Client(name: value["name"] as? String ?? "",
-                                    surname: value["surname"] as? String ?? "",
-                                    patronymic: value["patronymic"] as? String ?? "",
-                                    imageURL: value["imageURL"] as? String ?? "",
+                let client = Client(name: value["name"] as? String ?? " ",
+                                    surname: value["surname"] as? String ?? " ",
+                                    patronymic: value["patronymic"] as? String ?? " ",
+                                    imageURL: value["imageURL"] as? String ?? " ",
                                     procedures: procedures)
                 tempClients.append(client)
-                print(client.procedures)
+                //print(client.procedures)
                 
             }
             guard let this = self else { return }

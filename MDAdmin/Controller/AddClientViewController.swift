@@ -82,8 +82,8 @@ class AddClientViewController: UIViewController {
                                                 "patronymic": String(client.patronymic),
                                                 "imageURL": ""
             ]
-            ref.child("\(uid ?? " ")/clinets/\(clientInitials)").setValue(clientConfiguration)
-            info = "\(uid ?? " ")/clinets/\(clientInitials)"
+            ref.child("\(uid ?? " ")/clients/\(clientInitials)").setValue(clientConfiguration)
+            info = "\(uid ?? " ")/clients/\(clientInitials)"
         } else {
             showAlert()
         }
@@ -140,7 +140,7 @@ class AddClientViewController: UIViewController {
                 storageRef.downloadURL(completion: { (url, error) in
                     guard let downloadURL = url else { return }
                     result = downloadURL.absoluteString
-                    ref.child("\(uid ?? " ")/clinets/\(clientInitials)/imageURL").setValue(String(result ?? ""))
+                    ref.child("\(uid ?? " ")/clients/\(clientInitials)/imageURL").setValue(String(result ?? ""))
                     // maybe need to know when the image downloaded
                 })
             })

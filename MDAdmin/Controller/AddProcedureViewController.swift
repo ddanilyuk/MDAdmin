@@ -28,6 +28,7 @@ class AddProcedureViewController: UIViewController {
 
     var procedures = [ListOfProcedures]()
     var clientInitialsFromFindClient = ""
+    var client = Client()
     let imagePicker = UIImagePickerController()
     var imageBefore = UIImage()
     var imageAfter = UIImage()
@@ -53,7 +54,7 @@ class AddProcedureViewController: UIViewController {
         procedurePicker.delegate = self
         procedurePicker.dataSource = self
         
-        clientInitialsLabel.text = clientInitialsFromFindClient
+        clientInitialsLabel.text = client.makeInitials()
         beforeImageView.layer.cornerRadius = 64
         afterImageView.layer.cornerRadius = 64
         
@@ -87,36 +88,31 @@ class AddProcedureViewController: UIViewController {
         ref = Database.database().reference()
         
         guard let imageBefore =  beforeImageView.image , let imageAfter = afterImageView.image else { return }
-        let procedureName = procedures[procedurePicker.selectedRow(inComponent: 0)].name ?? "noProcedure"
         
-        pickUnicalProcedureImageUrl(procedureName: procedureName, clientInitials: clientInitialsFromFindClient, image: imageBefore, imageBeforeOrAfter: "imageBeforeURL")
-        pickUnicalProcedureImageUrl(procedureName: procedureName, clientInitials: clientInitialsFromFindClient, image: imageAfter, imageBeforeOrAfter: "imageAfterURL")
+        let selectedProcedure = procedures[procedurePicker.selectedRow(inComponent: 0)]
+        
+        let nameProcedure = selectedProcedure.name ?? "noProcedure"
+        let costProcedure = selectedProcedure.cost ?? 0
+        
+        pickUnicalProcedureImageUrl(procedureName: nameProcedure, clientInitials: clientInitialsFromFindClient, image: imageBefore, imageBeforeOrAfter: "imageBeforeURL")
+        pickUnicalProcedureImageUrl(procedureName: nameProcedure, clientInitials: clientInitialsFromFindClient, image: imageAfter, imageBeforeOrAfter: "imageAfterURL")
         
         let procedureConfiguration: [String: String] = [
-            "nameProcedure": String(procedureName),
-            "costProcedure": String(procedures[procedurePicker.selectedRow(inComponent: 0)].cost ?? 0),
+            "nameProcedure": String(nameProcedure),
+            "costProcedure": String(costProcedure),
             "dateProcedure": String(dateNow),
             "imageBeforeURL": "",
             "imageAfterURL": "",
-            "initials": String(clientInitialsFromFindClient),
+            "initials": client.makeInitials(),
+        ]
 
-        ]
-        
-        let procedureConfigurationToProcedure: [String: String] = [
-            "nameProcedure": String(procedureName),
-            "initials": String(clientInitialsFromFindClient),
-            "costProcedure": String(procedures[procedurePicker.selectedRow(inComponent: 0)].cost ?? 0),
-            "dateProcedure": String(dateNow),
-            "imageBeforeURL": "",
-            "imageAfterURL": ""
-        ]
         
         //Mark: - add new procedure to selected client
-        ref.child("\(uid ?? " ")/clinets/\(clientInitialsLabel.text ?? "error")/procedures/\(procedureName)_\(self.dateNow)/").setValue(procedureConfiguration)
+        ref.child("\(uid ?? " ")/clients/\(client.makeInitials())/procedures/\(nameProcedure)_\(self.dateNow)/").setValue(procedureConfiguration)
         
         //Mark: - add new procedure to branch where all is procedures
-        info = "\(uid ?? " ")/procedures/\(dateNow)-\(procedureName)-\(clientInitialsLabel.text ?? "error")"
-        ref.child(info).setValue(procedureConfigurationToProcedure)
+        info = "\(uid ?? " ")/procedures/\(dateNow)-\(nameProcedure)-\(client.makeInitials())"
+        ref.child(info).setValue(procedureConfiguration)
     }
     
     
@@ -142,7 +138,7 @@ class AddProcedureViewController: UIViewController {
                 storageRef.downloadURL(completion: { (url, error) in
                     guard let downloadURL = url else { return }
                     result = downloadURL.absoluteString
-                    ref.child("\(uid ?? " ")/clinets/\(clientInitials)/procedures/\(procedureName)_\(self.dateNow)/\(imageBeforeOrAfter)").setValue(String(result ?? ""))
+                    ref.child("\(uid ?? " ")/clients/\(clientInitials)/procedures/\(procedureName)_\(self.dateNow)/\(imageBeforeOrAfter)").setValue(String(result ?? ""))
                     ref.child("\(uid ?? " ")/procedures/\(self.dateNow)-\(procedureName)-\(self.clientInitialsLabel.text ?? "error")/\(imageBeforeOrAfter)").setValue(String(result ?? ""))
                     //TODO: - maybe need to know when the image downloaded
                 })
@@ -186,9 +182,6 @@ class AddProcedureViewController: UIViewController {
     }
     
 }
-
-
-
 
 
 extension AddProcedureViewController: UIPickerViewDelegate, UIPickerViewDataSource{

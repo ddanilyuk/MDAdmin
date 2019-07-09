@@ -29,8 +29,13 @@ class OneProcedureViewController: UIViewController {
         beforeImageView.layer.cornerRadius = 64
         afterImageView.layer.cornerRadius = 64
         
-        beforeImageView.loadImageUsingCacheWithUrlString(procedure.imageBeforeURL)
-        afterImageView.loadImageUsingCacheWithUrlString(procedure.imageAfterURL)
+        //Mark: - old downloading images with caching
+        //beforeImageView.loadImageUsingCacheWithUrlString(procedure.imageBeforeURL)
+        //afterImageView.loadImageUsingCacheWithUrlString(procedure.imageAfterURL)
+        
+        beforeImageView.image = ImageStorage.getBeforeProcedureImage(procedure: procedure, imageView: beforeImageView)
+        afterImageView.image = ImageStorage.getAfterProcedureImage(procedure: procedure, imageView: afterImageView)
+
     }
 
     @IBAction func didPressShowBigPictureBefore(_ sender: UIButton) {
