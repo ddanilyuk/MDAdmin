@@ -9,6 +9,10 @@
 import UIKit
 import Firebase
 
+//struct Client: Codable {
+//    let imageUrl: String
+//}
+
 class OneClientViewController: UIViewController {
 
     @IBOutlet weak var clientImage: UIImageView!

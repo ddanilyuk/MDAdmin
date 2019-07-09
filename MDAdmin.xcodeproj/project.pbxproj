@@ -26,6 +26,7 @@
 		D35FC6C822D15A0E007F6E2E /* Procedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35FC6C722D15A0E007F6E2E /* Procedure.swift */; };
 		D35FC6CA22D15CEC007F6E2E /* OneProcedureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35FC6C922D15CEC007F6E2E /* OneProcedureViewController.swift */; };
 		D35FC6CC22D22CD4007F6E2E /* ReadyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35FC6CB22D22CD4007F6E2E /* ReadyViewController.swift */; };
+		D35FC6EE22D3AEBD007F6E2E /* ImageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35FC6ED22D3AEBD007F6E2E /* ImageStorage.swift */; };
 		D3775CC522C8EB520076CD64 /* OneClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3775CC422C8EB520076CD64 /* OneClientViewController.swift */; };
 		D3A3CDB122C7BA1A00378FA4 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A3CDB022C7BA1A00378FA4 /* Settings.swift */; };
 		D3A3CDB322C7C26A00378FA4 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A3CDB222C7C26A00378FA4 /* Client.swift */; };
@@ -60,6 +61,7 @@
 		D35FC6C722D15A0E007F6E2E /* Procedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Procedure.swift; sourceTree = "<group>"; };
 		D35FC6C922D15CEC007F6E2E /* OneProcedureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneProcedureViewController.swift; sourceTree = "<group>"; };
 		D35FC6CB22D22CD4007F6E2E /* ReadyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyViewController.swift; sourceTree = "<group>"; };
+		D35FC6ED22D3AEBD007F6E2E /* ImageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStorage.swift; sourceTree = "<group>"; };
 		D3775CC422C8EB520076CD64 /* OneClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneClientViewController.swift; sourceTree = "<group>"; };
 		D3A3CDB022C7BA1A00378FA4 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		D3A3CDB222C7C26A00378FA4 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 			children = (
 				D32AD8DD22CE66EE00925D1F /* Extencions.swift */,
 				D3C4989322C6968E004EA9CC /* ViewManager.swift */,
+				D35FC6ED22D3AEBD007F6E2E /* ImageStorage.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				D300298822BE53D900AD8786 /* AddClientViewController.swift in Sources */,
 				D32AD8E022CE6FE500925D1F /* BigPictureViewController.swift in Sources */,
 				D3775CC522C8EB520076CD64 /* OneClientViewController.swift in Sources */,
+				D35FC6EE22D3AEBD007F6E2E /* ImageStorage.swift in Sources */,
 				D300298622BE53C900AD8786 /* CalandarViewController.swift in Sources */,
 				D300299122BE83A000AD8786 /* AddViewController.swift in Sources */,
 				D3A3CDB122C7BA1A00378FA4 /* Settings.swift in Sources */,
