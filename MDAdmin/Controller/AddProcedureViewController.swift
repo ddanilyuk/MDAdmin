@@ -27,7 +27,6 @@ class AddProcedureViewController: UIViewController {
     let procedure5 = ListOfProcedures(name: "procedure5", cost: 500)
 
     var procedures = [ListOfProcedures]()
-    var clientInitialsFromFindClient = ""
     var client = Client()
     let imagePicker = UIImagePickerController()
     var imageBefore = UIImage()
@@ -57,6 +56,8 @@ class AddProcedureViewController: UIViewController {
         clientInitialsLabel.text = client.makeInitials()
         beforeImageView.layer.cornerRadius = 64
         afterImageView.layer.cornerRadius = 64
+        
+        self.hideKeyboard()
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd_HH:mm"
@@ -94,8 +95,8 @@ class AddProcedureViewController: UIViewController {
         let nameProcedure = selectedProcedure.name ?? "noProcedure"
         let costProcedure = selectedProcedure.cost ?? 0
         
-        pickUnicalProcedureImageUrl(procedureName: nameProcedure, clientInitials: clientInitialsFromFindClient, image: imageBefore, imageBeforeOrAfter: "imageBeforeURL")
-        pickUnicalProcedureImageUrl(procedureName: nameProcedure, clientInitials: clientInitialsFromFindClient, image: imageAfter, imageBeforeOrAfter: "imageAfterURL")
+        pickUnicalProcedureImageUrl(procedureName: nameProcedure, clientInitials: client.makeInitials(), image: imageBefore, imageBeforeOrAfter: "imageBeforeURL")
+        pickUnicalProcedureImageUrl(procedureName: nameProcedure, clientInitials: client.makeInitials(), image: imageAfter, imageBeforeOrAfter: "imageAfterURL")
         
         let procedureConfiguration: [String: String] = [
             "nameProcedure": String(nameProcedure),

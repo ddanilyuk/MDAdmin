@@ -31,6 +31,9 @@ class ProceduresViewController: UIViewController {
         proceduresTableView.refreshControl = refreshControl
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        getProceduresUpdateTable()
+    }
     
     @objc func updateRefreshControll() {
         procedures = []
@@ -42,6 +45,7 @@ class ProceduresViewController: UIViewController {
         ProcedureManager.shared.getClients { [weak self] procedures in
             guard let this = self else { return }
             
+            this.procedures = []
             var datesProcedures: [String] = []
             this.procedures.forEach({ procedure in
                 datesProcedures.append(procedure.dateProcedure)
