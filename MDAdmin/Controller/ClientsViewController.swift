@@ -66,7 +66,7 @@ class ClientsViewController: UIViewController{
             //this.clients = clients
             self?.newMainLocalClientList = [:]
             //clients = []
-            print(clients)
+            //print(clients)
             for client in clients {
                 
                 let firstLetter = client.getFirstLetter()

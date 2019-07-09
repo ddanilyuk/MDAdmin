@@ -117,7 +117,7 @@ class AddProcedureViewController: UIViewController {
 
         
         //Mark: - add new procedure to selected client
-        ref.child("\(uid ?? " ")/clients/\(client.makeInitials())/procedures/\(nameProcedure)_\(self.dateNow)/").setValue(procedureConfiguration)
+        ref.child("\(uid ?? " ")/clients/\(client.makeInitials())/procedures/\(nameProcedure)_\(self.dateNow)").setValue(procedureConfiguration)
         
         //Mark: - add new procedure to branch where all is procedures
         info = "\(uid ?? " ")/procedures/\(dateNow)-\(nameProcedure)-\(client.makeInitials())"

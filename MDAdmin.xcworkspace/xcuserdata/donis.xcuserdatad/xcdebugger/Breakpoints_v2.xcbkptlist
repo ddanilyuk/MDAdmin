@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDAdmin/Controller/OneClientViewController.swift"
-            timestampString = "584398076.967857"
+            timestampString = "584401114.7598881"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDAdmin/Controller/OneClientViewController.swift"
-            timestampString = "584398076.9679331"
+            timestampString = "584401114.760004"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
@@ -41,13 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MDAdmin/Controller/ClientsViewController.swift"
-            timestampString = "584398076.967991"
+            filePath = "MDAdmin/Controller/OneProcedureViewController.swift"
+            timestampString = "584401114.7600811"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "getClientsUpadateTable()"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "didPressDeleteProcedure(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,13 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MDAdmin/Controller/ClientsViewController.swift"
-            timestampString = "584398076.968042"
+            filePath = "MDAdmin/Controller/OneProcedureViewController.swift"
+            timestampString = "584401114.760147"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "getClientsUpadateTable()"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "didPressDeleteProcedure(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -73,13 +73,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MDAdmin/Controller/FindClientViewController.swift"
-            timestampString = "584398076.968093"
+            filePath = "MDAdmin/Controller/ProceduresViewController.swift"
+            timestampString = "584401114.760214"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "getClientsUpadateTable()"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "getProceduresUpdateTable()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -89,13 +89,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MDAdmin/Controller/FindClientViewController.swift"
-            timestampString = "584398076.968145"
+            filePath = "MDAdmin/Controller/ProceduresViewController.swift"
+            timestampString = "584401114.7602791"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "getClientsUpadateTable()"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "getProceduresUpdateTable()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;MDAdmin.Procedure&gt;) -&gt; () in MDAdmin.ProceduresViewController.getProceduresUpdateTable() -&gt; ()"
+                  moduleName = "MDAdmin"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/donis/Documents/_WebAcademy/MDAdmin/MDAdmin/Controller/ProceduresViewController.swift"
+                  timestampString = "584399975.554942"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "2446">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (MDAdmin.Procedure, MDAdmin.Procedure) -&gt; Swift.Bool in closure #1 (Swift.Array&lt;MDAdmin.Procedure&gt;) -&gt; () in MDAdmin.ProceduresViewController.getProceduresUpdateTable() -&gt; ()"
+                  moduleName = "MDAdmin"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/donis/Documents/_WebAcademy/MDAdmin/MDAdmin/Controller/ProceduresViewController.swift"
+                  timestampString = "584399975.558017"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "37">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MDAdmin/Controller/ProceduresViewController.swift"
+            timestampString = "584401114.760348"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "getProceduresUpdateTable()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -105,13 +153,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MDAdmin/Helpers/ClientManager.swift"
-            timestampString = "584398076.968186"
+            filePath = "MDAdmin/Controller/ProceduresViewController.swift"
+            timestampString = "584401114.760403"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "getClients(completion:)"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "getProceduresUpdateTable()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

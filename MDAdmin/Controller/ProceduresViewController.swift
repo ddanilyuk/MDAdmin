@@ -32,7 +32,12 @@ class ProceduresViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        getProceduresUpdateTable()
+        //getProceduresUpdateTable()
+        let uid = Auth.auth().currentUser?.uid
+        let ref = Database.database().reference()
+        ref.child("\(uid ?? "")/procedures").observe(.childChanged) { procedure in
+            self.proceduresTableView.reloadData()
+        }
     }
     
     @objc func updateRefreshControll() {
@@ -43,7 +48,7 @@ class ProceduresViewController: UIViewController {
     
     func getProceduresUpdateTable() {
         procedures = []
-        ProcedureManager.shared.getClients { [weak self] procedures in
+        ProcedureManager.shared.getProcedure( completion: { [weak self] procedures in
             guard let this = self else { return }
             
             var datesProcedures: [String] = []
@@ -51,20 +56,21 @@ class ProceduresViewController: UIViewController {
 //                datesProcedures.append(procedure.dateProcedure)
 //            })
             
-            
+            var newProcedures: [Procedure] = []
             for procedure in procedures {
                 this.procedures.forEach({ procedure in
                     datesProcedures.append(procedure.dateProcedure)
                 })
                 if !datesProcedures.contains(procedure.dateProcedure) {
-                    this.procedures.append(procedure)
+                    newProcedures.append(procedure)
                 }
                 datesProcedures = []
             }
             
-            this.procedures = this.procedures.sorted(by: {$0.dateProcedure > $1.dateProcedure})
-            this.proceduresTableView.reloadData()
-        }
+            self?.procedures = newProcedures.sorted(by: {$0.dateProcedure > $1.dateProcedure})
+            self?.proceduresTableView.reloadData()
+        })
+        self.proceduresTableView.reloadData()
     }
     
 

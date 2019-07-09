@@ -15,7 +15,7 @@ class ProcedureManager {
     
     var procedures = [Procedure]()
     
-    func getClients(completion: (([Procedure]) -> Void)?) {
+    func getProcedure(completion: (([Procedure]) -> Void)?) {
         
         var tempProcedures = [Procedure]()
         let uid = Auth.auth().currentUser?.uid

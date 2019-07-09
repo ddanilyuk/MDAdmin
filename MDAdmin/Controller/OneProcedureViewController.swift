@@ -51,10 +51,14 @@ class OneProcedureViewController: UIViewController {
         let uid = Auth.auth().currentUser?.uid
         var ref: DatabaseReference!
         ref = Database.database().reference()
+        var ref2: DatabaseReference!
+        ref2 = Database.database().reference()
         let alert = UIAlertController(title: "Удалить?", message: "Вы действительно хотите удалить процедуру?", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Да", style: .destructive, handler: { (_) in
-            ref.child("\(uid ?? " ")/\(self.procedure.initials)/procedures/\(self.procedure.nameProcedure)_\(self.procedure.dateProcedure)").setValue(nil)
-            ref.child("\(uid ?? " ")/procedures/\(self.procedure.dateProcedure)-\(self.procedure.nameProcedure)-\(self.procedure.initials)").setValue(nil)
+            print(self.procedure.nameProcedure)
+            print("\(uid ?? " ")/clients/\(self.procedure.initials)/procedures/\(self.procedure.nameProcedure)_\(self.procedure.dateProcedure)")
+            ref.child("\(uid ?? " ")/clients/\(self.procedure.initials)/procedures/\(self.procedure.nameProcedure)_\(self.procedure.dateProcedure)").setValue(nil)
+            ref2.child("\(uid ?? " ")/procedures/\(self.procedure.dateProcedure)-\(self.procedure.nameProcedure)-\(self.procedure.initials)").setValue(nil)
 
             self.navigationController?.popViewController(animated: true)
         }))
