@@ -16,7 +16,7 @@ class ProceduresViewController: UIViewController {
     let mainLocalProceduresList: [String: String] = [:]
     
     let reuseID = "someReuseID"
-    var listProcedures = [Procedure]()
+    var procedures = [Procedure]()
     var refreshControl = UIRefreshControl()
 
     
@@ -25,41 +25,36 @@ class ProceduresViewController: UIViewController {
         
         proceduresTableView.delegate = self
         proceduresTableView.dataSource = self
-        updateTable()
+        getProceduresUpdateTable()
         
         refreshControl.addTarget(self, action: #selector(updateRefreshControll), for: .valueChanged)
         proceduresTableView.refreshControl = refreshControl
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-    }
-    
-    func updateTable() {
-        let uid = Auth.auth().currentUser?.uid
-        
-        var ref: DatabaseReference!
-        ref = Database.database().reference()
-        
-        ref.child("\(uid ?? " ")/procedures/").observe(.value) { (snapshot) in
-            guard let infoFromServer = snapshot.value as? [String: Any] else { return }
-            
-            for proc in infoFromServer {
-                guard let values = proc.value as? [String: String] else { return }
-                let procedure = Procedure(initials: values["client"] ?? "", nameProcedure: values["procedureName"] ?? "", dateProcedure: values["date"] ?? "", costProcedure: values["cost"] ?? "", imageBeforeURL: values["imageBefore"] ?? "", imageAfterURL: values["imageAfter"] ?? "")
-                //Mark: - иногда появлеться несколько одинаковых процедур (нужно пофиксить)
-                self.listProcedures.append(procedure)
-            }
-            
-            self.listProcedures = self.listProcedures.sorted(by: {$0.dateProcedure > $1.dateProcedure})
-            self.proceduresTableView.reloadData()
-        }
-    }
     
     @objc func updateRefreshControll() {
-        listProcedures = []
-        updateTable()
+        procedures = []
+        getProceduresUpdateTable()
         refreshControl.endRefreshing()
+    }
+    
+    func getProceduresUpdateTable() {
+        ProcedureManager.shared.getClients { [weak self] procedures in
+            guard let this = self else { return }
+            
+            var datesProcedures: [String] = []
+            this.procedures.forEach({ procedure in
+                datesProcedures.append(procedure.dateProcedure)
+            })
+            
+            for procedure in procedures {
+                if !datesProcedures.contains(procedure.dateProcedure) {
+                    this.procedures.append(procedure)
+                }
+            }
+            this.procedures = this.procedures.sorted(by: {$0.dateProcedure > $1.dateProcedure})
+            this.proceduresTableView.reloadData()
+        }
     }
     
 
@@ -67,14 +62,14 @@ class ProceduresViewController: UIViewController {
 
 extension ProceduresViewController:  UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listProcedures.count
+        return procedures.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: reuseID)
         
-        cell.textLabel?.text = listProcedures[indexPath.row].initials
-        let detailText = "\(listProcedures[indexPath.row].nameProcedure) \(listProcedures[indexPath.row].dateProcedure)"
+        cell.textLabel?.text = procedures[indexPath.row].initials
+        let detailText = "\(procedures[indexPath.row].nameProcedure) \(procedures[indexPath.row].dateProcedure)"
         cell.detailTextLabel?.text = detailText
         
         return cell
@@ -90,7 +85,7 @@ extension ProceduresViewController:  UITableViewDataSource, UITableViewDelegate 
         if segue.identifier == "showProceduresDetailFromProcedures" {
             if let indexPath = proceduresTableView.indexPathForSelectedRow {
                 if let destination = segue.destination as? OneProcedureViewController {
-                    destination.procedure = listProcedures[indexPath.row]
+                    destination.procedure = procedures[indexPath.row]
                 }
             }
         }

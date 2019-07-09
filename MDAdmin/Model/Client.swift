@@ -9,33 +9,49 @@
 import UIKit
 
 class Client {
-    private let name: String
-    private let surname: String
-    private let patronymic: String
+    let name: String
+    let surname: String
+    let patronymic: String
+    let imageURL: String
+    let procedures: [Procedure]
     
-    init(name: String, surname: String, patronymic: String) {
+    init(name: String, surname: String, patronymic: String, imageURL: String, procedures: [Procedure]) {
         self.name = name
         self.surname = surname
-        self.patronymic = patronymic   
+        self.patronymic = patronymic
+        self.imageURL = imageURL
+        self.procedures = procedures
+    }
+    
+    init() {
+        self.name = ""
+        self.surname = ""
+        self.patronymic = ""
+        self.imageURL = ""
+        self.procedures = []
     }
     
     func makeInitials() -> String {
         return surname + " " + name + " " + patronymic
     }
     
-    func makeInitialsWithotSpace() -> String {
+    func makeInitialsWithoutSpace() -> String {
         return surname + "_" + name + "_" + patronymic
     }
     
-    func getName() -> String {
-        return name
+    func getFirstLetter() -> String {
+        return String(surname[surname.startIndex])
     }
     
-    func getSurname() -> String {
-        return surname
-    }
-    
-    func getPatronymic() -> String {
-        return patronymic
-    }
+//    func getName() -> String {
+//        return name
+//    }
+//
+//    func getSurname() -> String {
+//        return surname
+//    }
+//
+//    func getPatronymic() -> String {
+//        return patronymic
+//    }
 }

@@ -44,6 +44,9 @@ extension UIImageView {
         }).resume()
     }
     
+
+    
+    
 }
 
 extension UIViewController {
@@ -57,3 +60,13 @@ extension UIViewController {
         view.endEditing(true)
     }
 }
+
+
+
+extension UIImage {
+    static func saveImage(image: UIImage, path: URL) {
+        let pngImageData = image.pngData()
+        try? pngImageData?.write(to: path)
+    }
+}
+

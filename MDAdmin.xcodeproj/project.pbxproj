@@ -20,13 +20,15 @@
 		D300298F22BE820600AD8786 /* AddProcedureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D300298E22BE820600AD8786 /* AddProcedureViewController.swift */; };
 		D300299122BE83A000AD8786 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D300299022BE83A000AD8786 /* AddViewController.swift */; };
 		D300299322C16A5300AD8786 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D300299222C16A5300AD8786 /* GoogleService-Info.plist */; };
-		D32AD8DE22CE66EE00925D1F /* Extencions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32AD8DD22CE66EE00925D1F /* Extencions.swift */; };
+		D32AD8DE22CE66EE00925D1F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32AD8DD22CE66EE00925D1F /* Extensions.swift */; };
 		D32AD8E022CE6FE500925D1F /* BigPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32AD8DF22CE6FE500925D1F /* BigPictureViewController.swift */; };
 		D32AD8E422CE83D500925D1F /* ListOfProcedures.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32AD8E322CE83D500925D1F /* ListOfProcedures.swift */; };
 		D35FC6C822D15A0E007F6E2E /* Procedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35FC6C722D15A0E007F6E2E /* Procedure.swift */; };
 		D35FC6CA22D15CEC007F6E2E /* OneProcedureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35FC6C922D15CEC007F6E2E /* OneProcedureViewController.swift */; };
 		D35FC6CC22D22CD4007F6E2E /* ReadyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35FC6CB22D22CD4007F6E2E /* ReadyViewController.swift */; };
 		D35FC6EE22D3AEBD007F6E2E /* ImageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35FC6ED22D3AEBD007F6E2E /* ImageStorage.swift */; };
+		D35FC6F022D49A3E007F6E2E /* ClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35FC6EF22D49A3E007F6E2E /* ClientManager.swift */; };
+		D35FC6F222D4B6AE007F6E2E /* ProcedureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35FC6F122D4B6AE007F6E2E /* ProcedureManager.swift */; };
 		D3775CC522C8EB520076CD64 /* OneClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3775CC422C8EB520076CD64 /* OneClientViewController.swift */; };
 		D3A3CDB122C7BA1A00378FA4 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A3CDB022C7BA1A00378FA4 /* Settings.swift */; };
 		D3A3CDB322C7C26A00378FA4 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A3CDB222C7C26A00378FA4 /* Client.swift */; };
@@ -55,13 +57,15 @@
 		D300298E22BE820600AD8786 /* AddProcedureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProcedureViewController.swift; sourceTree = "<group>"; };
 		D300299022BE83A000AD8786 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		D300299222C16A5300AD8786 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		D32AD8DD22CE66EE00925D1F /* Extencions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extencions.swift; sourceTree = "<group>"; };
+		D32AD8DD22CE66EE00925D1F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D32AD8DF22CE6FE500925D1F /* BigPictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigPictureViewController.swift; sourceTree = "<group>"; };
 		D32AD8E322CE83D500925D1F /* ListOfProcedures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfProcedures.swift; sourceTree = "<group>"; };
 		D35FC6C722D15A0E007F6E2E /* Procedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Procedure.swift; sourceTree = "<group>"; };
 		D35FC6C922D15CEC007F6E2E /* OneProcedureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneProcedureViewController.swift; sourceTree = "<group>"; };
 		D35FC6CB22D22CD4007F6E2E /* ReadyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyViewController.swift; sourceTree = "<group>"; };
 		D35FC6ED22D3AEBD007F6E2E /* ImageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStorage.swift; sourceTree = "<group>"; };
+		D35FC6EF22D49A3E007F6E2E /* ClientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientManager.swift; sourceTree = "<group>"; };
+		D35FC6F122D4B6AE007F6E2E /* ProcedureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureManager.swift; sourceTree = "<group>"; };
 		D3775CC422C8EB520076CD64 /* OneClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneClientViewController.swift; sourceTree = "<group>"; };
 		D3A3CDB022C7BA1A00378FA4 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		D3A3CDB222C7C26A00378FA4 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
@@ -161,9 +165,11 @@
 		D32AD8DC22CE66C500925D1F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				D32AD8DD22CE66EE00925D1F /* Extencions.swift */,
+				D32AD8DD22CE66EE00925D1F /* Extensions.swift */,
 				D3C4989322C6968E004EA9CC /* ViewManager.swift */,
 				D35FC6ED22D3AEBD007F6E2E /* ImageStorage.swift */,
+				D35FC6EF22D49A3E007F6E2E /* ClientManager.swift */,
+				D35FC6F122D4B6AE007F6E2E /* ProcedureManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -327,11 +333,13 @@
 				D35FC6CA22D15CEC007F6E2E /* OneProcedureViewController.swift in Sources */,
 				D300298822BE53D900AD8786 /* AddClientViewController.swift in Sources */,
 				D32AD8E022CE6FE500925D1F /* BigPictureViewController.swift in Sources */,
+				D35FC6F222D4B6AE007F6E2E /* ProcedureManager.swift in Sources */,
 				D3775CC522C8EB520076CD64 /* OneClientViewController.swift in Sources */,
 				D35FC6EE22D3AEBD007F6E2E /* ImageStorage.swift in Sources */,
 				D300298622BE53C900AD8786 /* CalandarViewController.swift in Sources */,
 				D300299122BE83A000AD8786 /* AddViewController.swift in Sources */,
 				D3A3CDB122C7BA1A00378FA4 /* Settings.swift in Sources */,
+				D35FC6F022D49A3E007F6E2E /* ClientManager.swift in Sources */,
 				D300298F22BE820600AD8786 /* AddProcedureViewController.swift in Sources */,
 				D32AD8E422CE83D500925D1F /* ListOfProcedures.swift in Sources */,
 				D300298D22BE63DD00AD8786 /* ProceduresViewController.swift in Sources */,
@@ -341,7 +349,7 @@
 				D3A3CDB322C7C26A00378FA4 /* Client.swift in Sources */,
 				D35FC6CC22D22CD4007F6E2E /* ReadyViewController.swift in Sources */,
 				D300296822BA89BE00AD8786 /* AppDelegate.swift in Sources */,
-				D32AD8DE22CE66EE00925D1F /* Extencions.swift in Sources */,
+				D32AD8DE22CE66EE00925D1F /* Extensions.swift in Sources */,
 				D3BA1DC322C21B470089690C /* SignedInViewController.swift in Sources */,
 				D3C4989622C7B18F004EA9CC /* LoginSecondViewController.swift in Sources */,
 				D300298A22BE53E500AD8786 /* SettingsViewController.swift in Sources */,

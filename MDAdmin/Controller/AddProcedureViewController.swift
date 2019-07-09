@@ -89,24 +89,26 @@ class AddProcedureViewController: UIViewController {
         guard let imageBefore =  beforeImageView.image , let imageAfter = afterImageView.image else { return }
         let procedureName = procedures[procedurePicker.selectedRow(inComponent: 0)].name ?? "noProcedure"
         
-        pickUnicalProcedureImageUrl(procedureName: procedureName, clientInitials: clientInitialsFromFindClient, image: imageBefore, imageBeforeOrAfter: "imageBefore")
-        pickUnicalProcedureImageUrl(procedureName: procedureName, clientInitials: clientInitialsFromFindClient, image: imageAfter, imageBeforeOrAfter: "imageAfter")
+        pickUnicalProcedureImageUrl(procedureName: procedureName, clientInitials: clientInitialsFromFindClient, image: imageBefore, imageBeforeOrAfter: "imageBeforeURL")
+        pickUnicalProcedureImageUrl(procedureName: procedureName, clientInitials: clientInitialsFromFindClient, image: imageAfter, imageBeforeOrAfter: "imageAfterURL")
         
         let procedureConfiguration: [String: String] = [
-            "procedureName": String(procedureName),
-            "cost": String(procedures[procedurePicker.selectedRow(inComponent: 0)].cost ?? 0),
-            "date": String(dateNow),
-            "imageBefore": "none",
-            "imageAfter": "none"
+            "nameProcedure": String(procedureName),
+            "costProcedure": String(procedures[procedurePicker.selectedRow(inComponent: 0)].cost ?? 0),
+            "dateProcedure": String(dateNow),
+            "imageBeforeURL": "",
+            "imageAfterURL": "",
+            "initials": String(clientInitialsFromFindClient),
+
         ]
         
         let procedureConfigurationToProcedure: [String: String] = [
-            "procedureName": String(procedureName),
-            "client": String(clientInitialsFromFindClient),
-            "cost": String(procedures[procedurePicker.selectedRow(inComponent: 0)].cost ?? 0),
-            "date": String(dateNow),
-            "imageBefore": "none",
-            "imageAfter": "none"
+            "nameProcedure": String(procedureName),
+            "initials": String(clientInitialsFromFindClient),
+            "costProcedure": String(procedures[procedurePicker.selectedRow(inComponent: 0)].cost ?? 0),
+            "dateProcedure": String(dateNow),
+            "imageBeforeURL": "",
+            "imageAfterURL": ""
         ]
         
         //Mark: - add new procedure to selected client

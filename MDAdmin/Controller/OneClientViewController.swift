@@ -24,11 +24,18 @@ class OneClientViewController: UIViewController {
     
     var initials: String = ""
     var fullData: [String: [String: Any]] = [:]
+    var proceduresArray: [String: Any] = [:]
     var nameClient: String = ""
     var surnameClient: String = ""
     var patronymicClient: String = ""
     var imageURLClient: String = ""
-    var proceduresArray: [String: Any] = [:]
+    
+    
+    var newProceduresArray: [Procedure] = []
+    
+    var client: Client = Client()
+    
+    
     var reuseID = "newReuseID"
     var listProcedures = [Procedure]()
     
@@ -41,18 +48,28 @@ class OneClientViewController: UIViewController {
         super.viewDidLoad()
         clientImage.layer.cornerRadius = 75
 
-        navBarNameClient.title = initials
-        decodeFullData(initials: initials)
+        navBarNameClient.title = client.makeInitials()
+        //decodeFullData(initials: initials)
         
-        clientNameLabel.text = nameClient
-        clientSurnameLabel.text = surnameClient
-        clientPatrynomicLabel.text = patronymicClient
+        clientNameLabel.text = client.name
+        clientSurnameLabel.text = client.surname
+        clientPatrynomicLabel.text = client.patronymic
+        
+        print(client.procedures)
+        listProcedures = client.procedures
+        
+        
+        
+        self.listProcedures = self.listProcedures.sorted(by: {$0.dateProcedure > $1.dateProcedure})
+        self.proceduresTableView.reloadData()
         
         //Mark: - another way to download image
         //guard let url = URL(string: imageURLClient) else { return }
         //downloadImage(from: url)
         
-        clientImage.loadImageUsingCacheWithUrlString(imageURLClient)
+        //Mark: - another way to download image with caching
+        //clientImage.loadImageUsingCacheWithUrlString(client.imageURL)
+        clientImage.image = ImageStorage.getClientImage(client: client, imageView: clientImage)
         
         proceduresTableView.delegate = self
         proceduresTableView.dataSource = self
@@ -75,35 +92,13 @@ class OneClientViewController: UIViewController {
             }
         }
     }
-    
-    
-    func decodeFullData(initials: String) {
-        var arrayArguments: [String: Any] = fullData[String(self.initials)] ?? [:]
-        //print("arrayArguments -> ", arrayArguments)
-        nameClient = arrayArguments["name"] as? String ?? ""
-        surnameClient = arrayArguments["surname"] as? String ?? ""
-        patronymicClient = arrayArguments["patronymic"] as? String ?? ""
-        imageURLClient = arrayArguments["imageURL"] as? String ?? ""
-        
-        proceduresArray = arrayArguments["procedures"] as? [String: Any] ?? [:]
-        
-        for proc in proceduresArray {
-            guard let values = proc.value as? [String: String] else { return }
-            let procedure = Procedure(initials: values["client"] ?? "", nameProcedure: values["procedureName"] ?? "", dateProcedure: values["date"] ?? "", costProcedure: values["cost"] ?? "", imageBeforeURL: values["imageBefore"] ?? "", imageAfterURL: values["imageAfter"] ?? "")
-            self.listProcedures.append(procedure)
-        }
-        
-        self.listProcedures = self.listProcedures.sorted(by: {$0.dateProcedure > $1.dateProcedure})
-        self.proceduresTableView.reloadData()
-    }
-
 
 }
 
 
 extension OneClientViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return proceduresArray.count
+        return listProcedures.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

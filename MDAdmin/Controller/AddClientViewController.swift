@@ -64,10 +64,10 @@ class AddClientViewController: UIViewController {
         //Mark: - Making new client With class Clint (class can be deleted)
         if !nameEntered.isEmpty && !surnameEntered.isEmpty && !patronymicEntered.isEmpty && clientPhoto.image != nil{
             
-            let client = Client(name: nameEntered, surname: surnameEntered, patronymic: patronymicEntered)
+            let client = Client(name: nameEntered, surname: surnameEntered, patronymic: patronymicEntered, imageURL: "", procedures: [])
             
             let clientInitials = client.makeInitials()
-            let clinetInitialsWithoutSpacing = client.makeInitialsWithotSpace()
+            let clinetInitialsWithoutSpacing = client.makeInitialsWithoutSpace()
             
             var ref: DatabaseReference!
             ref = Database.database().reference()
@@ -77,9 +77,9 @@ class AddClientViewController: UIViewController {
 
             //Mark: - client configuration which will be downloaded to server
             let clientConfiguration: [String: String] = [
-                                                "surname": String(client.getSurname()),
-                                                "name": String(client.getName()),
-                                                "patronymic": String(client.getPatronymic()),
+                                                "surname": String(client.surname),
+                                                "name": String(client.name),
+                                                "patronymic": String(client.patronymic),
                                                 "imageURL": ""
             ]
             ref.child("\(uid ?? " ")/clinets/\(clientInitials)").setValue(clientConfiguration)
