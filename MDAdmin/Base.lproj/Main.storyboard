@@ -142,10 +142,13 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CP7-IC-cji">
-                                <rect key="frame" x="160" y="699" width="55" height="30"/>
-                                <state key="normal" title="DELETE">
+                                <rect key="frame" x="158.66666666666666" y="699" width="58" height="30"/>
+                                <state key="normal" title="Удалить">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="didPressDeleteClient:" destination="VVx-Td-w6P" eventType="touchUpInside" id="2G1-40-Ugk"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -305,8 +308,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Клиент" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lYm-Oy-ufn">
-                                <rect key="frame" x="0.0" y="113" width="375" height="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Клиент" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lYm-Oy-ufn">
+                                <rect key="frame" x="94" y="113" width="281" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="WpX-Zh-DaO"/>
                                 </constraints>
@@ -322,8 +325,8 @@
                                 <rect key="frame" x="29" y="454" width="128" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4sl-xu-Qd3">
-                                <rect key="frame" x="0.0" y="163" width="375" height="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4sl-xu-Qd3">
+                                <rect key="frame" x="94" y="163" width="281" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="8Ud-hF-8GJ"/>
                                 </constraints>
@@ -331,8 +334,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Цена" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35X-sD-IF2">
-                                <rect key="frame" x="0.0" y="213" width="375" height="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Цена" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35X-sD-IF2">
+                                <rect key="frame" x="94" y="213" width="281" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="IXh-df-Ksf"/>
                                 </constraints>
@@ -370,14 +373,45 @@
                                     <segue destination="qm0-F8-2kM" kind="show" identifier="showBigPictureAfter" id="TQg-nz-Dp3"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Клиент:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j9K-B5-pJ6">
+                                <rect key="frame" x="16" y="115" width="63" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Дата:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODv-ff-MP3">
+                                <rect key="frame" x="16" y="165" width="44" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Цена:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwJ-uS-ahr">
+                                <rect key="frame" x="16" y="213" width="46" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RE3-0S-Yko">
+                                <rect key="frame" x="158" y="684" width="58" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Удалить">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="didPressDeleteProcedure:" destination="h8C-MG-LFg" eventType="touchUpInside" id="PNt-Zb-iAn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="tKX-CL-Z5w" firstAttribute="trailing" secondItem="4sl-xu-Qd3" secondAttribute="trailing" id="8vd-sW-f8v"/>
-                            <constraint firstItem="35X-sD-IF2" firstAttribute="leading" secondItem="tKX-CL-Z5w" secondAttribute="leading" id="AXx-7O-JFE"/>
-                            <constraint firstItem="4sl-xu-Qd3" firstAttribute="leading" secondItem="tKX-CL-Z5w" secondAttribute="leading" id="BYM-Wd-xYP"/>
+                            <constraint firstItem="35X-sD-IF2" firstAttribute="leading" secondItem="tKX-CL-Z5w" secondAttribute="leading" constant="94" id="AXx-7O-JFE"/>
+                            <constraint firstItem="4sl-xu-Qd3" firstAttribute="leading" secondItem="tKX-CL-Z5w" secondAttribute="leading" constant="94" id="BYM-Wd-xYP"/>
                             <constraint firstItem="35X-sD-IF2" firstAttribute="top" secondItem="4sl-xu-Qd3" secondAttribute="bottom" constant="25" id="FZM-DE-IJz"/>
-                            <constraint firstItem="lYm-Oy-ufn" firstAttribute="leading" secondItem="tKX-CL-Z5w" secondAttribute="leading" id="dWE-yR-2FL"/>
+                            <constraint firstItem="lYm-Oy-ufn" firstAttribute="leading" secondItem="tKX-CL-Z5w" secondAttribute="leading" constant="94" id="dWE-yR-2FL"/>
                             <constraint firstItem="4sl-xu-Qd3" firstAttribute="top" secondItem="lYm-Oy-ufn" secondAttribute="bottom" constant="25" id="dwa-LE-Loj"/>
                             <constraint firstItem="tKX-CL-Z5w" firstAttribute="trailing" secondItem="lYm-Oy-ufn" secondAttribute="trailing" id="hXf-hY-CVD"/>
                             <constraint firstItem="tKX-CL-Z5w" firstAttribute="trailing" secondItem="35X-sD-IF2" secondAttribute="trailing" id="jH0-9Z-2OR"/>
@@ -1027,7 +1061,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="fFu-8k-yeK"/>
-        <segue reference="igS-Ay-Eq9"/>
+        <segue reference="ujh-1E-lwc"/>
         <segue reference="Uv8-8q-G3i"/>
     </inferredMetricsTieBreakers>
 </document>

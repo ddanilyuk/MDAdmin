@@ -20,11 +20,11 @@ class AddProcedureViewController: UIViewController {
     @IBOutlet weak var procedurePicker: UIPickerView!
     
     //TODO: - NEED TO USE PROCEDURE FROM SETTINGS
-    let procedure1 = ListOfProcedures(name: "procedure1", cost: 100)
-    let procedure2 = ListOfProcedures(name: "procedure2", cost: 200)
-    let procedure3 = ListOfProcedures(name: "procedure3", cost: 300)
-    let procedure4 = ListOfProcedures(name: "procedure4", cost: 400)
-    let procedure5 = ListOfProcedures(name: "procedure5", cost: 500)
+    let procedure1 = ListOfProcedures(name: "Процедура1", cost: 100)
+    let procedure2 = ListOfProcedures(name: "Процедура2", cost: 200)
+    let procedure3 = ListOfProcedures(name: "Процедура3", cost: 300)
+    let procedure4 = ListOfProcedures(name: "Процедура4", cost: 400)
+    let procedure5 = ListOfProcedures(name: "Процедура5", cost: 500)
 
     var procedures = [ListOfProcedures]()
     var client = Client()
@@ -35,6 +35,7 @@ class AddProcedureViewController: UIViewController {
 
 
     var dateNow = ""
+    var dateForUser = ""
     var isTapImageBefore: Bool =  false
     var isTapImageAfter: Bool = false
 
@@ -60,8 +61,13 @@ class AddProcedureViewController: UIViewController {
         self.hideKeyboard()
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd_HH:mm"
+        dateFormatter.dateFormat = "yyyy-MM-dd-HH-mm"
         dateNow = dateFormatter.string(from: Date())
+        
+        let dateFormatter2 = DateFormatter()
+        dateFormatter2.dateFormat = "H:mm d MMM yyyy"
+        dateForUser = dateFormatter2.string(from: Date())
+        
         if let procedureCost = procedures[procedurePicker.selectedRow(inComponent: 0)].cost {
             costLabel.text = String(procedureCost)
         }
@@ -81,6 +87,7 @@ class AddProcedureViewController: UIViewController {
     
     @IBAction func didPressEditCost(_ sender: UIButton) {
         //TODO: - NEED TO DO
+        costLabel.text = editCostTextField.text
     }
     
     @IBAction func didPressAddProcedure(_ sender: UIButton) {
@@ -93,15 +100,16 @@ class AddProcedureViewController: UIViewController {
         let selectedProcedure = procedures[procedurePicker.selectedRow(inComponent: 0)]
         
         let nameProcedure = selectedProcedure.name ?? "noProcedure"
-        let costProcedure = selectedProcedure.cost ?? 0
+        //let costProcedure = selectedProcedure.cost ?? 0
         
         pickUnicalProcedureImageUrl(procedureName: nameProcedure, clientInitials: client.makeInitials(), image: imageBefore, imageBeforeOrAfter: "imageBeforeURL")
         pickUnicalProcedureImageUrl(procedureName: nameProcedure, clientInitials: client.makeInitials(), image: imageAfter, imageBeforeOrAfter: "imageAfterURL")
         
         let procedureConfiguration: [String: String] = [
             "nameProcedure": String(nameProcedure),
-            "costProcedure": String(costProcedure),
+            "costProcedure": String(costLabel.text ?? "0"),
             "dateProcedure": String(dateNow),
+            "dateProcedureForUser": String(dateForUser),
             "imageBeforeURL": "",
             "imageAfterURL": "",
             "initials": client.makeInitials(),

@@ -32,6 +32,7 @@ class ProcedureManager {
                 let procedure = Procedure(initials: value["initials"] ?? " ",
                                           nameProcedure: value["nameProcedure"] ?? " ",
                                           dateProcedure: value["dateProcedure"] ?? " ",
+                                          dateProcedureForUser: value["dateProcedureForUser"] ?? " ",
                                           costProcedure: value["costProcedure"] ?? " ",
                                           imageBeforeURL: value["imageBeforeURL"] ?? " ",
                                           imageAfterURL: value["imageAfterURL"] ?? " ")

@@ -75,6 +75,29 @@ class OneClientViewController: UIViewController {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
 
+    @IBAction func didPressDeleteClient(_ sender: UIButton) {
+    
+        let uid = Auth.auth().currentUser?.uid
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        let alert = UIAlertController(title: "Удалить?", message: "Вы действительно хотите удалить клиента?", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Да", style: .destructive, handler: { (_) in
+            ref.child("\(uid ?? " ")/clients/\(self.client.makeInitials())").setValue(nil)
+            self.navigationController?.popViewController(animated: true)
+            
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: { (_) in
+        }))
+        
+        self.present(alert, animated: true, completion: {
+        })
+//        ref.child("\(uid ?? " ")/clients/\(client.makeInitials())").setValue(nil)
+//        navigationController?.popViewController(animated: true)
+
+    }
+    
+    
     
     func downloadImage(from url: URL) {
         print("Download Started")

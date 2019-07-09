@@ -12,6 +12,7 @@ struct Procedure {
     var initials: String
     var nameProcedure: String
     var dateProcedure: String
+    var dateProcedureForUser: String
     var costProcedure: String
     var imageBeforeURL: String
     var imageAfterURL: String

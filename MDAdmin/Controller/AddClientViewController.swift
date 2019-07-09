@@ -82,8 +82,8 @@ class AddClientViewController: UIViewController {
                                                 "patronymic": String(client.patronymic),
                                                 "imageURL": ""
             ]
-            ref.child("\(uid ?? " ")/clients/\(clientInitials)").setValue(clientConfiguration)
             info = "\(uid ?? " ")/clients/\(clientInitials)"
+            ref.child(info).setValue(clientConfiguration)
         } else {
             showAlert()
         }

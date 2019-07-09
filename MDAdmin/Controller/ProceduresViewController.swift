@@ -42,20 +42,26 @@ class ProceduresViewController: UIViewController {
     }
     
     func getProceduresUpdateTable() {
+        procedures = []
         ProcedureManager.shared.getClients { [weak self] procedures in
             guard let this = self else { return }
             
-            this.procedures = []
             var datesProcedures: [String] = []
-            this.procedures.forEach({ procedure in
-                datesProcedures.append(procedure.dateProcedure)
-            })
+//            this.procedures.forEach({ procedure in
+//                datesProcedures.append(procedure.dateProcedure)
+//            })
+            
             
             for procedure in procedures {
+                this.procedures.forEach({ procedure in
+                    datesProcedures.append(procedure.dateProcedure)
+                })
                 if !datesProcedures.contains(procedure.dateProcedure) {
                     this.procedures.append(procedure)
                 }
+                datesProcedures = []
             }
+            
             this.procedures = this.procedures.sorted(by: {$0.dateProcedure > $1.dateProcedure})
             this.proceduresTableView.reloadData()
         }
@@ -73,7 +79,7 @@ extension ProceduresViewController:  UITableViewDataSource, UITableViewDelegate 
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: reuseID)
         
         cell.textLabel?.text = procedures[indexPath.row].initials
-        let detailText = "\(procedures[indexPath.row].nameProcedure) \(procedures[indexPath.row].dateProcedure)"
+        let detailText = "\(procedures[indexPath.row].nameProcedure) \(procedures[indexPath.row].dateProcedureForUser)"
         cell.detailTextLabel?.text = detailText
         
         return cell

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class OneProcedureViewController: UIViewController {
     @IBOutlet weak var clientName: UILabel!
@@ -17,14 +18,14 @@ class OneProcedureViewController: UIViewController {
     @IBOutlet weak var titleNavItem: UINavigationItem!
     
     
-    var procedure: Procedure = Procedure(initials: "", nameProcedure: "", dateProcedure: "", costProcedure: "", imageBeforeURL: "", imageAfterURL: "")
+    var procedure: Procedure = Procedure(initials: "", nameProcedure: "", dateProcedure: "", dateProcedureForUser: "", costProcedure: "", imageBeforeURL: "", imageAfterURL: "")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         clientName.text = procedure.initials
         titleNavItem.title = procedure.nameProcedure
-        dateLabel.text = procedure.dateProcedure
-        costLabel.text = procedure.costProcedure
+        dateLabel.text = procedure.dateProcedureForUser
+        costLabel.text = "\(procedure.costProcedure) грн"
         
         beforeImageView.layer.cornerRadius = 64
         afterImageView.layer.cornerRadius = 64
@@ -46,6 +47,27 @@ class OneProcedureViewController: UIViewController {
         
     }
     
+    @IBAction func didPressDeleteProcedure(_ sender: UIButton) {
+        let uid = Auth.auth().currentUser?.uid
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        let alert = UIAlertController(title: "Удалить?", message: "Вы действительно хотите удалить процедуру?", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Да", style: .destructive, handler: { (_) in
+            ref.child("\(uid ?? " ")/\(self.procedure.initials)/procedures/\(self.procedure.nameProcedure)_\(self.procedure.dateProcedure)").setValue(nil)
+            ref.child("\(uid ?? " ")/procedures/\(self.procedure.dateProcedure)-\(self.procedure.nameProcedure)-\(self.procedure.initials)").setValue(nil)
+
+            self.navigationController?.popViewController(animated: true)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: { (_) in
+        }))
+        
+        self.present(alert, animated: true, completion: {
+        })
+        //        ref.child("\(uid ?? " ")/clients/\(client.makeInitials())").setValue(nil)
+        //        navigationController?.popViewController(animated: true)
+
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
