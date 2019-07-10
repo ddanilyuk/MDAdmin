@@ -18,6 +18,7 @@ class OneProcedureViewController: UIViewController {
     @IBOutlet weak var titleNavItem: UINavigationItem!
     
     
+    
     var procedure: Procedure = Procedure(initials: "", nameProcedure: "", dateProcedure: "", dateProcedureForUser: "", costProcedure: "", imageBeforeURL: "", imageAfterURL: "")
     
     override func viewDidLoad() {

@@ -22,6 +22,8 @@ class OneClientViewController: UIViewController {
     @IBOutlet weak var navBarNameClient: UINavigationItem!
     @IBOutlet weak var proceduresTableView: UITableView!
     
+    @IBOutlet weak var clientNameTextField: UITextField!
+    @IBOutlet weak var editBarButton: UIBarButtonItem!
     
     
     var newProceduresArray: [Procedure] = []
@@ -47,13 +49,15 @@ class OneClientViewController: UIViewController {
         //decodeFullData(initials: initials)
         
         clientNameLabel.text = client.name
+        //clientNameTextField.text = client.name
+        
         clientSurnameLabel.text = client.surname
         clientPatrynomicLabel.text = client.patronymic
         
         print(client.procedures)
         listProcedures = client.procedures
         
-        
+        self.hideKeyboard()
         
         self.listProcedures = self.listProcedures.sorted(by: {$0.dateProcedure > $1.dateProcedure})
         self.proceduresTableView.reloadData()
@@ -70,6 +74,46 @@ class OneClientViewController: UIViewController {
         proceduresTableView.dataSource = self
     }
     
+    @IBAction func didPressEdit(_ sender: UIBarButtonItem) {
+        isEditing = isEditing == true ? false : true
+        if isEditing {
+            clientNameTextField.isEnabled = true
+            clientNameTextField.borderStyle = .roundedRect
+            editBarButton.title = "Готово"
+            
+            
+            
+            
+            
+            
+            
+            
+        } else {
+            let uid = Auth.auth().currentUser?.uid
+            var ref: DatabaseReference!
+            ref = Database.database().reference()
+            
+            let alert = UIAlertController(title: "Сохранить?", message: "Вы действительно сохранить?", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Да", style: .destructive, handler: { (_) in
+                let newClientName = self.clientNameTextField.text ?? ""
+                ref.child("\(uid ?? " ")/clients/\(self.client.makeInitials())/name").setValue(newClientName)
+                //self.navigationController?.popViewController(animated: true)
+                
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: { (_) in
+            }))
+            
+            self.present(alert, animated: true, completion: {
+            })
+            
+            
+            clientNameTextField.isEnabled = false
+            clientNameTextField.borderStyle = .none
+            editBarButton.title = "Править"
+            navigationController?.navigationBar.endEditing(true)
+        }
+    }
     
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()

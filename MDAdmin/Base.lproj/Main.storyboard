@@ -150,6 +150,13 @@
                                     <action selector="didPressDeleteClient:" destination="VVx-Td-w6P" eventType="touchUpInside" id="2G1-40-Ugk"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="fill" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xBD-DF-2TR">
+                                <rect key="frame" x="16" y="286" width="150" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -178,13 +185,19 @@
                         <viewLayoutGuide key="safeArea" id="Iay-pJ-dgh"/>
                     </view>
                     <navigationItem key="navigationItem" title="Имя клиента" largeTitleDisplayMode="never" id="jDj-hv-7fy">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="bfF-yO-9Nh"/>
+                        <barButtonItem key="rightBarButtonItem" title="Править" id="bfF-yO-9Nh">
+                            <connections>
+                                <action selector="didPressEdit:" destination="VVx-Td-w6P" id="JQw-Nn-ppP"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="clientImage" destination="RGp-JE-otD" id="Idk-fG-04C"/>
                         <outlet property="clientNameLabel" destination="IXv-Rd-jQV" id="39e-wg-BhR"/>
+                        <outlet property="clientNameTextField" destination="xBD-DF-2TR" id="6JY-ve-ECb"/>
                         <outlet property="clientPatrynomicLabel" destination="Svz-DM-Cf8" id="5RU-j2-MIj"/>
                         <outlet property="clientSurnameLabel" destination="Rbm-K1-t8g" id="fh2-jO-39e"/>
+                        <outlet property="editBarButton" destination="bfF-yO-9Nh" id="5FE-aH-Ial"/>
                         <outlet property="navBarNameClient" destination="jDj-hv-7fy" id="nYt-xg-T6J"/>
                         <outlet property="proceduresTableView" destination="GkI-At-kG4" id="hMa-5N-xQq"/>
                         <segue destination="h8C-MG-LFg" kind="show" identifier="showProceduresDetailFromClient" id="ujh-1E-lwc"/>
@@ -192,7 +205,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F10-hn-nbS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1250" y="1748"/>
+            <point key="canvasLocation" x="-1250.4000000000001" y="1747.536945812808"/>
         </scene>
         <!--Процедуры-->
         <scene sceneID="EYN-cB-4g6">
@@ -1062,6 +1075,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="fFu-8k-yeK"/>
         <segue reference="ujh-1E-lwc"/>
-        <segue reference="Uv8-8q-G3i"/>
+        <segue reference="33i-xg-puq"/>
     </inferredMetricsTieBreakers>
 </document>
