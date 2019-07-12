@@ -109,27 +109,6 @@
                                     <constraint firstAttribute="height" constant="150" id="Yuu-vw-vEC"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Surname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rbm-K1-t8g">
-                                <rect key="frame" x="182" y="173" width="193" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Patrynomic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Svz-DM-Cf8">
-                                <rect key="frame" x="182" y="237" width="177" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IXv-Rd-jQV">
-                                <rect key="frame" x="182" y="108" width="177" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="Vse-VB-7MM"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m40-e8-J3E">
                                 <rect key="frame" x="16" y="108" width="150" height="150"/>
                                 <connections>
@@ -150,8 +129,22 @@
                                     <action selector="didPressDeleteClient:" destination="VVx-Td-w6P" eventType="touchUpInside" id="2G1-40-Ugk"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="fill" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xBD-DF-2TR">
-                                <rect key="frame" x="16" y="286" width="150" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="fill" text="Patrynomic" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4F3-er-qKc">
+                                <rect key="frame" x="188" y="228" width="171" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="fill" text="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QHH-Tc-Fbe">
+                                <rect key="frame" x="188" y="108" width="171" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="fill" text="Surname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gbC-8B-7NB">
+                                <rect key="frame" x="188" y="168" width="171" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -162,24 +155,15 @@
                         <constraints>
                             <constraint firstItem="CP7-IC-cji" firstAttribute="top" secondItem="GkI-At-kG4" secondAttribute="bottom" id="0HD-ZA-769"/>
                             <constraint firstItem="RGp-JE-otD" firstAttribute="leading" secondItem="M8H-cD-v33" secondAttribute="leadingMargin" id="8xd-X0-1zH"/>
-                            <constraint firstItem="Rbm-K1-t8g" firstAttribute="leading" secondItem="RGp-JE-otD" secondAttribute="trailing" constant="16" id="DS4-be-It4"/>
-                            <constraint firstItem="Rbm-K1-t8g" firstAttribute="top" secondItem="IXv-Rd-jQV" secondAttribute="bottom" constant="44" id="Eub-jR-mdt"/>
                             <constraint firstItem="Iay-pJ-dgh" firstAttribute="trailing" secondItem="GkI-At-kG4" secondAttribute="trailing" id="F3v-Sc-g9e"/>
                             <constraint firstItem="GkI-At-kG4" firstAttribute="top" secondItem="RGp-JE-otD" secondAttribute="bottom" constant="100" id="H1f-6s-fLg"/>
-                            <constraint firstItem="RGp-JE-otD" firstAttribute="bottom" secondItem="Svz-DM-Cf8" secondAttribute="bottom" id="H8Q-8E-ZMS"/>
-                            <constraint firstItem="IXv-Rd-jQV" firstAttribute="trailing" secondItem="M8H-cD-v33" secondAttribute="trailingMargin" id="HKR-cX-tU9"/>
                             <constraint firstItem="RGp-JE-otD" firstAttribute="top" secondItem="Iay-pJ-dgh" secondAttribute="top" constant="20" id="HN7-UZ-XFD"/>
                             <constraint firstItem="RGp-JE-otD" firstAttribute="leading" secondItem="m40-e8-J3E" secondAttribute="leading" id="QT9-Dz-xig"/>
                             <constraint firstItem="RGp-JE-otD" firstAttribute="top" secondItem="m40-e8-J3E" secondAttribute="top" id="V4p-jE-qpB"/>
                             <constraint firstItem="CP7-IC-cji" firstAttribute="bottom" secondItem="Iay-pJ-dgh" secondAttribute="bottom" id="Vle-xo-ISl"/>
-                            <constraint firstItem="IXv-Rd-jQV" firstAttribute="trailing" secondItem="Svz-DM-Cf8" secondAttribute="trailing" id="Wal-QC-ots"/>
                             <constraint firstItem="m40-e8-J3E" firstAttribute="height" secondItem="RGp-JE-otD" secondAttribute="height" id="XGz-6x-jXZ"/>
                             <constraint firstItem="CP7-IC-cji" firstAttribute="centerX" secondItem="GkI-At-kG4" secondAttribute="centerX" id="Zsr-mH-Xxi"/>
-                            <constraint firstItem="IXv-Rd-jQV" firstAttribute="leading" secondItem="Rbm-K1-t8g" secondAttribute="leading" id="hNx-TI-I2K"/>
                             <constraint firstItem="m40-e8-J3E" firstAttribute="width" secondItem="RGp-JE-otD" secondAttribute="width" id="lIu-js-fNS"/>
-                            <constraint firstItem="RGp-JE-otD" firstAttribute="top" secondItem="IXv-Rd-jQV" secondAttribute="top" id="lV9-2b-U2n"/>
-                            <constraint firstItem="RGp-JE-otD" firstAttribute="centerY" secondItem="Rbm-K1-t8g" secondAttribute="centerY" id="mfZ-9K-YwI"/>
-                            <constraint firstItem="IXv-Rd-jQV" firstAttribute="leading" secondItem="Svz-DM-Cf8" secondAttribute="leading" id="ug4-IG-EAg"/>
                             <constraint firstItem="GkI-At-kG4" firstAttribute="leading" secondItem="Iay-pJ-dgh" secondAttribute="leading" id="zXI-HP-NVX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Iay-pJ-dgh"/>
@@ -193,10 +177,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="clientImage" destination="RGp-JE-otD" id="Idk-fG-04C"/>
-                        <outlet property="clientNameLabel" destination="IXv-Rd-jQV" id="39e-wg-BhR"/>
-                        <outlet property="clientNameTextField" destination="xBD-DF-2TR" id="6JY-ve-ECb"/>
-                        <outlet property="clientPatrynomicLabel" destination="Svz-DM-Cf8" id="5RU-j2-MIj"/>
-                        <outlet property="clientSurnameLabel" destination="Rbm-K1-t8g" id="fh2-jO-39e"/>
+                        <outlet property="clientNameTextField" destination="QHH-Tc-Fbe" id="aSR-k3-dia"/>
+                        <outlet property="clientPatrynomicTextField" destination="4F3-er-qKc" id="o0a-it-8Mb"/>
+                        <outlet property="clientSurnameTextField" destination="gbC-8B-7NB" id="StG-yM-IgM"/>
                         <outlet property="editBarButton" destination="bfF-yO-9Nh" id="5FE-aH-Ial"/>
                         <outlet property="navBarNameClient" destination="jDj-hv-7fy" id="nYt-xg-T6J"/>
                         <outlet property="proceduresTableView" destination="GkI-At-kG4" id="hMa-5N-xQq"/>
@@ -1075,6 +1058,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="fFu-8k-yeK"/>
         <segue reference="ujh-1E-lwc"/>
-        <segue reference="33i-xg-puq"/>
+        <segue reference="Uv8-8q-G3i"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -16,13 +16,18 @@ import Firebase
 class OneClientViewController: UIViewController {
 
     @IBOutlet weak var clientImage: UIImageView!
-    @IBOutlet weak var clientNameLabel: UILabel!
-    @IBOutlet weak var clientSurnameLabel: UILabel!
-    @IBOutlet weak var clientPatrynomicLabel: UILabel!
+//    @IBOutlet weak var clientNameLabel: UILabel!
+//    @IBOutlet weak var clientSurnameLabel: UILabel!
+//    @IBOutlet weak var clientPatrynomicLabel: UILabel!
     @IBOutlet weak var navBarNameClient: UINavigationItem!
     @IBOutlet weak var proceduresTableView: UITableView!
     
     @IBOutlet weak var clientNameTextField: UITextField!
+    @IBOutlet weak var clientSurnameTextField: UITextField!
+    @IBOutlet weak var clientPatrynomicTextField: UITextField!
+    
+    
+    
     @IBOutlet weak var editBarButton: UIBarButtonItem!
     
     
@@ -48,11 +53,14 @@ class OneClientViewController: UIViewController {
         navBarNameClient.title = client.makeInitials()
         //decodeFullData(initials: initials)
         
-        clientNameLabel.text = client.name
-        //clientNameTextField.text = client.name
+        //clientNameLabel.text = client.name
+        //clientSurnameLabel.text = client.surname
+        //clientPatrynomicLabel.text = client.patronymic
+        clientNameTextField.text = client.name
+        clientSurnameTextField.text = client.surname
+        clientPatrynomicTextField.text = client.patronymic
+
         
-        clientSurnameLabel.text = client.surname
-        clientPatrynomicLabel.text = client.patronymic
         
         print(client.procedures)
         listProcedures = client.procedures
@@ -79,6 +87,10 @@ class OneClientViewController: UIViewController {
         if isEditing {
             clientNameTextField.isEnabled = true
             clientNameTextField.borderStyle = .roundedRect
+            clientSurnameTextField.isEnabled = true
+            clientSurnameTextField.borderStyle = .roundedRect
+            clientPatrynomicTextField.isEnabled = true
+            clientPatrynomicTextField.borderStyle = .roundedRect
             editBarButton.title = "Готово"
             
             
@@ -93,10 +105,66 @@ class OneClientViewController: UIViewController {
             var ref: DatabaseReference!
             ref = Database.database().reference()
             
+            var ref2: DatabaseReference!
+            ref2 = Database.database().reference()
+            
+            var ref3: DatabaseReference!
+            ref3 = Database.database().reference()
+            
+            var ref4: DatabaseReference!
+            ref4 = Database.database().reference()
+            
+            var ref5: DatabaseReference!
+            ref5 = Database.database().reference()
+            
+            
+            
             let alert = UIAlertController(title: "Сохранить?", message: "Вы действительно сохранить?", preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "Да", style: .destructive, handler: { (_) in
-                let newClientName = self.clientNameTextField.text ?? ""
-                ref.child("\(uid ?? " ")/clients/\(self.client.makeInitials())/name").setValue(newClientName)
+                
+                
+                let newClientName = self.clientNameTextField.text ?? " "
+                let newClientSurname = self.clientSurnameTextField.text ?? " "
+                let newClientPatrynomic = self.clientPatrynomicTextField.text ?? " "
+
+                
+                let newClient = Client(name: newClientName, surname: newClientSurname, patronymic: newClientPatrynomic, imageURL: self.client.imageURL, procedures: self.client.procedures)
+                let clientConfiguration: [String: Any] = [
+                    "surname": String(newClient.surname),
+                    "name": String(newClient.name),
+                    "patronymic": String(newClient.patronymic),
+                    "imageURL": String(newClient.imageURL),
+                    "procedures": ""
+                ]
+                
+                ref.child("\(uid ?? " ")/clients/\(newClient.makeInitials())").setValue(clientConfiguration)
+                
+                ref4.child("\(uid ?? " ")/clients/\(self.client.makeInitials())").setValue(nil)
+                
+                for procedure in self.client.procedures {
+                    let procedureConfiguration: [String: String] = [
+                        "nameProcedure": String(procedure.nameProcedure),
+                        "costProcedure": String(procedure.costProcedure),
+                        "dateProcedure": String(procedure.dateProcedure),
+                        "dateProcedureForUser": String(procedure.dateProcedureForUser),
+                        "imageBeforeURL": String(procedure.imageBeforeURL),
+                        "imageAfterURL": String(procedure.imageAfterURL),
+                        "initials": newClient.makeInitials(),
+                    ]
+                    
+                    //Mark: - add new procedure to selected client
+                    ref2.child("\(uid ?? " ")/clients/\(newClient.makeInitials())/procedures/\(procedure.nameProcedure)_\(procedure.dateProcedure)").setValue(procedureConfiguration)
+                    
+                    
+                    ref3.child("\(uid ?? " ")/procedures/\(procedure.dateProcedure)-\(procedure.nameProcedure)-\(newClient.makeInitials())").setValue(procedureConfiguration)
+                    
+                    ref5.child("\(uid ?? " ")/procedures/\(procedure.dateProcedure)-\(procedure.nameProcedure)-\(self.client.makeInitials())").setValue(nil)
+                    
+                }
+                
+                
+                
+                //ref2.child("\(uid ?? " ")/clients/\(newClient.makeInitials())/procedures").setValue("")
                 //self.navigationController?.popViewController(animated: true)
                 
             }))
@@ -110,6 +178,10 @@ class OneClientViewController: UIViewController {
             
             clientNameTextField.isEnabled = false
             clientNameTextField.borderStyle = .none
+            clientSurnameTextField.isEnabled = false
+            clientSurnameTextField.borderStyle = .none
+            clientPatrynomicTextField.isEnabled = false
+            clientPatrynomicTextField.borderStyle = .none
             editBarButton.title = "Править"
             navigationController?.navigationBar.endEditing(true)
         }

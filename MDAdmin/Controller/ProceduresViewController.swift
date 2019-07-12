@@ -56,18 +56,18 @@ class ProceduresViewController: UIViewController {
 //                datesProcedures.append(procedure.dateProcedure)
 //            })
             
-            var newProcedures: [Procedure] = []
-            for procedure in procedures {
-                this.procedures.forEach({ procedure in
-                    datesProcedures.append(procedure.dateProcedure)
-                })
-                if !datesProcedures.contains(procedure.dateProcedure) {
-                    newProcedures.append(procedure)
-                }
-                datesProcedures = []
-            }
+//            var newProcedures: [Procedure] = []
+//            for procedure in procedures {
+//                this.procedures.forEach({ procedure in
+//                    datesProcedures.append(procedure.dateProcedure)
+//                })
+//                if !datesProcedures.contains(procedure.dateProcedure) {
+//                    newProcedures.append(procedure)
+//                }
+//                datesProcedures = []
+//            }
             
-            self?.procedures = newProcedures.sorted(by: {$0.dateProcedure > $1.dateProcedure})
+            self?.procedures = procedures.sorted(by: {$0.dateProcedure > $1.dateProcedure})
             self?.proceduresTableView.reloadData()
         })
         self.proceduresTableView.reloadData()

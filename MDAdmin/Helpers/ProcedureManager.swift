@@ -41,7 +41,9 @@ class ProcedureManager {
             }
             guard let this = self else { return }
             this.procedures = tempProcedures
+            tempProcedures = []
             completion?(this.procedures)
+        
             
         }
     }
