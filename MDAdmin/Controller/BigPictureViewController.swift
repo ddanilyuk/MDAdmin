@@ -20,8 +20,19 @@ class BigPictureViewController: UIViewController, UIScrollViewDelegate {
         scrollView.delegate = self
     }
     
+    @IBAction func swipeUP(_ sender: UISwipeGestureRecognizer) {
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func swipeDOWN(_ sender: UISwipeGestureRecognizer) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     //Mark: - enable zooming
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return bigImageView
     }
+    
+    
 }

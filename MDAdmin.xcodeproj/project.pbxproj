@@ -20,6 +20,7 @@
 		D300298F22BE820600AD8786 /* AddProcedureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D300298E22BE820600AD8786 /* AddProcedureViewController.swift */; };
 		D300299122BE83A000AD8786 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D300299022BE83A000AD8786 /* AddViewController.swift */; };
 		D300299322C16A5300AD8786 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D300299222C16A5300AD8786 /* GoogleService-Info.plist */; };
+		D3048C0522E0AC20004D9967 /* EditProceduresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3048C0422E0AC20004D9967 /* EditProceduresViewController.swift */; };
 		D32AD8DE22CE66EE00925D1F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32AD8DD22CE66EE00925D1F /* Extensions.swift */; };
 		D32AD8E022CE6FE500925D1F /* BigPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32AD8DF22CE6FE500925D1F /* BigPictureViewController.swift */; };
 		D32AD8E422CE83D500925D1F /* ListOfProcedures.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32AD8E322CE83D500925D1F /* ListOfProcedures.swift */; };
@@ -57,6 +58,7 @@
 		D300298E22BE820600AD8786 /* AddProcedureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProcedureViewController.swift; sourceTree = "<group>"; };
 		D300299022BE83A000AD8786 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		D300299222C16A5300AD8786 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D3048C0422E0AC20004D9967 /* EditProceduresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProceduresViewController.swift; sourceTree = "<group>"; };
 		D32AD8DD22CE66EE00925D1F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D32AD8DF22CE6FE500925D1F /* BigPictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigPictureViewController.swift; sourceTree = "<group>"; };
 		D32AD8E322CE83D500925D1F /* ListOfProcedures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfProcedures.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				D300298C22BE63DD00AD8786 /* ProceduresViewController.swift */,
 				D35FC6C922D15CEC007F6E2E /* OneProcedureViewController.swift */,
 				D300298922BE53E500AD8786 /* SettingsViewController.swift */,
+				D3048C0422E0AC20004D9967 /* EditProceduresViewController.swift */,
 				D3BA1DC222C21B470089690C /* SignedInViewController.swift */,
 				D300299022BE83A000AD8786 /* AddViewController.swift */,
 				D300298722BE53D900AD8786 /* AddClientViewController.swift */,
@@ -334,6 +337,7 @@
 				D300298822BE53D900AD8786 /* AddClientViewController.swift in Sources */,
 				D32AD8E022CE6FE500925D1F /* BigPictureViewController.swift in Sources */,
 				D35FC6F222D4B6AE007F6E2E /* ProcedureManager.swift in Sources */,
+				D3048C0522E0AC20004D9967 /* EditProceduresViewController.swift in Sources */,
 				D3775CC522C8EB520076CD64 /* OneClientViewController.swift in Sources */,
 				D35FC6EE22D3AEBD007F6E2E /* ImageStorage.swift in Sources */,
 				D300298622BE53C900AD8786 /* CalandarViewController.swift in Sources */,

@@ -23,4 +23,7 @@ class LoginViewController: UIViewController {
         }
 
     }
+    @IBAction func didPressAuth(_ sender: UIButton) {
+        print("tap")
+    }
 }
