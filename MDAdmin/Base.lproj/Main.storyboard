@@ -734,20 +734,11 @@
                                     <constraint firstAttribute="width" constant="128" id="xZG-gk-e5I"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aXM-xw-cNx">
-                                <rect key="frame" x="74" y="521" width="12" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aXM-xw-cNx">
+                                <rect key="frame" x="23.666666666666671" y="512" width="121.00000000000001" height="30"/>
                                 <state key="normal" title="Сделать фото до"/>
                                 <connections>
                                     <action selector="didPressMakeImageBefore:" destination="X8b-wF-wqi" eventType="touchUpInside" id="xES-6B-bjr"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wWH-kh-rzg">
-                                <rect key="frame" x="159" y="521" width="145" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Сделать фото после"/>
-                                <connections>
-                                    <action selector="didPressMakeImageAfter:" destination="X8b-wF-wqi" eventType="touchUpInside" id="o3d-6l-yUW"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Клиент" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0q-nq-ewu">
@@ -762,6 +753,13 @@
                                 <connections>
                                     <action selector="didPressAddProcedure:" destination="X8b-wF-wqi" eventType="touchUpInside" id="uUG-Mz-g4W"/>
                                     <segue destination="gzu-HP-dsE" kind="show" identifier="showReadyNewProcedure" id="hc8-SM-ZPn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wWH-kh-rzg">
+                                <rect key="frame" x="218.66666666666663" y="512" width="145" height="30"/>
+                                <state key="normal" title="Сделать фото после"/>
+                                <connections>
+                                    <action selector="didPressMakeImageAfter:" destination="X8b-wF-wqi" eventType="touchUpInside" id="o3d-6l-yUW"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -780,6 +778,7 @@
                             <constraint firstItem="yeF-Oz-JBR" firstAttribute="width" secondItem="w1m-9R-DRm" secondAttribute="width" multiplier="0.4" id="Jtl-yH-W5f"/>
                             <constraint firstItem="zkv-GE-aSp" firstAttribute="top" secondItem="4F4-xp-gIT" secondAttribute="bottom" constant="4" id="Riy-GP-ah5"/>
                             <constraint firstItem="yeF-Oz-JBR" firstAttribute="top" secondItem="wXB-NP-enK" secondAttribute="top" constant="20" id="Rrl-33-dX8"/>
+                            <constraint firstItem="aXM-xw-cNx" firstAttribute="centerX" secondItem="5ei-kY-MXc" secondAttribute="centerX" id="TRe-Ty-tdN"/>
                             <constraint firstItem="UxB-ns-UkP" firstAttribute="leading" secondItem="wXB-NP-enK" secondAttribute="leading" constant="10" id="Wwi-OJ-aKA"/>
                             <constraint firstItem="NH3-QX-tI4" firstAttribute="top" secondItem="UxB-ns-UkP" secondAttribute="bottom" constant="8" id="Xeu-xX-qPk"/>
                             <constraint firstItem="ZqA-Di-76G" firstAttribute="centerX" secondItem="wXB-NP-enK" secondAttribute="centerX" id="Xwp-rQ-IDd"/>
@@ -789,9 +788,12 @@
                             <constraint firstItem="NH3-QX-tI4" firstAttribute="leading" secondItem="wXB-NP-enK" secondAttribute="leading" constant="16" id="ejL-wf-jJg"/>
                             <constraint firstItem="wXB-NP-enK" firstAttribute="trailing" secondItem="aQA-V1-oTC" secondAttribute="trailing" constant="16" id="gVE-gG-HBP"/>
                             <constraint firstItem="UxB-ns-UkP" firstAttribute="centerY" secondItem="yeF-Oz-JBR" secondAttribute="centerY" id="j8C-jM-92C"/>
+                            <constraint firstItem="wWH-kh-rzg" firstAttribute="top" secondItem="ybw-SF-tU1" secondAttribute="bottom" constant="8" id="kM4-7S-Fso"/>
+                            <constraint firstItem="wWH-kh-rzg" firstAttribute="centerX" secondItem="ybw-SF-tU1" secondAttribute="centerX" id="lgl-PB-iSC"/>
                             <constraint firstItem="4F4-xp-gIT" firstAttribute="top" secondItem="yeF-Oz-JBR" secondAttribute="bottom" constant="8" id="mP3-lb-TQC"/>
                             <constraint firstItem="5ei-kY-MXc" firstAttribute="leading" secondItem="wXB-NP-enK" secondAttribute="leading" constant="20" id="sB1-Kp-Luw"/>
                             <constraint firstItem="aQA-V1-oTC" firstAttribute="top" secondItem="4F4-xp-gIT" secondAttribute="bottom" constant="3" id="wKa-HF-zIP"/>
+                            <constraint firstItem="aXM-xw-cNx" firstAttribute="top" secondItem="5ei-kY-MXc" secondAttribute="bottom" constant="8" id="xWq-kl-ks2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wXB-NP-enK"/>
                     </view>
@@ -824,7 +826,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="3352.5" y="2480.2816901408451"/>
+            <point key="canvasLocation" x="3351.1999999999998" y="2479.8029556650249"/>
         </scene>
         <!--Выберите клиента-->
         <scene sceneID="OHP-Ii-9hk">
@@ -1033,7 +1035,7 @@
         <!--Изменение процедур-->
         <scene sceneID="IEx-g8-urx">
             <objects>
-                <viewController id="7EA-Wn-94D" customClass="EditProceduresViewController" customModule="MDAdmin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="7EA-Wn-94D" customClass="EditListProceduresViewController" customModule="MDAdmin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dsk-nJ-eZB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1056,7 +1058,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ihj-qo-Zz5">
                             <connections>
                                 <action selector="didPressAddNewProcedures:" destination="7EA-Wn-94D" id="O0v-52-F7g"/>
-                                <segue destination="2Py-2A-jRA" kind="show" id="oMg-cD-4Tp"/>
+                                <segue destination="2Py-2A-jRA" kind="show" identifier="showProcedureDetails" id="oMg-cD-4Tp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1068,20 +1070,55 @@
             </objects>
             <point key="canvasLocation" x="6220" y="1255"/>
         </scene>
-        <!--View Controller-->
+        <!--Add List Procedure View Controller-->
         <scene sceneID="GYl-oG-pur">
             <objects>
-                <viewController id="2Py-2A-jRA" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddListProcedureViewController" id="2Py-2A-jRA" customClass="AddListProcedureViewController" customModule="MDAdmin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0oO-b9-kFp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Procedure name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EQS-b7-2i1">
+                                <rect key="frame" x="20" y="158" width="335" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Procedure cost" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z9N-QQ-RX1">
+                                <rect key="frame" x="20" y="198" width="335" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wa6-ct-tW5">
+                                <rect key="frame" x="149" y="393.66666666666669" width="77" height="30"/>
+                                <state key="normal" title="Сохранить"/>
+                                <connections>
+                                    <action selector="didPressSaveProcedure:" destination="2Py-2A-jRA" eventType="touchUpInside" id="5mM-bd-Y5L"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="62i-vs-54Z" firstAttribute="trailing" secondItem="z9N-QQ-RX1" secondAttribute="trailing" constant="20" id="2Ex-dJ-eYp"/>
+                            <constraint firstItem="z9N-QQ-RX1" firstAttribute="top" secondItem="EQS-b7-2i1" secondAttribute="bottom" constant="10" id="3y4-ln-Ier"/>
+                            <constraint firstItem="EQS-b7-2i1" firstAttribute="top" secondItem="62i-vs-54Z" secondAttribute="top" constant="70" id="DxR-lp-AVt"/>
+                            <constraint firstItem="Wa6-ct-tW5" firstAttribute="centerY" secondItem="62i-vs-54Z" secondAttribute="centerY" id="Kfm-6i-rni"/>
+                            <constraint firstItem="z9N-QQ-RX1" firstAttribute="leading" secondItem="62i-vs-54Z" secondAttribute="leading" constant="20" id="OQa-2a-VL5"/>
+                            <constraint firstItem="EQS-b7-2i1" firstAttribute="leading" secondItem="62i-vs-54Z" secondAttribute="leading" constant="20" id="Pwb-xW-hAt"/>
+                            <constraint firstItem="Wa6-ct-tW5" firstAttribute="centerX" secondItem="62i-vs-54Z" secondAttribute="centerX" id="a3i-g2-Qpa"/>
+                            <constraint firstItem="62i-vs-54Z" firstAttribute="trailing" secondItem="EQS-b7-2i1" secondAttribute="trailing" constant="20" id="eeL-cJ-odX"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="62i-vs-54Z"/>
                     </view>
+                    <connections>
+                        <outlet property="procedureCostTextField" destination="z9N-QQ-RX1" id="6e0-7H-3xQ"/>
+                        <outlet property="procedureNameTextField" destination="EQS-b7-2i1" id="N7k-7t-xL3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="84M-4W-Bk1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6914" y="1255"/>
+            <point key="canvasLocation" x="6970" y="1255"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="JSo-OT-Er5">

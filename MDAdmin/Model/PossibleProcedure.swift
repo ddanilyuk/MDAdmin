@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct ListOfProcedures {
+struct PossibleProcedure {
     var name: String?
     var cost: Int?
 }

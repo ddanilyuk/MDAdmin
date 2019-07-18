@@ -13,7 +13,7 @@ class ProceduresViewController: UIViewController {
 
     @IBOutlet weak var proceduresTableView: UITableView!
     
-    let mainLocalProceduresList: [String: String] = [:]
+    //let mainLocalProceduresList: [String: String] = [:]
     
     let reuseID = "someReuseID"
     var procedures = [Procedure]()
@@ -50,12 +50,15 @@ class ProceduresViewController: UIViewController {
         procedures = []
         ProcedureManager.shared.getProcedure( completion: { [weak self] procedures in
             guard let this = self else { return }
+            //TODO: - delete or save datesProcedures
             
-            var datesProcedures: [String] = []
+            
+            
+            //var datesProcedures: [String] = []
 //            this.procedures.forEach({ procedure in
 //                datesProcedures.append(procedure.dateProcedure)
 //            })
-            
+//            
 //            var newProcedures: [Procedure] = []
 //            for procedure in procedures {
 //                this.procedures.forEach({ procedure in
@@ -67,8 +70,8 @@ class ProceduresViewController: UIViewController {
 //                datesProcedures = []
 //            }
             
-            self?.procedures = procedures.sorted(by: {$0.dateProcedure > $1.dateProcedure})
-            self?.proceduresTableView.reloadData()
+            this.procedures = procedures.sorted(by: {$0.dateProcedure > $1.dateProcedure})
+            this.proceduresTableView.reloadData()
         })
         self.proceduresTableView.reloadData()
     }

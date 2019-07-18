@@ -31,6 +31,7 @@ class FindClientViewController: UIViewController{
         super.viewDidLoad()
         
         getClientsUpadateTable()
+        getProceduresUpdateTable()
         
         clientTableView.delegate = self
         clientTableView.dataSource = self
@@ -85,6 +86,18 @@ class FindClientViewController: UIViewController{
         newMainLocalClientList = [:]
         getClientsUpadateTable()
         refreshControl.endRefreshing()
+    }
+    
+    func getProceduresUpdateTable() {
+        //procedures = []
+        ListProcedureManager.shared.getProcedure( completion: { [weak self] possibleProcedures in
+            //guard let this = self else { return }
+            
+            //this.procedures = possibleProcedures.sorted(by: {$0.name ?? "" < $1.name ?? ""})
+            //this.tableView.reloadData()
+            //print(this.possibleProcedures)
+        })
+        //self.tableView.reloadData()
     }
 }
 

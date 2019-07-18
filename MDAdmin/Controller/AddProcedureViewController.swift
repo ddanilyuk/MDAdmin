@@ -20,13 +20,13 @@ class AddProcedureViewController: UIViewController {
     @IBOutlet weak var procedurePicker: UIPickerView!
     
     //TODO: - NEED TO USE PROCEDURE FROM SETTINGS
-    let procedure1 = ListOfProcedures(name: "Процедура1", cost: 100)
-    let procedure2 = ListOfProcedures(name: "Процедура2", cost: 200)
-    let procedure3 = ListOfProcedures(name: "Процедура3", cost: 300)
-    let procedure4 = ListOfProcedures(name: "Процедура4", cost: 400)
-    let procedure5 = ListOfProcedures(name: "Процедура5", cost: 500)
+    let procedure1 = PossibleProcedure(name: "Процедура1", cost: 100)
+    let procedure2 = PossibleProcedure(name: "Процедура2", cost: 200)
+    let procedure3 = PossibleProcedure(name: "Процедура3", cost: 300)
+    let procedure4 = PossibleProcedure(name: "Процедура4", cost: 400)
+    let procedure5 = PossibleProcedure(name: "Процедура5", cost: 500)
 
-    var procedures = [ListOfProcedures]()
+    var procedures = [PossibleProcedure]()
     var client = Client()
     let imagePicker = UIImagePickerController()
     var imageBefore = UIImage()
@@ -45,12 +45,19 @@ class AddProcedureViewController: UIViewController {
         super.viewDidLoad()
         
         
-        procedures.append(procedure1)
-        procedures.append(procedure2)
-        procedures.append(procedure3)
-        procedures.append(procedure4)
-        procedures.append(procedure5)
+//        procedures.append(procedure1)
+//        procedures.append(procedure2)
+//        procedures.append(procedure3)
+//        procedures.append(procedure4)
+//        procedures.append(procedure5)
+        procedures = ListProcedureManager.shared.listProcedures
+        if procedures.count == 0 {
+            getProceduresUpdateTable()
+        }
+        procedures = procedures.sorted(by: {$0.name ?? "" < $1.name ?? ""})
 
+        
+        
         procedurePicker.delegate = self
         procedurePicker.dataSource = self
         
@@ -74,6 +81,18 @@ class AddProcedureViewController: UIViewController {
         
     }
     
+    
+    func getProceduresUpdateTable() {
+        procedures = []
+        ListProcedureManager.shared.getProcedure( completion: { [weak self] possibleProcedures in
+            guard let this = self else { return }
+            
+            this.procedures = possibleProcedures.sorted(by: {$0.name ?? "" < $1.name ?? ""})
+            //this.tableView.reloadData()
+            //print(this.possibleProcedures)
+        })
+        //self.tableView.reloadData()
+    }
     
     @IBAction func didPressMakeImageBefore(_ sender: UIButton) {
         isTapImageBefore = true
