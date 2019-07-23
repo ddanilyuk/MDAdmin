@@ -61,7 +61,6 @@ extension EditListProceduresViewController: UITableViewDelegate, UITableViewData
             cell.detailTextLabel?.text = String(procedureCost)
         }
         
-        
         return cell
     }
     

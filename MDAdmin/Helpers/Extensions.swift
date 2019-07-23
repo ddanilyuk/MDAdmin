@@ -64,8 +64,11 @@ extension UIViewController {
 
 extension UIImage {
     static func saveImage(image: UIImage, path: URL) {
-        let pngImageData = image.pngData()
-        try? pngImageData?.write(to: path)
+        //let pngImageData = image.pngData()
+        //try? pngImageData?.write(to: path)
+        
+        let jpgImageData = image.jpegData(compressionQuality: 1)
+        try? jpgImageData?.write(to: path)
     }
 }
 

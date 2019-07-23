@@ -20,12 +20,8 @@ class AddProcedureViewController: UIViewController {
     @IBOutlet weak var procedurePicker: UIPickerView!
     
     //TODO: - NEED TO USE PROCEDURE FROM SETTINGS
-    let procedure1 = PossibleProcedure(name: "Процедура1", cost: 100)
-    let procedure2 = PossibleProcedure(name: "Процедура2", cost: 200)
-    let procedure3 = PossibleProcedure(name: "Процедура3", cost: 300)
-    let procedure4 = PossibleProcedure(name: "Процедура4", cost: 400)
-    let procedure5 = PossibleProcedure(name: "Процедура5", cost: 500)
-
+    let defaultProcedure = PossibleProcedure(name: "", cost: 0)
+    
     var procedures = [PossibleProcedure]()
     var client = Client()
     let imagePicker = UIImagePickerController()
@@ -44,14 +40,9 @@ class AddProcedureViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-//        procedures.append(procedure1)
-//        procedures.append(procedure2)
-//        procedures.append(procedure3)
-//        procedures.append(procedure4)
-//        procedures.append(procedure5)
         procedures = ListProcedureManager.shared.listProcedures
         if procedures.count == 0 {
+            procedures.append(defaultProcedure)
             getProceduresUpdateTable()
         }
         procedures = procedures.sorted(by: {$0.name ?? "" < $1.name ?? ""})
@@ -68,7 +59,7 @@ class AddProcedureViewController: UIViewController {
         self.hideKeyboard()
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd-HH-mm"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         dateNow = dateFormatter.string(from: Date())
         
         let dateFormatter2 = DateFormatter()
@@ -83,10 +74,9 @@ class AddProcedureViewController: UIViewController {
     
     
     func getProceduresUpdateTable() {
-        procedures = []
         ListProcedureManager.shared.getProcedure( completion: { [weak self] possibleProcedures in
             guard let this = self else { return }
-            
+            this.procedures = []
             this.procedures = possibleProcedures.sorted(by: {$0.name ?? "" < $1.name ?? ""})
             //this.tableView.reloadData()
             //print(this.possibleProcedures)
@@ -176,8 +166,8 @@ class AddProcedureViewController: UIViewController {
     
     
     func showCameraOrLibrary() {
-        let alert = UIAlertController(title: "Выберите", message: "Камера или Галерея", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Камера", style: .default, handler: { (_) in
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Снять фото", style: .default, handler: { (_) in
             self.imagePicker.sourceType = .camera
             self.imagePicker.delegate = self
             self.imagePicker.allowsEditing = true
@@ -185,7 +175,7 @@ class AddProcedureViewController: UIViewController {
             self.present(self.imagePicker, animated: true, completion: nil)
         }))
         
-        alert.addAction(UIAlertAction(title: "Галерея", style: .default, handler: { (_) in
+        alert.addAction(UIAlertAction(title: "Выбрать фото", style: .default, handler: { (_) in
             self.imagePicker.sourceType = .photoLibrary
             self.imagePicker.delegate = self
             self.imagePicker.allowsEditing = true

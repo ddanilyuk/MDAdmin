@@ -16,16 +16,16 @@ import Firebase
 class OneClientViewController: UIViewController {
 
     @IBOutlet weak var clientImage: UIImageView!
-//    @IBOutlet weak var clientNameLabel: UILabel!
-//    @IBOutlet weak var clientSurnameLabel: UILabel!
-//    @IBOutlet weak var clientPatrynomicLabel: UILabel!
+
     @IBOutlet weak var navBarNameClient: UINavigationItem!
     @IBOutlet weak var proceduresTableView: UITableView!
+    
     
     @IBOutlet weak var clientNameTextField: UITextField!
     @IBOutlet weak var clientSurnameTextField: UITextField!
     @IBOutlet weak var clientPatrynomicTextField: UITextField!
-    
+    @IBOutlet weak var clientEmailTextField: UITextField!
+    @IBOutlet weak var clientBirthdayTextField: UITextField!
     
     
     @IBOutlet weak var editBarButton: UIBarButtonItem!
@@ -34,7 +34,6 @@ class OneClientViewController: UIViewController {
     var newProceduresArray: [Procedure] = []
     
     var client: Client = Client()
-    
     
     var reuseID = "newReuseID"
     var listProcedures = [Procedure]()
@@ -46,29 +45,34 @@ class OneClientViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        clientImage.layer.cornerRadius = 75
+        self.hideKeyboard()
 
-        print(client)
-        print(client.imageURL)
-        navBarNameClient.title = client.makeInitials()
-        //decodeFullData(initials: initials)
         
-        //clientNameLabel.text = client.name
-        //clientSurnameLabel.text = client.surname
-        //clientPatrynomicLabel.text = client.patronymic
+        clientImage.layer.cornerRadius = 75
+        navBarNameClient.title = client.makeInitials()
+
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+
+        
         clientNameTextField.text = client.name
         clientSurnameTextField.text = client.surname
         clientPatrynomicTextField.text = client.patronymic
+        clientEmailTextField.text = client.email
+        clientBirthdayTextField.text = dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(client.birthday)))
 
         
         
-        print(client.procedures)
         listProcedures = client.procedures
-        
-        self.hideKeyboard()
-        
         self.listProcedures = self.listProcedures.sorted(by: {$0.dateProcedure > $1.dateProcedure})
         self.proceduresTableView.reloadData()
+        proceduresTableView.delegate = self
+        proceduresTableView.dataSource = self
+        
+        
+        clientImage.image = ImageStorage.getClientImage(client: client, imageView: clientImage)
+        
         
         //Mark: - another way to download image
         //guard let url = URL(string: imageURLClient) else { return }
@@ -76,10 +80,6 @@ class OneClientViewController: UIViewController {
         
         //Mark: - another way to download image with caching
         //clientImage.loadImageUsingCacheWithUrlString(client.imageURL)
-        clientImage.image = ImageStorage.getClientImage(client: client, imageView: clientImage)
-        
-        proceduresTableView.delegate = self
-        proceduresTableView.dataSource = self
     }
     
     @IBAction func didPressEdit(_ sender: UIBarButtonItem) {
@@ -91,19 +91,20 @@ class OneClientViewController: UIViewController {
             clientSurnameTextField.borderStyle = .roundedRect
             clientPatrynomicTextField.isEnabled = true
             clientPatrynomicTextField.borderStyle = .roundedRect
+            clientEmailTextField.isEnabled = true
+            clientEmailTextField.borderStyle = .roundedRect
+            
+            
+            //TODO: - add  edit
             editBarButton.title = "Готово"
-            
-            
-            
-            
             
             
             
             
         } else {
             let uid = Auth.auth().currentUser?.uid
-            var ref: DatabaseReference!
-            ref = Database.database().reference()
+            var ref1: DatabaseReference!
+            ref1 = Database.database().reference()
             
             var ref2: DatabaseReference!
             ref2 = Database.database().reference()
@@ -126,18 +127,31 @@ class OneClientViewController: UIViewController {
                 let newClientName = self.clientNameTextField.text ?? " "
                 let newClientSurname = self.clientSurnameTextField.text ?? " "
                 let newClientPatrynomic = self.clientPatrynomicTextField.text ?? " "
-
                 
-                let newClient = Client(name: newClientName, surname: newClientSurname, patronymic: newClientPatrynomic, imageURL: self.client.imageURL, procedures: self.client.procedures)
+                
+                
+                let newClient = Client(name: newClientName,
+                                       surname: newClientSurname,
+                                       patronymic: newClientPatrynomic,
+                                       email: self.client.email,
+                                       birthday: self.client.birthday,
+                                       imageURL: self.client.imageURL,
+                                       procedures: self.client.procedures)
+                
+                self.navBarNameClient.title = newClient.makeInitials()
+                
+                
                 let clientConfiguration: [String: Any] = [
                     "surname": String(newClient.surname),
                     "name": String(newClient.name),
                     "patronymic": String(newClient.patronymic),
+                    "email": String(newClient.email),
+                    "birthday": Int(newClient.birthday),
                     "imageURL": String(newClient.imageURL),
                     "procedures": ""
                 ]
                 
-                ref.child("\(uid ?? " ")/clients/\(newClient.makeInitials())").setValue(clientConfiguration)
+                ref1.child("\(uid ?? " ")/clients/\(newClient.makeInitials())").setValue(clientConfiguration)
                 
                 ref4.child("\(uid ?? " ")/clients/\(self.client.makeInitials())").setValue(nil)
                 
@@ -162,35 +176,62 @@ class OneClientViewController: UIViewController {
                     
                 }
                 
+                self.clientNameTextField.text = newClient.name
+                self.clientSurnameTextField.text = newClient.surname
+                self.clientPatrynomicTextField.text = newClient.patronymic
+                self.clientEmailTextField.text = newClient.email
+                
+                self.navBarNameClient.title = newClient.makeInitials()
                 
                 
-                //ref2.child("\(uid ?? " ")/clients/\(newClient.makeInitials())/procedures").setValue("")
-                //self.navigationController?.popViewController(animated: true)
+                
+                //TODO: - maybe push up this part of code
+                self.clientNameTextField.isEnabled = false
+                self.clientNameTextField.borderStyle = .none
+                self.clientSurnameTextField.isEnabled = false
+                self.clientSurnameTextField.borderStyle = .none
+                self.clientPatrynomicTextField.isEnabled = false
+                self.clientPatrynomicTextField.borderStyle = .none
+                self.clientEmailTextField.isEnabled = false
+                self.clientEmailTextField.borderStyle = .none
+                
+                
+                self.editBarButton.title = "Править"
                 
             }))
             
             alert.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: { (_) in
+                //TODO: - maybe push up this part of code
+                self.clientNameTextField.text = self.client.name
+                self.clientSurnameTextField.text = self.client.surname
+                self.clientPatrynomicTextField.text = self.client.patronymic
+                self.clientEmailTextField.text = self.client.email
+
+
+                
+                
+                self.clientNameTextField.isEnabled = false
+                self.clientNameTextField.borderStyle = .none
+                self.clientSurnameTextField.isEnabled = false
+                self.clientSurnameTextField.borderStyle = .none
+                self.clientPatrynomicTextField.isEnabled = false
+                self.clientPatrynomicTextField.borderStyle = .none
+                self.clientEmailTextField.isEnabled = false
+                self.clientEmailTextField.borderStyle = .none
+                
+                
+                self.editBarButton.title = "Править"
             }))
             
             self.present(alert, animated: true, completion: {
+                
             })
             
             
-            clientNameTextField.isEnabled = false
-            clientNameTextField.borderStyle = .none
-            clientSurnameTextField.isEnabled = false
-            clientSurnameTextField.borderStyle = .none
-            clientPatrynomicTextField.isEnabled = false
-            clientPatrynomicTextField.borderStyle = .none
-            editBarButton.title = "Править"
-            navigationController?.navigationBar.endEditing(true)
+            
         }
     }
     
-    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
-    }
-
     @IBAction func didPressDeleteClient(_ sender: UIButton) {
     
         let uid = Auth.auth().currentUser?.uid
@@ -200,7 +241,6 @@ class OneClientViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Да", style: .destructive, handler: { (_) in
             ref.child("\(uid ?? " ")/clients/\(self.client.makeInitials())").setValue(nil)
             self.navigationController?.popViewController(animated: true)
-            
         }))
         
         alert.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: { (_) in
@@ -208,12 +248,13 @@ class OneClientViewController: UIViewController {
         
         self.present(alert, animated: true, completion: {
         })
-//        ref.child("\(uid ?? " ")/clients/\(client.makeInitials())").setValue(nil)
-//        navigationController?.popViewController(animated: true)
-
     }
     
     
+    //Mark: - not usable functions (another ways to download pictures)
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
     
     func downloadImage(from url: URL) {
         print("Download Started")
@@ -226,7 +267,6 @@ class OneClientViewController: UIViewController {
             }
         }
     }
-
 }
 
 

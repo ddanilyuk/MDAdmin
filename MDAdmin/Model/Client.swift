@@ -12,13 +12,17 @@ class Client {
     let name: String
     let surname: String
     let patronymic: String
+    let email: String
+    let birthday: Int
     let imageURL: String
     let procedures: [Procedure]
     
-    init(name: String, surname: String, patronymic: String, imageURL: String, procedures: [Procedure]) {
+    init(name: String, surname: String, patronymic: String, email: String, birthday: Int, imageURL: String, procedures: [Procedure]) {
         self.name = name
         self.surname = surname
         self.patronymic = patronymic
+        self.email = email
+        self.birthday = birthday
         self.imageURL = imageURL
         self.procedures = procedures
     }
@@ -28,6 +32,8 @@ class Client {
         self.surname = ""
         self.patronymic = ""
         self.imageURL = ""
+        self.email = ""
+        self.birthday = 0
         self.procedures = []
     }
     
@@ -43,15 +49,4 @@ class Client {
         return String(surname[surname.startIndex])
     }
     
-//    func getName() -> String {
-//        return name
-//    }
-//
-//    func getSurname() -> String {
-//        return surname
-//    }
-//
-//    func getPatronymic() -> String {
-//        return patronymic
-//    }
 }

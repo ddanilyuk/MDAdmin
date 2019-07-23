@@ -19,14 +19,37 @@ class AddClientViewController: UIViewController {
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var surnameField: UITextField!
     @IBOutlet weak var patronymicField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    
+    @IBOutlet weak var birthdayTextField: UITextField!
+    
     @IBOutlet weak var scrollView: UIScrollView!
     
+    var datePicker: UIDatePicker?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        clientPhoto.layer.cornerRadius = 64
-        registerForKeyboardNotifications()
         self.hideKeyboard()
+        clientPhoto.layer.cornerRadius = 64
+        
+        registerForKeyboardNotifications()
+        
+        
+        
+        datePicker = UIDatePicker()
+        datePicker?.datePickerMode = .date
+        datePicker?.addTarget(self, action: #selector(dateChanged(datePicker:)), for: .valueChanged)
+        birthdayTextField.inputView = datePicker
+        
+    }
+    
+    @objc func dateChanged(datePicker: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        //birthdayTextField.text = dateFormatter.string(from: datePicker.date)
+        let some = Int(datePicker.date.timeIntervalSince1970)
+        birthdayTextField.text = dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(some)))
+        
     }
     
     @IBAction func didPressSetPhoto(_ sender: UIButton) {
@@ -50,21 +73,35 @@ class AddClientViewController: UIViewController {
     }
     
     @IBAction func didPressAddClient(_ sender: UIButton) {
+        let uid = Auth.auth().currentUser?.uid
+
         nameField.resignFirstResponder()
         surnameField.resignFirstResponder()
         patronymicField.resignFirstResponder()
         
-        let nameEntered = nameField.text!
-        let surnameEntered = surnameField.text!
-        let patronymicEntered = patronymicField.text!
+        let nameEntered = nameField.text ?? ""
+        let surnameEntered = surnameField.text ?? ""
+        let patronymicEntered = patronymicField.text ?? ""
+        let emailEntered = emailTextField.text ?? ""
+        var birthdayEntered = Int(birthdayTextField.text ?? "") ?? 0
         
-        let uid = Auth.auth().currentUser?.uid
-
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        
+        let date = dateFormatter.date(from: birthdayTextField.text ?? "")?.timeIntervalSince1970
+        
+        birthdayEntered = Int(date ?? 0)
         
         //Mark: - Making new client With class Clint (class can be deleted)
-        if !nameEntered.isEmpty && !surnameEntered.isEmpty && !patronymicEntered.isEmpty && clientPhoto.image != nil{
+        if !nameEntered.isEmpty && !surnameEntered.isEmpty && !patronymicEntered.isEmpty && clientPhoto.image != nil && !emailEntered.isEmpty && birthdayEntered != 0 {
             
-            let client = Client(name: nameEntered, surname: surnameEntered, patronymic: patronymicEntered, imageURL: "", procedures: [])
+            let client = Client(name: nameEntered,
+                                surname: surnameEntered,
+                                patronymic: patronymicEntered,
+                                email: emailEntered,
+                                birthday: birthdayEntered,
+                                imageURL: "",
+                                procedures: [])
             
             let clientInitials = client.makeInitials()
             let clinetInitialsWithoutSpacing = client.makeInitialsWithoutSpace()
@@ -76,12 +113,15 @@ class AddClientViewController: UIViewController {
             pickUnicalClientImageUrl(clientInitials: clientInitials, initialsWithoutSpacing: clinetInitialsWithoutSpacing, photoFromClient: clientPhoto.image ?? UIImage())
 
             //Mark: - client configuration which will be downloaded to server
-            let clientConfiguration: [String: String] = [
+            let clientConfiguration: [String: Any] = [
                                                 "surname": String(client.surname),
                                                 "name": String(client.name),
                                                 "patronymic": String(client.patronymic),
+                                                "email": String(client.email),
+                                                "birthday": Int(client.birthday),
                                                 "imageURL": ""
             ]
+            
             info = "\(uid ?? " ")/clients/\(clientInitials)"
             ref.child(info).setValue(clientConfiguration)
         } else {
@@ -93,8 +133,9 @@ class AddClientViewController: UIViewController {
     
     
     func showSimpleActionSheet() {
-        let alert = UIAlertController(title: "Выберите", message: "Камера или Галерея", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Камера", style: .default, handler: { (_) in
+        //let alert = UIAlertController(title: "Выберите", message: "Камера или Галерея", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Снять фото", style: .default, handler: { (_) in
             self.imagePicker.sourceType = .camera
             self.imagePicker.delegate = self
             self.imagePicker.allowsEditing = true
@@ -102,7 +143,7 @@ class AddClientViewController: UIViewController {
             self.present(self.imagePicker, animated: true, completion: nil)
         }))
         
-        alert.addAction(UIAlertAction(title: "Галерея", style: .default, handler: { (_) in
+        alert.addAction(UIAlertAction(title: "Выбрать фото", style: .default, handler: { (_) in
             self.imagePicker.sourceType = .photoLibrary
             self.imagePicker.delegate = self
             self.imagePicker.allowsEditing = true
@@ -128,7 +169,9 @@ class AddClientViewController: UIViewController {
         ref = Database.database().reference()
         
         var result: String?
-        if let uploadData = photoFromClient.jpegData(compressionQuality: 0.5) {
+        //let uploadData = photoFromClient.pngData()
+        //let uploadData = photoFromClient.jpegData(compressionQuality: 0.8)
+        if let uploadData = photoFromClient.jpegData(compressionQuality: 1) {
         
             storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
                 guard let metadata = metadata else { return }

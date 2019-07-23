@@ -60,10 +60,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" canCancelContentTouches="NO" maximumZoomScale="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ie4-3T-1fE">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OW4-kR-X2s">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="734"/>
                                     </imageView>
                                 </subviews>
                                 <gestureRecognizers/>
@@ -145,23 +145,35 @@
                                     <action selector="didPressDeleteClient:" destination="VVx-Td-w6P" eventType="touchUpInside" id="2G1-40-Ugk"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="44" translatesAutoresizingMaskIntoConstraints="NO" id="bqc-02-UUr">
-                                <rect key="frame" x="174" y="104" width="193" height="151"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bqc-02-UUr">
+                                <rect key="frame" x="174" y="104" width="193" height="150"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="fill" text="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QHH-Tc-Fbe">
-                                        <rect key="frame" x="0.0" y="0.0" width="193" height="21"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="193" height="22"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="fill" text="Surname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gbC-8B-7NB">
-                                        <rect key="frame" x="0.0" y="65" width="193" height="21"/>
+                                        <rect key="frame" x="0.0" y="32" width="193" height="22"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="fill" text="Patrynomic" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4F3-er-qKc">
-                                        <rect key="frame" x="0.0" y="130" width="193" height="21"/>
+                                        <rect key="frame" x="0.0" y="64" width="193" height="22"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="fill" text="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hHn-f7-7aa">
+                                        <rect key="frame" x="0.0" y="96" width="193" height="22"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="fill" text="Birthday" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dMF-8B-tcb">
+                                        <rect key="frame" x="0.0" y="128" width="193" height="22"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -177,6 +189,7 @@
                             <constraint firstItem="Iay-pJ-dgh" firstAttribute="trailing" secondItem="GkI-At-kG4" secondAttribute="trailing" id="F3v-Sc-g9e"/>
                             <constraint firstItem="GkI-At-kG4" firstAttribute="top" secondItem="RGp-JE-otD" secondAttribute="bottom" constant="55" id="H1f-6s-fLg"/>
                             <constraint firstItem="m40-e8-J3E" firstAttribute="top" secondItem="Iay-pJ-dgh" secondAttribute="top" constant="16" id="IVg-es-w6f"/>
+                            <constraint firstItem="bqc-02-UUr" firstAttribute="height" secondItem="m40-e8-J3E" secondAttribute="height" id="OTa-pi-40M"/>
                             <constraint firstItem="RGp-JE-otD" firstAttribute="leading" secondItem="m40-e8-J3E" secondAttribute="leading" id="QT9-Dz-xig"/>
                             <constraint firstItem="bqc-02-UUr" firstAttribute="top" secondItem="Iay-pJ-dgh" secondAttribute="top" constant="16" id="SYC-jB-S3S"/>
                             <constraint firstItem="RGp-JE-otD" firstAttribute="top" secondItem="m40-e8-J3E" secondAttribute="top" id="V4p-jE-qpB"/>
@@ -197,6 +210,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="clientBirthdayTextField" destination="dMF-8B-tcb" id="Zuf-Mw-agq"/>
+                        <outlet property="clientEmailTextField" destination="hHn-f7-7aa" id="TMP-oL-7tk"/>
                         <outlet property="clientImage" destination="RGp-JE-otD" id="Idk-fG-04C"/>
                         <outlet property="clientNameTextField" destination="QHH-Tc-Fbe" id="aSR-k3-dia"/>
                         <outlet property="clientPatrynomicTextField" destination="4F3-er-qKc" id="o0a-it-8Mb"/>
@@ -536,15 +551,24 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0O-Dn-lAj">
-                                                <rect key="frame" x="152.66666666666666" y="447" width="70" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <state key="normal" title="Создать"/>
-                                                <connections>
-                                                    <action selector="didPressAddClient:" destination="qgJ-s8-y8s" eventType="touchUpInside" id="N4G-k3-bW5"/>
-                                                    <segue destination="gzu-HP-dsE" kind="show" identifier="showReadyNewClient" id="fFu-8k-yeK"/>
-                                                </connections>
-                                            </button>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Дата рождения" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jPN-i5-DSN">
+                                                <rect key="frame" x="37.666666666666657" y="362" width="300" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="300" id="Zoc-Ek-aJb"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="UUX-jP-uCG">
+                                                <rect key="frame" x="37.666666666666657" y="324" width="300" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="300" id="upH-gO-jDN"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                            </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -553,11 +577,13 @@
                                             <constraint firstItem="C13-cp-O5k" firstAttribute="centerX" secondItem="maA-W5-nCi" secondAttribute="centerX" id="4hX-tr-8KS"/>
                                             <constraint firstItem="phx-i9-1kn" firstAttribute="top" secondItem="C13-cp-O5k" secondAttribute="bottom" constant="8" id="4hh-Cm-XWV"/>
                                             <constraint firstItem="Pd1-Tl-iAT" firstAttribute="leading" secondItem="maA-W5-nCi" secondAttribute="leading" id="IP4-xp-w2C"/>
-                                            <constraint firstItem="x0O-Dn-lAj" firstAttribute="centerX" secondItem="maA-W5-nCi" secondAttribute="centerX" id="NHO-mU-5t9"/>
+                                            <constraint firstItem="UUX-jP-uCG" firstAttribute="centerX" secondItem="maA-W5-nCi" secondAttribute="centerX" id="KLH-Sw-GC6"/>
                                             <constraint firstItem="phx-i9-1kn" firstAttribute="centerX" secondItem="maA-W5-nCi" secondAttribute="centerX" id="O2d-c0-igG"/>
                                             <constraint firstItem="UGZ-Yg-MXX" firstAttribute="centerX" secondItem="maA-W5-nCi" secondAttribute="centerX" id="Oiy-bU-K7t"/>
+                                            <constraint firstItem="UUX-jP-uCG" firstAttribute="top" secondItem="phx-i9-1kn" secondAttribute="bottom" constant="8" id="QGb-2E-nNJ"/>
+                                            <constraint firstItem="jPN-i5-DSN" firstAttribute="centerX" secondItem="maA-W5-nCi" secondAttribute="centerX" id="R4n-Bv-ODV"/>
                                             <constraint firstItem="UGZ-Yg-MXX" firstAttribute="top" secondItem="Pd1-Tl-iAT" secondAttribute="bottom" constant="30" id="pYY-PN-OWq"/>
-                                            <constraint firstItem="x0O-Dn-lAj" firstAttribute="top" secondItem="phx-i9-1kn" secondAttribute="bottom" constant="131" id="qaW-hK-eDK"/>
+                                            <constraint firstItem="jPN-i5-DSN" firstAttribute="top" secondItem="UUX-jP-uCG" secondAttribute="bottom" constant="8" id="q3I-be-I0k"/>
                                         </constraints>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3mE-6M-eB9">
@@ -570,10 +596,21 @@
                                             <constraint firstAttribute="width" constant="128" id="so4-hC-RUB"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0O-Dn-lAj">
+                                        <rect key="frame" x="152.66666666666666" y="557" width="70" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="Создать"/>
+                                        <connections>
+                                            <action selector="didPressAddClient:" destination="qgJ-s8-y8s" eventType="touchUpInside" id="N4G-k3-bW5"/>
+                                            <segue destination="gzu-HP-dsE" kind="show" identifier="showReadyNewClient" id="fFu-8k-yeK"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="x0O-Dn-lAj" firstAttribute="centerX" secondItem="wH3-gk-8oX" secondAttribute="centerX" id="0df-Lz-kc4"/>
                                     <constraint firstAttribute="trailing" secondItem="maA-W5-nCi" secondAttribute="trailing" id="0fI-qp-EFm"/>
                                     <constraint firstItem="maA-W5-nCi" firstAttribute="top" secondItem="wH3-gk-8oX" secondAttribute="top" id="2aO-4L-5WF"/>
+                                    <constraint firstAttribute="bottom" secondItem="x0O-Dn-lAj" secondAttribute="bottom" constant="50" id="49z-Qh-xe3"/>
                                     <constraint firstAttribute="bottom" secondItem="maA-W5-nCi" secondAttribute="bottom" id="Fsf-7q-r2R"/>
                                     <constraint firstItem="maA-W5-nCi" firstAttribute="width" secondItem="wH3-gk-8oX" secondAttribute="width" id="TJt-Ur-WAM"/>
                                     <constraint firstItem="3mE-6M-eB9" firstAttribute="top" secondItem="wH3-gk-8oX" secondAttribute="top" constant="8" id="Uoh-Ys-qyw"/>
@@ -598,7 +635,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Новый клиент" largeTitleDisplayMode="never" id="clR-Cb-NKF"/>
                     <connections>
+                        <outlet property="birthdayTextField" destination="jPN-i5-DSN" id="A2R-fn-jvU"/>
                         <outlet property="clientPhoto" destination="3mE-6M-eB9" id="6ud-VK-y0L"/>
+                        <outlet property="emailTextField" destination="UUX-jP-uCG" id="FlS-pL-T4H"/>
                         <outlet property="nameField" destination="UGZ-Yg-MXX" id="8ek-d4-xvd"/>
                         <outlet property="patronymicField" destination="phx-i9-1kn" id="cVg-DK-xLN"/>
                         <outlet property="scrollView" destination="wH3-gk-8oX" id="0tW-cU-qIQ"/>
@@ -607,7 +646,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kmT-W7-rdh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2039" y="1749"/>
+            <point key="canvasLocation" x="2037.5999999999999" y="1748.2758620689656"/>
         </scene>
         <!--Ready View Controller-->
         <scene sceneID="hfv-ao-tRH">
@@ -735,8 +774,8 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aXM-xw-cNx">
-                                <rect key="frame" x="23.666666666666671" y="512" width="121.00000000000001" height="30"/>
-                                <state key="normal" title="Сделать фото до"/>
+                                <rect key="frame" x="54.666666666666657" y="512" width="59" height="30"/>
+                                <state key="normal" title="Фото до"/>
                                 <connections>
                                     <action selector="didPressMakeImageBefore:" destination="X8b-wF-wqi" eventType="touchUpInside" id="xES-6B-bjr"/>
                                 </connections>
@@ -756,8 +795,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wWH-kh-rzg">
-                                <rect key="frame" x="218.66666666666663" y="512" width="145" height="30"/>
-                                <state key="normal" title="Сделать фото после"/>
+                                <rect key="frame" x="249.66666666666663" y="512" width="83" height="30"/>
+                                <state key="normal" title="Фото после"/>
                                 <connections>
                                     <action selector="didPressMakeImageAfter:" destination="X8b-wF-wqi" eventType="touchUpInside" id="o3d-6l-yUW"/>
                                 </connections>
@@ -863,7 +902,7 @@
         <!--Настройки-->
         <scene sceneID="Yn2-Ki-59h">
             <objects>
-                <tableViewController id="c9F-1F-wrb" sceneMemberID="viewController">
+                <tableViewController id="c9F-1F-wrb" customClass="SettingsViewController" customModule="MDAdmin" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Bpa-dV-JX1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1210,8 +1249,8 @@
         <image name="settings" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hc8-SM-ZPn"/>
+        <segue reference="fFu-8k-yeK"/>
         <segue reference="ujh-1E-lwc"/>
-        <segue reference="TQg-nz-Dp3"/>
+        <segue reference="33i-xg-puq"/>
     </inferredMetricsTieBreakers>
 </document>

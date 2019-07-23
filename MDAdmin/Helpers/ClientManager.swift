@@ -49,6 +49,8 @@ class ClientManager {
                 let client = Client(name: value["name"] as? String ?? " ",
                                     surname: value["surname"] as? String ?? " ",
                                     patronymic: value["patronymic"] as? String ?? " ",
+                                    email: value["email"] as? String ?? " ",
+                                    birthday: value["birthday"] as? Int ?? 0,
                                     imageURL: value["imageURL"] as? String ?? " ",
                                     procedures: procedures)
                 tempClients.append(client)

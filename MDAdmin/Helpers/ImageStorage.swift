@@ -12,8 +12,8 @@ class ImageStorage {
 
     static func getClientImage(client: Client, imageView: UIImageView) -> UIImage? {
         let documentDirectory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create:true)
-        
-        if let url = documentDirectory?.appendingPathComponent(client.makeInitials()) {
+        let unicImageName = "\(client.makeInitials())"
+        if let url = documentDirectory?.appendingPathComponent(unicImageName) {
             if let data = try? Data(contentsOf: url) {
                 return UIImage(data: data)
             }
@@ -29,7 +29,7 @@ class ImageStorage {
 
             DispatchQueue.main.async(execute: {
                 if let downloadedImage = UIImage(data: data!) {
-                    if let url = documentDirectory?.appendingPathComponent(client.makeInitials()) {
+                    if let url = documentDirectory?.appendingPathComponent(unicImageName) {
                         UIImage.saveImage(image: downloadedImage, path: url)
                     }
                     imageView.image = downloadedImage
