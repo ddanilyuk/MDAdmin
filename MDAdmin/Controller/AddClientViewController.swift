@@ -93,7 +93,8 @@ class AddClientViewController: UIViewController {
         birthdayEntered = Int(date ?? 0)
         
         //Mark: - Making new client With class Clint (class can be deleted)
-        if !nameEntered.isEmpty && !surnameEntered.isEmpty && !patronymicEntered.isEmpty && clientPhoto.image != nil && !emailEntered.isEmpty && birthdayEntered != 0 {
+        //Mark: - no email checking
+        if !nameEntered.isEmpty && !surnameEntered.isEmpty && !patronymicEntered.isEmpty && clientPhoto.image != nil && birthdayEntered != 0 {
             
             let client = Client(name: nameEntered,
                                 surname: surnameEntered,
