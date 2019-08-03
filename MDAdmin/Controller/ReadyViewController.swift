@@ -13,6 +13,8 @@ class ReadyViewController: UIViewController {
     
     @IBOutlet weak var imageLoadLabel: UILabel!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     @IBOutlet weak var exitButton: UIButton!
     var dataFromNewClient: String = ""
     var dataFromNewProcedure: String = ""
@@ -21,6 +23,8 @@ class ReadyViewController: UIViewController {
         super.viewDidLoad()
         readyLabel.text = "Не готово"
         imageLoadLabel.text = "Картинки не загружены, подождите"
+        activityIndicator.startAnimating()
+        activityIndicator.hidesWhenStopped = true
         exitButton.isEnabled = false
         
         //Mark: - when segue from add client
@@ -30,6 +34,7 @@ class ReadyViewController: UIViewController {
         if dataFromNewClient != "" {
             ref.child(dataFromNewClient).observe(.childChanged) { snapshot in
                 self.readyLabel.text = "Готово"
+                self.activityIndicator.stopAnimating()
                 self.imageLoadLabel.text = "Картинки загружены, клиент добавлен"
                 self.exitButton.isEnabled = true
             }
@@ -42,6 +47,7 @@ class ReadyViewController: UIViewController {
         if dataFromNewProcedure != "" {
             ref2.child(dataFromNewProcedure).observe(.childChanged) { snapshot in
                 self.readyLabel.text = "Готово"
+                self.activityIndicator.stopAnimating()
                 self.imageLoadLabel.text = "Картинки загружены, процедура добавлена"
                 self.exitButton.isEnabled = true
             }

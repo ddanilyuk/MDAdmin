@@ -127,13 +127,14 @@ class OneClientViewController: UIViewController {
                 let newClientName = self.clientNameTextField.text ?? " "
                 let newClientSurname = self.clientSurnameTextField.text ?? " "
                 let newClientPatrynomic = self.clientPatrynomicTextField.text ?? " "
+                let newClientEmail = self.clientEmailTextField.text ?? " "
                 
                 
                 
                 let newClient = Client(name: newClientName,
                                        surname: newClientSurname,
                                        patronymic: newClientPatrynomic,
-                                       email: self.client.email,
+                                       email: newClientEmail,
                                        birthday: self.client.birthday,
                                        imageURL: self.client.imageURL,
                                        procedures: self.client.procedures)
@@ -153,7 +154,6 @@ class OneClientViewController: UIViewController {
                 
                 ref1.child("\(uid ?? " ")/clients/\(newClient.makeInitials())").setValue(clientConfiguration)
                 
-                ref4.child("\(uid ?? " ")/clients/\(self.client.makeInitials())").setValue(nil)
                 
                 for procedure in self.client.procedures {
                     let procedureConfiguration: [String: String] = [
@@ -172,9 +172,23 @@ class OneClientViewController: UIViewController {
                     
                     ref3.child("\(uid ?? " ")/procedures/\(procedure.dateProcedure)-\(procedure.nameProcedure)-\(newClient.makeInitials())").setValue(procedureConfiguration)
                     
-                    ref5.child("\(uid ?? " ")/procedures/\(procedure.dateProcedure)-\(procedure.nameProcedure)-\(self.client.makeInitials())").setValue(nil)
                     
+                    if newClient.makeInitials() != self.client.makeInitials() {
+                        ref5.child("\(uid ?? " ")/procedures/\(procedure.dateProcedure)-\(procedure.nameProcedure)-\(self.client.makeInitials())").setValue(nil)
+                    }
+                    
+
                 }
+                
+                //
+                //
+                //
+                if newClient.makeInitials() != self.client.makeInitials() {
+                    ref4.child("\(uid ?? " ")/clients/\(self.client.makeInitials())").setValue(nil)
+                }
+                //
+                //
+                //
                 
                 self.clientNameTextField.text = newClient.name
                 self.clientSurnameTextField.text = newClient.surname

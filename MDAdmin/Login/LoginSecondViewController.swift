@@ -13,11 +13,13 @@ import GoogleSignIn
 
 class LoginSecondViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
 
+    @IBOutlet weak var googleButtonView: GIDSignInButton!
     
     let userDefault = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    googleButtonView.layer.cornerRadius = 24
         
     }
     

@@ -15,6 +15,7 @@ class AddClientViewController: UIViewController {
     let imagePicker = UIImagePickerController()
     var info: String = ""
 
+    @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var clientPhoto: UIImageView!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var surnameField: UITextField!
@@ -55,6 +56,11 @@ class AddClientViewController: UIViewController {
     @IBAction func didPressSetPhoto(_ sender: UIButton) {
         showSimpleActionSheet()        
     }
+    
+    @IBAction func didPressAddPhoto(_ sender: UIButton) {
+        showSimpleActionSheet()
+    }
+    
     
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -140,6 +146,7 @@ class AddClientViewController: UIViewController {
             self.imagePicker.sourceType = .camera
             self.imagePicker.delegate = self
             self.imagePicker.allowsEditing = true
+            //self.addPhotoButton.isHidden = true
 
             self.present(self.imagePicker, animated: true, completion: nil)
         }))
@@ -148,6 +155,7 @@ class AddClientViewController: UIViewController {
             self.imagePicker.sourceType = .photoLibrary
             self.imagePicker.delegate = self
             self.imagePicker.allowsEditing = true
+            //self.addPhotoButton.isHidden = true
 
             self.present(self.imagePicker, animated: true, completion: nil)
         }))
@@ -205,6 +213,7 @@ extension AddClientViewController: UIImagePickerControllerDelegate, UINavigation
             selectedImageFromPicker = originalImage
         }
         if let selectedImage = selectedImageFromPicker {
+            self.addPhotoButton.setTitle("", for: .normal)
             clientPhoto.image = selectedImage
         }
         picker.dismiss(animated: true, completion: nil)

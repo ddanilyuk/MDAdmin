@@ -70,6 +70,14 @@ extension UIImage {
         let jpgImageData = image.jpegData(compressionQuality: 1)
         try? jpgImageData?.write(to: path)
     }
+    
+    static func saveImage05(image: UIImage, path: URL) {
+        //let pngImageData = image.pngData()
+        //try? pngImageData?.write(to: path)
+        
+        let jpgImageData = image.jpegData(compressionQuality: 0.5)
+        try? jpgImageData?.write(to: path)
+    }
 }
 
 @IBDesignable extension UIButton {

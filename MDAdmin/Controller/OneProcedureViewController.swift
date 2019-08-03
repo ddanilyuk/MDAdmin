@@ -87,6 +87,13 @@ class OneProcedureViewController: UIViewController {
                 destination.myImage = afterImageView.image ?? UIImage()
             }
         }
+        
+        if segue.identifier == "showMergeImage" {
+            if let destination = segue.destination as? MergeViewController {
+                destination.imageAfter = afterImageView.image ?? UIImage()
+                destination.imageBefore = beforeImageView.image ?? UIImage()
+            }
+        }
     }
     
 }

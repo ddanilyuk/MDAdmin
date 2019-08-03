@@ -144,6 +144,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cdF-gM-hdI"/>
                     </view>
+                    <connections>
+                        <outlet property="googleButtonView" destination="SDX-As-rfW" id="9ZO-6K-prr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IbZ-pS-rQ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

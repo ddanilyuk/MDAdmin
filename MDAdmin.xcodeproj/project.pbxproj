@@ -33,6 +33,7 @@
 		D35FC6F022D49A3E007F6E2E /* ClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35FC6EF22D49A3E007F6E2E /* ClientManager.swift */; };
 		D35FC6F222D4B6AE007F6E2E /* ProcedureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35FC6F122D4B6AE007F6E2E /* ProcedureManager.swift */; };
 		D3775CC522C8EB520076CD64 /* OneClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3775CC422C8EB520076CD64 /* OneClientViewController.swift */; };
+		D38680E522F4B79400F030F0 /* MergeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38680E422F4B79400F030F0 /* MergeViewController.swift */; };
 		D3A3CDB122C7BA1A00378FA4 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A3CDB022C7BA1A00378FA4 /* Settings.swift */; };
 		D3A3CDB322C7C26A00378FA4 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A3CDB222C7C26A00378FA4 /* Client.swift */; };
 		D3BA1DC322C21B470089690C /* SignedInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA1DC222C21B470089690C /* SignedInViewController.swift */; };
@@ -73,6 +74,7 @@
 		D35FC6EF22D49A3E007F6E2E /* ClientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientManager.swift; sourceTree = "<group>"; };
 		D35FC6F122D4B6AE007F6E2E /* ProcedureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureManager.swift; sourceTree = "<group>"; };
 		D3775CC422C8EB520076CD64 /* OneClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneClientViewController.swift; sourceTree = "<group>"; };
+		D38680E422F4B79400F030F0 /* MergeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeViewController.swift; sourceTree = "<group>"; };
 		D3A3CDB022C7BA1A00378FA4 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		D3A3CDB222C7C26A00378FA4 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		D3BA1DC222C21B470089690C /* SignedInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignedInViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				D3BC380B22D10F6A0067E80A /* FindClientViewController.swift */,
 				D300298E22BE820600AD8786 /* AddProcedureViewController.swift */,
 				D35FC6CB22D22CD4007F6E2E /* ReadyViewController.swift */,
+				D38680E422F4B79400F030F0 /* MergeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				D3775CC522C8EB520076CD64 /* OneClientViewController.swift in Sources */,
 				D35FC6EE22D3AEBD007F6E2E /* ImageStorage.swift in Sources */,
 				D300298622BE53C900AD8786 /* CalandarViewController.swift in Sources */,
+				D38680E522F4B79400F030F0 /* MergeViewController.swift in Sources */,
 				D300299122BE83A000AD8786 /* AddViewController.swift in Sources */,
 				D3A3CDB122C7BA1A00378FA4 /* Settings.swift in Sources */,
 				D35FC6F022D49A3E007F6E2E /* ClientManager.swift in Sources */,

@@ -24,6 +24,11 @@ class SettingsViewController: UITableViewController, GIDSignInUIDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        //getMemory()
+    }
+    
+    
+    func getMemory() {
         let documentsDirectoryURL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         //documentsDirectoryURL = documentsDirectoryURL.appendingPathComponent("/images/")
         // check if the url is a directory
@@ -42,7 +47,6 @@ class SettingsViewController: UITableViewController, GIDSignInUIDelegate {
             print(folderSizeToDisplay)  // "X,XXX,XXX bytes"
         }
     }
-    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

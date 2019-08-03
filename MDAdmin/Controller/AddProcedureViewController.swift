@@ -19,6 +19,10 @@ class AddProcedureViewController: UIViewController {
     @IBOutlet weak var afterImageView: UIImageView!
     @IBOutlet weak var procedurePicker: UIPickerView!
     
+    @IBOutlet weak var beforeButton: UIButton!
+    @IBOutlet weak var afterButton: UIButton!
+    
+    
     //TODO: - NEED TO USE PROCEDURE FROM SETTINGS
     let defaultProcedure = PossibleProcedure(name: "", cost: 0)
     
@@ -84,15 +88,17 @@ class AddProcedureViewController: UIViewController {
         //self.tableView.reloadData()
     }
     
-    @IBAction func didPressMakeImageBefore(_ sender: UIButton) {
+
+    @IBAction func didPressTakeImageBefore(_ sender: UIButton) {
         isTapImageBefore = true
         showCameraOrLibrary()
     }
     
-    @IBAction func didPressMakeImageAfter(_ sender: UIButton) {
-        isTapImageAfter = true
+    @IBAction func didPressTakeImageAfter(_ sender: UIButton) {
+        isTapImageBefore = true
         showCameraOrLibrary()
     }
+
     
     @IBAction func didPressEditCost(_ sender: UIButton) {
         //TODO: - NEED TO DO
@@ -171,14 +177,34 @@ class AddProcedureViewController: UIViewController {
             self.imagePicker.sourceType = .camera
             self.imagePicker.delegate = self
             self.imagePicker.allowsEditing = true
-            
+
+            self.imagePicker.mediaTypes = ["public.image"]
             self.present(self.imagePicker, animated: true, completion: nil)
+
+            
+//            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
+//                let imagePicker = UIImagePickerController()
+//                imagePicker.sourceType = UIImagePickerController.SourceType.camera
+//                imagePicker.delegate = self
+//                imagePicker.allowsEditing = true
+//                //imagePicker.allowsEditing = true
+//
+//                self.present(imagePicker, animated: true, completion: nil)
+//            }
+//            else
+//            {
+//                let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
+//                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//                self.present(alert, animated: true, completion: nil)
+//            }
+            
         }))
         
         alert.addAction(UIAlertAction(title: "Выбрать фото", style: .default, handler: { (_) in
             self.imagePicker.sourceType = .photoLibrary
             self.imagePicker.delegate = self
             self.imagePicker.allowsEditing = true
+            
             
             self.present(self.imagePicker, animated: true, completion: nil)
         }))
@@ -223,6 +249,7 @@ extension AddProcedureViewController: UIPickerViewDelegate, UIPickerViewDataSour
 }
 
 extension AddProcedureViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 
         var selectedImageFromPicker: UIImage?
@@ -236,9 +263,11 @@ extension AddProcedureViewController: UIImagePickerControllerDelegate, UINavigat
         if let selectedImage = selectedImageFromPicker {
             if  isTapImageBefore {
                 beforeImageView.image = selectedImage
+                beforeButton.titleLabel?.text = ""
                 isTapImageBefore = false
             } else {
                 afterImageView.image = selectedImage
+                afterButton.titleLabel?.text = ""
                 isTapImageAfter = false
             }
         }
